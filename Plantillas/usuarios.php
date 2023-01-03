@@ -49,8 +49,8 @@ require_once("../body/header_admin.php");
 
                   <tbody>
                       <?php 
-                        $sql = mysqli_query($conection,"SELECT u.idusuario,u.nombre,u.correo,u.usuario,r.descripcion FROM usuarios u 
-                        INNER JOIN roles r ON u.rol = r.id_rol  u.estatus = 1 ORDER BY  u.idusuario DESC");
+                        $sql = mysqli_query($conection," SELECT u.idusuario,u.nombre,u.correo,u.usuario,r.descripcion 
+                        FROM usuarios u INNER JOIN roles r ON u.rol = r.id  where  u.estatus = 1 ORDER BY  u.idusuario DESC");
 
                          $resultado = mysqli_num_rows($sql);
 
@@ -58,10 +58,10 @@ require_once("../body/header_admin.php");
                             while ($data = mysqli_fetch_array($sql)){ 
                       ?>
                         <tr class="text-center">
-                             <td><?php echo $data['idusuario'];?></td>
-                             <td><?php echo $data['nombre'];?></td>
- 						     <td><?php echo $data['correo'];?></td>
- 						     <td><?php echo $data['usuario']; ?></td>
+                            <td><?php echo $data['idusuario'];?></td>
+                            <td><?php echo $data['nombre'];?></td>
+ 						                <td><?php echo $data['correo'];?></td>
+ 						                <td><?php echo $data['usuario']; ?></td>
                              <td><?php echo $data['descripcion']?></td>
  					         
                            
