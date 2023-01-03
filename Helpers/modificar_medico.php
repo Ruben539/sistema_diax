@@ -43,7 +43,7 @@ if (!empty($_POST)) {
 
 	}else{
 
-		$sql_update = mysqli_query($conection,"UPDATE medicos SET Hora = '$Hora',Nombre = '$Nombre', Especialidad = '$Especialidad',Dia = '$Dia',Tcobro = '$Tcobro', estatus = 1
+		$sql_update = mysqli_query($conection,"UPDATE medicos SET Hora = '$Hora',Nombre = '$Nombre', Especialidad = '$Especialidad',Dia = '$Dia',Tcobro = '$Tcobro'
 			WHERE id = $id");
 
 		if ($sql_update) {
@@ -67,7 +67,7 @@ if (empty($_REQUEST['id'])) {
 
 $id = $_REQUEST['id'];
 
-$sql = mysqli_query($conection,"SELECT * FROM medicos m WHERE id = $id AND estatus= 1");
+$sql = mysqli_query($conection,"SELECT * FROM medicos m WHERE id = $id");
 
 //mysqli_close($conection);//con esto cerramos la conexion a la base de datos una vez conectado arriba con el conexion.php
 
