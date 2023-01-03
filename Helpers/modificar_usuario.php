@@ -29,7 +29,7 @@ if (!empty($_POST)) {
 		//WHERE(usuario = '$user' AND idusuario != $iduser) or (correo = '$email' AND idusuario != $iduser";
 //exit; sirve para ejectuar la consulta en mysql
 
-		$query = mysqli_query($conection,"SELECT * FROM usuario WHERE
+		$query = mysqli_query($conection,"SELECT * FROM usuarios WHERE
 		 	(usuario = '$usuario' AND id_usuario != $iduser) or (correo = '$correo' AND id_usuario != $iduser) AND estatus = 1");
 
 		$resultado = mysqli_fetch_array($query);
@@ -44,12 +44,12 @@ if (!empty($_POST)) {
 
 			if ($_POST['pass']) {
 				
-				$sql_update = mysqli_query($conection,"UPDATE usuario SET 
+				$sql_update = mysqli_query($conection,"UPDATE usuarios SET 
 					 nombre = '$nombre',correo = '$correo', usuario = '$usuario',rol = '$rol', pass = '$pass'
 					 WHERE id_usuario = $iduser");
 			}else{
 
-				$sql_update = mysqli_query($conection,"UPDATE usuario SET 
+				$sql_update = mysqli_query($conection,"UPDATE usuarios SET 
 					 nombre = '$nombre',correo = '$correo', usuario = '$usuario',pass = '$pass', rol = '$rol'
 					 WHERE id_usuario = $iduser");
 			}
@@ -76,7 +76,7 @@ if (empty($_REQUEST['id'])) {
 
 $iduser = $_REQUEST['id'];
 
-$sql = mysqli_query($conection,"SELECT * FROM usuario  WHERE id_usuario = $iduser AND estatus = 1");   
+$sql = mysqli_query($conection,"SELECT * FROM usuarios  WHERE idusuario = $iduser AND estatus = 1");   
 
 //mysqli_close($conection);//con esto cerramos la conexion a la base de datos una vez conectado arriba con el conexion.php
 
@@ -89,7 +89,7 @@ if ($resultado == 0) {
 	$option = '';
 	while ($data = mysqli_fetch_array($sql)) {
 		
-		$iduser   = $data['id_usuario'];
+		$iduser   = $data['idusuario'];
 		$nombre   = $data['nombre'];
 		$correo   = $data['correo'];
 		$usuario  = $data['usuario'];
@@ -103,20 +103,6 @@ if ($resultado == 0) {
 		}else if ($rol == 3) {
 			$option = '<option value="'.$rol.'" select>'.$rol.'</option>';
 		}else if ($rol == 4) {
-			$option = '<option value="'.$rol.'" select>'.$rol.'</option>';
-		}else if ($rol == 5) {
-			$option = '<option value="'.$rol.'" select>'.$rol.'</option>';
-		}else if ($rol == 6) {
-			$option = '<option value="'.$rol.'" select>'.$rol.'</option>';
-		}else if ($rol == 7) {
-			$option = '<option value="'.$rol.'" select>'.$rol.'</option>';
-		}else if ($rol == 8) {
-			$option = '<option value="'.$rol.'" select>'.$rol.'</option>';
-		}else if ($rol == 9) {
-			$option = '<option value="'.$rol.'" select>'.$rol.'</option>';
-		}else if ($rol == 10) {
-			$option = '<option value="'.$rol.'" select>'.$rol.'</option>';
-		}else if ($rol == 11) {
 			$option = '<option value="'.$rol.'" select>'.$rol.'</option>';
 		}
 	}
@@ -163,16 +149,11 @@ require_once("../body/header_admin.php");
                    <?php if ($_SESSION['rol'] == 1) {?>
                     <option value="1">Administrador</option>
                    <?php } ?>
-                   <option value="2">Supervisor</option>
-                   <option value="9">Desembalado</option>
-                   <option value="3">Herreria</option>
-                   <option value="4">Pintura</option>
-                   <option value="5">Ruedas</option>
-                   <option value="10">Pre-Cinta</option>
-                   <option value="6">Cinta</option>
-                   <option value="7">Probado</option>
-                   <option value="8">Cuatro Ruedas</option>
-                   <option value="11">Verificador</option>
+                   <option value="2">Administrador</option>
+                   <option value="9">Recepcionista</option>
+                   <option value="3">Doctor</option>
+                   <option value="4">Paciente</option>
+                   <
                  </select>
                 </div>
                                   
