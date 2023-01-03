@@ -1,6 +1,6 @@
 <?php
 
-require_once("host.php");
+require_once("./host.php");
 
 
 class MYSQL {
@@ -19,7 +19,7 @@ class MYSQL {
 
 
 
-
+/*
 	//Vamos a utlilzar la sintaxis PDO de Conexion
 	public function conexBDPDO(){
 		try{
@@ -519,5 +519,5 @@ class Grafica{
 	public $totalProducido = 0;
 	public $totalProbado = 0;
 	public $totalFaltante = 0;
-	public $totalBanco = 0;
+	public $totalBanco = 0;*/
 }

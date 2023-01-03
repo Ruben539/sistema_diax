@@ -7,7 +7,7 @@
 	    private $conect;
 
 	    public function __construct(){
-	        $connectionString = "mysql:host=localhost;dbname=paula;charset=utf8";
+	        $connectionString = "mysql:host=localhost;dbname=laspalmas;charset=utf8";
 	        try {
 	        	$this->conect = new PDO($connectionString,$this->user,$this->pass);
 	        	$this->conect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
