@@ -57,7 +57,7 @@ if ($resultado > 0) {
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-user-md"></i><span class="app-menu__label">Medicos</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
             <!--Menu Principal del Usuario-->
-            <li><a class="treeview-item" href="../Plantillas/pacientes.php"><i class="icon fa fa-user-md"></i> Lista de Medicos</a></li>
+            <li><a class="treeview-item" href="../Plantillas/medicos.php"><i class="icon fa fa-user-md"></i> Lista de Medicos</a></li>
             <li><a class="treeview-item" href="#"><i class="icon fa fa-user-md"></i> Historial de Medicos</a></li>
             <!--Menu Principal del Rol-->
             
