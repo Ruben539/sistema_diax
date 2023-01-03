@@ -69,7 +69,7 @@ if (empty($_REQUEST['id'])) {
 
 }
 
-$iduser = $_REQUEST['id'];
+$id = $_REQUEST['id'];
 
 $sql = mysqli_query($conection,"SELECT * FROM tarifas  WHERE id = $id");   
 
