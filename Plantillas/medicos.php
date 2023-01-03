@@ -51,7 +51,7 @@ require_once("../body/header_admin.php");
                   <tbody>
                       <?php 
                         $sql = mysqli_query($conection,"SELECT m.id,m.Nombre,m.Especialidad,m.Dia,m.Hora,m.Tcobro FROM medicos m 
-                        WHERE  m.estatus = 1 ORDER BY  m.id DESC");
+                        ORDER BY  m.id DESC");
 
                          $resultado = mysqli_num_rows($sql);
 
