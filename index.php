@@ -44,7 +44,7 @@ if (!empty($_SESSION['active'])) {
         $_SESSION['correo'] = $data['correo'];
         $_SESSION['user'] = $data['usuario'];
         $_SESSION['rol'] = $data['rol'];
-        $_SESSION['puesto'] = $data['puesto'];
+       
         
 
 
@@ -54,30 +54,8 @@ if (!empty($_SESSION['active'])) {
        }else if($_SESSION['rol'] == 2){
         header('Location: Plantillas/dashboard.php');
 
-      } if ($_SESSION['rol'] == 3) {
-        header('location: Plantillas/herreria.php');
-
-      }else if ($_SESSION['rol'] == 4) {
-        header('location: Plantillas/pintura.php');
-
-      } if ($_SESSION['rol'] == 5) {
-        header('location: Plantillas/ruedas.php');
-
-      }else if ($_SESSION['rol'] == 6) {
-        header('location: Plantillas/cinta.php');
-
-      }if ($_SESSION['rol'] == 7) {
-        header('location: Plantillas/probado.php');
-
-      }else if ($_SESSION['rol'] == 8) {
-        header('location: Plantillas/cuatroRuedas.php');
-      }else if ($_SESSION['rol'] == 9) {
-        header('location: Plantillas/reclamos.php');
-      }else if ($_SESSION['rol'] == 10) {
-        header('location: Informes/preEnsamble.php');
-     }else if ($_SESSION['rol'] == 11) {
-        header('location: Informes/verificador_Herreria.php');
-     }
+      } 
+      
     }else{
 
       $alert= '<div class= "alert alert-danger"><i class="fas fa-exclamation-triangle"></i><b> El Usuario y/o la Contraseña son Incorrectas</b></div>';
