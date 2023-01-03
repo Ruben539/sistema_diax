@@ -23,7 +23,6 @@ if (!empty($_POST)) {
             $usuario  = $_POST['usuario'];
             $pass     = md5($_POST['pass']);
             $rol      = $_POST['rol'];
-            $puesto   = $_POST['puesto'];
 
             $foto = $_FILES['foto'] ['name'];
             $nombrefoto = $_FILES['foto'] ['name'];
@@ -51,8 +50,9 @@ if (!empty($_POST)) {
             $alert = '<p class = "msg_error">El correo o Usuario ya existe</p>';
         }else{*/
 
-            $query_insert = mysqli_query($conection,"INSERT INTO usuario(nombre,correo,usuario,pass,rol,puesto,foto)
-                VALUES('$nombre','$correo','$usuario','$pass','$rol','$puesto','$imgProducto')");
+            $query_insert = mysqli_query($conection,"INSERT INTO usuarios(nombre,correo,usuario,pass,rol,foto)
+                VALUES('$nombre','$correo','$usuario','$pass','$rol','$imgProducto')");
+
             if ($query_insert ) {
                if ($nombrefoto != '') {
                     move_uploaded_file($url_temp, $scr);
@@ -81,68 +81,42 @@ require_once("../body/header_admin.php");
       <div class="modal-body">
  
 		<form action="" method="POST" enctype="multipart/form-data">
-       <div  class="formulario" id="formulario">
-           	<!--Grupo de Formulario del Modelo-->
-		<div class="form-group">
-			<div class="input-group">
-        <div class="input-group-prepend"><span class="input-group-text">Nombre</span></div>
-          	<input type="text" class="form-control" name="nombre" id="nombre" placeholder="Ingrese el Nombre" require autofocus>
-        </div>
-		</div>
+         <div  class="formulario" id="formulario">
+            <!--Grupo de Formulario del Nombre-->
+               <div class="form-group">
+                  <input class="form-control" type="text" name="nombre" id="nombre" placeholder="Ingrese el nombre">
+                </div>
 
 
-      	<!--Grupo de Formulario del Modelo-->
-          <div class="form-group">
-			<div class="input-group">
-        <div class="input-group-prepend"><span class="input-group-text">Correo</span></div>
-          	<input type="email" class="form-control" name="correo" id="correo" placeholder="Ingrese el Correo" require >
-        </div>
-		</div>
-			<!--Grupo de Formulario del Modelo-->
-            <div class="form-group">
-			<div class="input-group">
-        <div class="input-group-prepend"><span class="input-group-text">Usuario</span></div>
-          	<input type="text" class="form-control" name="usuario" id="usuario" placeholder="Ingrese el Usuario" require >
-        </div>
-		</div>
+      	    <!--Grupo de Formulario del Correo-->
+                <div class="form-group">
+                  <input class="form-control" type="email" name="correo" id="correo" placeholder="Ingrese el correo">
+                </div>
 
-		<!--Grupo de Formulario de Puesto 1-->
-    	<div class="form-group">
-			<div class="input-group">
-        <div class="input-group-prepend"><span class="input-group-text">Contraseña</span></div>
-          	<input type="password" class="form-control" name="pass" id="pass" placeholder="Ingrese la Contraseña" require >
-        </div>
-		</div>
+			<!--Grupo de Formulario del usuario-->
+                <div class="form-group">
+                  <input class="form-control" type="text" name="usuario" id="usuario" placeholder="Ingrese el usuario">
+                </div>
+
+		    <!--Grupo de Formulario de Contraseña-->
+    	        <div class="form-group">
+                  <input class="form-control" type="password" name="pass" id="pass" placeholder="Ingrese el pass">
+                </div>
   
-		<!--Grupo de Formulario de Puesto 1-->
-    	<div class="form-group" id="grupo-solicitante">
-		  	<div class="input-group">
-         <div class="input-group-prepend"><span class="input-group-text">Sector</span></div>
-         <select class="form-control" id="rol" name="rol" required>
-            <?php if ($_SESSION['rol'] == 1) {?>
-             <option value="1">Administrador</option>
-            <?php } ?>
-            <option value="2">Supervisor</option>
-            <option value="9">Desembalado</option>
-            <option value="3">Herreria</option>
-            <option value="4">Pintura</option>
-            <option value="5">Ruedas</option>
-            <option value="10">Pre-Cinta</option>
-            <option value="6">Cinta</option>
-            <option value="7">Probado</option>
-            <option value="8">Cuatro Ruedas</option>
-            <option value="11">Verificador</option>
-        </select>
-        </div>
-	    </div>
+		    <!--Grupo de Formulario de los Roles-->
+    	        <div class="form-group">
+                    <select class="form-control" id="rol" name="rol" required>
+                        <?php if ($_SESSION['rol'] == 1) {?>
+                        <option value="1">Administrador</option>
+                        <?php } ?>
+                        <option value="2">Recepcionista</option>
+                        <option value="3">Doctor</option>
+                        <option value="4">Paciente</option>
+                    </select>
+                </div>
+    
 
-        <div class="form-group">
-			<div class="input-group">
-        <div class="input-group-prepend"><span class="input-group-text">Puesto</span></div>
-          	<input type="text" class="form-control" name="puesto" id="puesto" placeholder="Ingrese el Puesto" require>
         </div>
-		</div>
-</div>
     	<!--Grupo de Formulario de Puesto 1-->
     
         <div class="container-fluid  text-center">
@@ -151,12 +125,12 @@ require_once("../body/header_admin.php");
               <div class="prevPhoto">
                 <span class="delPhoto notBlock">X</span>
                 <label for="foto"></label>
-            </div>
-            <div class="upimg">
+              </div>
+             <div class="upimg">
                 <input type="file" name="foto" id="foto"  class="input-48">
-            </div>
-            <div id="form_alert"></div>
-        </div>
+              </div>
+             <div id="form_alert"></div>
+             </div>
             </div>
 		
   <br>
