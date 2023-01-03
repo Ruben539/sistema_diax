@@ -48,7 +48,7 @@ if (!empty($_POST)) {
 
 		if ($sql_update) {
 
-			header('location: ../Plantillas/medicos.php');
+			$alert = '<p class = "msg_success">Actualizado Correctamente</p>';
 
 		}else{
 			$alert = '<p class = "msg_error">Error al Actualizar el Registro</p>';
@@ -67,7 +67,7 @@ if (empty($_REQUEST['id'])) {
 
 $id = $_REQUEST['id'];
 
-$sql = mysqli_query($conection,"SELECT * FROM medicos m WHERE id = $id");
+$sql = mysqli_query($conection,"SELECT * FROM medicos  WHERE id = $id");
 
 //mysqli_close($conection);//con esto cerramos la conexion a la base de datos una vez conectado arriba con el conexion.php
 
@@ -86,8 +86,8 @@ if ($resultado == 0) {
 		$Dia            = $data['Dia'];
 		$Hora           = $data['Hora'];
 		$Tcobro         = $data['Tcobro'];
-       
-		
+
+
 
 	}
 }
@@ -106,7 +106,7 @@ require_once("../body/header_admin.php");
         
                 <div class="form-group">
                   <label class="control-label">Nombre</label>
-                  <input class="form-control" type="text" name="Nombre" id="Nombre" placeholder="Ingrese el Nro de Vehiculo" required
+                  <input class="form-control" type="text" name="Nombre" id="Nombre" placeholder="Ingrese el Nombre" required
                   value="<?php echo $Nombre; ?>">
                 </div>
                 <div class="form-group">
