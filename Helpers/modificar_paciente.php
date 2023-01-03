@@ -22,7 +22,7 @@ if (!empty($_POST)) {
 		$Celular       = $_POST['Celular'];
 		$Sexo          = $_POST['Sexo'];
 		$Nacimiento    = $_POST['Nacimiento'];
-		//$FechaIngreso  = $_POST['FechaIngreso'];
+		$FechaIngreso  = $_POST['FechaIngreso'];
 		
 
 
@@ -44,12 +44,12 @@ if (!empty($_POST)) {
 
 	}else{
 
-		$sql_update = mysqli_query($conection,"UPDATE clientes SET Cedula = '$Cedula',Nombre = '$Nombre', Apellido = '$Apellido',Celular = '$Celular',Sexo = '$Sexo',Nacimiento = '$Nacimiento', estatus = 1
+		$sql_update = mysqli_query($conection,"UPDATE clientes SET Cedula = '$Cedula',Nombre = '$Nombre', Apellido = '$Apellido',Celular = '$Celular',Sexo = '$Sexo',Nacimiento = '$Nacimiento',FechaIngreso = '$FechaIngreso', estatus = 1
 			WHERE id = $id");
 
 		if ($sql_update) {
 
-			header('location: ../Plantillas/pacientes.php');
+			$alert = '<p class = "msg_success">Actualizado Correctamente</p>';
 
 		}else{
 			$alert = '<p class = "msg_error">Error al Actualizar el Registro</p>';
@@ -138,6 +138,11 @@ require_once("../body/header_admin.php");
                   <label class="control-label">Fecha de Nacimiento</label>
                   <input class="form-control" type="text" name="Nacimiento" id="Nacimiento" placeholder="Ingrese la Nacimiento" required
                   value="<?php echo $Nacimiento; ?>">
+                </div>
+                <div class="form-group">
+                  <label class="control-label">Fecha de Ingreso</label>
+                  <input class="form-control" type="text" name="FechaIngreso" id="FechaIngreso" placeholder="Ingrese la Fecha de Ingreso" required
+                  value="<?php echo $FechaIngreso; ?>">
                 </div>
                                   
                  <div class="tile-footer">
