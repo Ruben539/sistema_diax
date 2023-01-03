@@ -68,7 +68,7 @@ if (empty($_REQUEST['id'])) {
 
 $id = $_REQUEST['id'];
 
-$sql = mysqli_query($conection,"SELECT * FROM clientes c WHERE id = $id AND estatus= 1");
+$sql = mysqli_query($conection,"SELECT * FROM clientes  WHERE id = $id ");
 
 //mysqli_close($conection);//con esto cerramos la conexion a la base de datos una vez conectado arriba con el conexion.php
 
@@ -87,7 +87,7 @@ if ($resultado == 0) {
 		$Apellido      = $data['Apellido'];
 		$Celular       = $data['Celular'];
 		$Sexo          = $data['Sexo'];
-        $Nacimiento    = $data['Nacimiento'];
+    $Nacimiento    = $data['Nacimiento'];
 		$FechaIngreso  = $data['FechaIngreso'];
 		
 
