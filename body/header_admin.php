@@ -12,7 +12,7 @@ $sesion = $_SESSION['rol'];
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="autor" content="RubenFl">
     <meta name="theme-color" content="#f23">
-    <title>División Industrial</title>
+    <title>Sistema Diax</title>
     <!-- Main CSS-->
     <link rel="stylesheet" type="text/css" href="../css/main.css">
     <link rel="stylesheet" type="text/css" href="../css/estilos.css">
@@ -32,43 +32,43 @@ $sesion = $_SESSION['rol'];
     <!-- Navbar-->
     <header class="app-header">
       <?php if ($sesion == 1 || $sesion == 2) {?>
-        <a class="app-header__logo" href="../Plantillas/dashboard.php">Sistema Pauli</a>
+        <a class="app-header__logo" href="../Plantillas/dashboard.php">Sistema Diax</a>
       <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a> 
       <?php } ?>
       <?php if ($sesion == 3) {?>
-        <a class="app-header__logo" href="../Plantillas/herreria.php">Sistema Pauli</a>
+        <a class="app-header__logo" href="../Plantillas/herreria.php">Sistema Diax</a>
       <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a> 
       <?php } ?>
       <?php if ($sesion == 4 ) {?>
-        <a class="app-header__logo" href="../Plantillas/pintura.php">Sistema Pauli</a>
+        <a class="app-header__logo" href="../Plantillas/pintura.php">Sistema Diax</a>
       <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a> 
       <?php } ?>
       <?php if ($sesion == 5 ) {?>
-        <a class="app-header__logo" href="../Plantillas/ruedas.php">Sistema Pauli</a>
+        <a class="app-header__logo" href="../Plantillas/ruedas.php">Sistema Diax</a>
       <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a> 
       <?php } ?>
       <?php if ($sesion == 6) {?>
-        <a class="app-header__logo" href="../Plantillas/cinta.php">Sistema Pauli</a>
+        <a class="app-header__logo" href="../Plantillas/cinta.php">Sistema Diax</a>
       <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a> 
       <?php } ?>
       <?php if ($sesion == 7 ) {?>
-        <a class="app-header__logo" href="../Plantillas/probado.php">Sistema Pauli</a>
+        <a class="app-header__logo" href="../Plantillas/probado.php">Sistema Diax</a>
       <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a> 
       <?php } ?>
       <?php if ($sesion == 8 ) {?>
-        <a class="app-header__logo" href="../Plantillas/cuatroRuedas.php">Sistema Pauli</a>
+        <a class="app-header__logo" href="../Plantillas/cuatroRuedas.php">Sistema Diax</a>
       <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a> 
       <?php } ?>
        <?php if ($sesion == 9 ) {?>
-        <a class="app-header__logo" href="../Plantillas/reclamos.php">Sistema Pauli</a>
+        <a class="app-header__logo" href="../Plantillas/reclamos.php">Sistema Diax</a>
       <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a> 
       <?php } ?>
        <?php if ($sesion == 10 ) {?>
-        <a class="app-header__logo" href="../Plantillas/preEnsamble.php">Sistema Pauli</a>
+        <a class="app-header__logo" href="../Plantillas/preEnsamble.php">Sistema Diax</a>
       <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a> 
       <?php } ?>
        <?php if ($sesion == 11 ) {?>
-        <a class="app-header__logo" href="../Informes/verificador_Herreria.php">Sistema Pauli</a>
+        <a class="app-header__logo" href="../Informes/verificador_Herreria.php">Sistema Diax</a>
       <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a> 
       <?php } ?>
       

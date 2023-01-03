@@ -17,7 +17,7 @@ require_once("../body/header_admin.php");
 <main class="app-content">
       <div class="app-title">
         <div>
-          <h1><i class="fa fa-th-list"></i> Usuarios Activos  <a href="../Helpers/grabar_usuario.php"> 
+          <h1><i class="fa fa-user-md"></i> Listado de Medicos  <a href="../Helpers/grabar_doctor.php"> 
         <button id="btnNew"  class="btn btn-primary" type="button"><i class="fa fa-user-plus" aria-hidden="true"></i>
          Nuevo</button></a>
         </h1>
@@ -37,9 +37,10 @@ require_once("../body/header_admin.php");
                     <tr class="text-center">
                             <th>ID</th>
                             <th>Nombre</th>
-                            <th>Correo</th>
-                            <th>Usuario</th>
-                            <th>Sector</th>                                
+                            <th>Especialidad</th>
+                            <th>Dia</th>
+                            <th>Hora</th>                                
+                            <th>Tcobro</th>                                
                             <?php if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 2) {?>
                             <th>Editar</th>
                             <th>Eliminar</th> 
@@ -49,8 +50,8 @@ require_once("../body/header_admin.php");
 
                   <tbody>
                       <?php 
-                        $sql = mysqli_query($conection,"SELECT u.id_usuario,u.nombre,u.correo,u.usuario,r.descripcion FROM usuario u 
-                        INNER JOIN roles r ON u.rol = r.id_rol WHERE rol > 1 AND u.estatus = 1 ORDER BY  u.id_usuario DESC");
+                        $sql = mysqli_query($conection,"SELECT m.id,m.Nombre,m.Especialidad,m.Dia,m.Hora,m.Tcobro FROM medicos m 
+                        WHERE  m.estatus = 1 ORDER BY  m.id DESC");
 
                          $resultado = mysqli_num_rows($sql);
 
@@ -58,23 +59,24 @@ require_once("../body/header_admin.php");
                             while ($data = mysqli_fetch_array($sql)){ 
                       ?>
                         <tr class="text-center">
-                             <td><?php echo $data['id_usuario'];?></td>
-                             <td><?php echo $data['nombre'];?></td>
- 						                 <td><?php echo $data['correo'];?></td>
- 						                 <td><?php echo $data['usuario']; ?></td>
-                             <td><?php echo $data['descripcion']?></td>
+                             <td><?php echo $data['id'];?></td>
+                             <td><?php echo $data['Nombre'];?></td>
+ 						     <td><?php echo $data['Especialidad'];?></td>
+ 						     <td><?php echo $data['Dia']; ?></td>
+                             <td><?php echo $data['Hora']?></td>
+                             <td><?php echo $data['Tcobro']?></td>
  					        
                            
 	<?php if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 2) {?>
     <td>
-	  <a href="../Helpers/modificar_usuario.php?id=<?php echo $data['id_usuario']; ?>"class="btn btn-outline-info" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px  rgba(0, 0, 0, 0.25);"><i class="fas fa-edit"></i></a>
+	  <a href="../Helpers/modificar_medico.php?id=<?php echo $data['id']; ?>"class="btn btn-outline-info" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px  rgba(0, 0, 0, 0.25);"><i class="fas fa-edit"></i></a>
     </td>
     <?php } ?>
                           
                             
 	<?php if($_SESSION['rol'] == 1 ){ ?>
     <td>
-		<a href="../Helpers/eliminar_usuario.php?id=<?php echo $data['id_usuario']; ?>"class="btn btn-outline-danger" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px  rgba(0, 0, 0, 0.25);"><i class="fas fa-user-times"></i></a>
+		<a href="../Helpers/eliminar_medico.php?id=<?php echo $data['id']; ?>"class="btn btn-outline-danger" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px  rgba(0, 0, 0, 0.25);"><i class="fas fa-user-times"></i></a>
     </td>
 	<?php } ?>
 

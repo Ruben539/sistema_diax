@@ -114,7 +114,7 @@ if (!empty($_SESSION['active'])) {
   <section class="login-content">
     <div class="login-box">
       <form class="login-form" method="POST">
-        <h3 class="login-head"><img src="images/alexlogo.png" alt=""></h3>
+        <h3 class="login-head"><img src="images/diax.jpg" alt=""></h3>
         <div class="form-group">
         <label for="usuario">Usuario</label>
 			<div class="input-group">
