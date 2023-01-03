@@ -52,7 +52,7 @@ require_once("../body/header_admin.php");
                   <tbody>
                       <?php 
                         $sql = mysqli_query($conection,"SELECT p.id,p.Nombre,p.Apellido,p.Sexo,p.Celular,p.Nacimiento,p.FechaIngreso FROM clientes p
-                         WHERE  p.estatus = 1 ORDER BY  p.id DESC");
+                          ORDER BY  p.id DESC");
 
                          $resultado = mysqli_num_rows($sql);
 
