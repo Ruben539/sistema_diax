@@ -45,7 +45,7 @@ if (empty($_SESSION['active'])) {
 		}else{
 	
 			$sql_update = mysqli_query($conection,"UPDATE usuarios SET nombre = '$nombre',usuario = '$usuario', pass = '$pass',correo = '$correo',rol = '$rol', estatus = 1
-				WHERE idusuario = $idusuario");
+				WHERE idusuario = $iduser");
 	
 			if ($sql_update) {
 	
