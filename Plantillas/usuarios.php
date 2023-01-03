@@ -49,7 +49,7 @@ require_once("../body/header_admin.php");
 
                   <tbody>
                       <?php 
-                        $sql = mysqli_query($conection,"SELECT u.idusuario,u.nombre,u.correo,u.usuario,r.descripcion FROM usuario u 
+                        $sql = mysqli_query($conection,"SELECT u.idusuario,u.nombre,u.correo,u.usuario,r.descripcion FROM usuarios u 
                         INNER JOIN roles r ON u.rol = r.id_rol  u.estatus = 1 ORDER BY  u.idusuario DESC");
 
                          $resultado = mysqli_num_rows($sql);
