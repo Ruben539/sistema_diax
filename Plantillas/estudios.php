@@ -64,6 +64,7 @@ require_once("../body/header_admin.php");
                              <td><?php echo $data['id'];?></td>
                              <td><?php echo $data['Estudio'];?></td>
  						     <td><?php echo $data['SinSeguro'];?></td>
+ 						     <td><?php echo $data['SEMEI'];?></td>
  						     <td><?php echo $data['SemeiPref']; ?></td>
                              <td><?php echo $data['Seguros']?></td>
                              <td><?php echo $data['SegurosPref']?></td>
