@@ -4,7 +4,7 @@ require_once("../Modelos/conexion.php");
 
 $id_usuario = $_SESSION['idUser'];
 
-$query_foto = mysqli_query($conection,"SELECT nombre,usuario,foto FROM usuario where id_usuario = '$id_usuario' AND estatus = 1");
+$query_foto = mysqli_query($conection,"SELECT nombre,usuario,foto FROM usuarios where id_usuario = '$id_usuario' AND estatus = 1");
 //mysqli_close($conection);//con esto cerramos la conexion a la base de datos una vez conectado arriba con el conexion.php
 $resultado = mysqli_num_rows($query_foto);
 if ($resultado > 0) {

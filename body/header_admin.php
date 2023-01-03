@@ -35,7 +35,43 @@ $sesion = $_SESSION['rol'];
         <a class="app-header__logo" href="../Plantillas/dashboard.php">Sistema Diax</a>
       <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a> 
       <?php } ?>
-
+      <?php if ($sesion == 3) {?>
+        <a class="app-header__logo" href="../Plantillas/herreria.php">Sistema Diax</a>
+      <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a> 
+      <?php } ?>
+      <?php if ($sesion == 4 ) {?>
+        <a class="app-header__logo" href="../Plantillas/pintura.php">Sistema Diax</a>
+      <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a> 
+      <?php } ?>
+      <?php if ($sesion == 5 ) {?>
+        <a class="app-header__logo" href="../Plantillas/ruedas.php">Sistema Diax</a>
+      <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a> 
+      <?php } ?>
+      <?php if ($sesion == 6) {?>
+        <a class="app-header__logo" href="../Plantillas/cinta.php">Sistema Diax</a>
+      <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a> 
+      <?php } ?>
+      <?php if ($sesion == 7 ) {?>
+        <a class="app-header__logo" href="../Plantillas/probado.php">Sistema Diax</a>
+      <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a> 
+      <?php } ?>
+      <?php if ($sesion == 8 ) {?>
+        <a class="app-header__logo" href="../Plantillas/cuatroRuedas.php">Sistema Diax</a>
+      <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a> 
+      <?php } ?>
+       <?php if ($sesion == 9 ) {?>
+        <a class="app-header__logo" href="../Plantillas/reclamos.php">Sistema Diax</a>
+      <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a> 
+      <?php } ?>
+       <?php if ($sesion == 10 ) {?>
+        <a class="app-header__logo" href="../Plantillas/preEnsamble.php">Sistema Diax</a>
+      <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a> 
+      <?php } ?>
+       <?php if ($sesion == 11 ) {?>
+        <a class="app-header__logo" href="../Informes/verificador_Herreria.php">Sistema Diax</a>
+      <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a> 
+      <?php } ?>
+      
       
       <!-- Navbar Right Menu-->
       <ul class="app-nav">
