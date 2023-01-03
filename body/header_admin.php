@@ -72,7 +72,6 @@ $sesion = $_SESSION['rol'];
       <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a> 
       <?php } ?>
       
-      
       <!-- Navbar Right Menu-->
       <ul class="app-nav">
         <li class="dropdown"><a id="noti" class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Show notifications"><i id="icono" class="fas fa-book fa-lg"></i></a>

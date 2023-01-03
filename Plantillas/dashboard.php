@@ -16,8 +16,8 @@ require_once("../body/header_admin.php");
 <main class="app-content">
       <div class="app-title">
         <div>
-          <h1>Panel de Control</h1>
-          <p>Sistema Medico en Desarrollo</p>
+          <h1><img src="../images/alexlogo.png" alt=""></h1>
+          <p>Registro de Fallas en Desarrollo</p>
         </div>
         <ul class="app-breadcrumb breadcrumb">
           <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
@@ -26,11 +26,10 @@ require_once("../body/header_admin.php");
       </div>
       
           <div class="tile">
-            <div class="tile-body">CANTIDAD DE PACIENTES DEL DIA</B></div>
+            <div class="tile-body">CANTIDAD DE MOTOS PENDIENTES POR SECTOR</B></div>
           </div>
 
           <div class="row">
-            
             <!--widgets de Desembalado-->
         <div class="col-md-3">
           <div class="widget-small danger"><i class="icon fa fa-cube fa-3x"></i>
@@ -43,7 +42,6 @@ require_once("../body/header_admin.php");
             </div>
           </div>
         </div>
-
          <!--widgets de Herreria-->
         <div class="col-md-3">
           <div class="widget-small danger"><i class="icon fa fa-bolt fa-3x"></i>

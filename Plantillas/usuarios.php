@@ -39,7 +39,7 @@ require_once("../body/header_admin.php");
                             <th>Nombre</th>
                             <th>Correo</th>
                             <th>Usuario</th>
-                            <th>Sector</th>                                
+                            <th>Sector</th>                                 
                             <?php if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 2) {?>
                             <th>Editar</th>
                             <th>Eliminar</th> 
@@ -49,8 +49,8 @@ require_once("../body/header_admin.php");
 
                   <tbody>
                       <?php 
-                        $sql = mysqli_query($conection,"SELECT u.id_usuario,u.nombre,u.correo,u.usuario,r.descripcion FROM usuario u 
-                        INNER JOIN roles r ON u.rol = r.id_rol WHERE rol > 1 AND u.estatus = 1 ORDER BY  u.id_usuario DESC");
+                        $sql = mysqli_query($conection,"SELECT u.idusuario,u.nombre,u.correo,u.usuario,r.descripcion FROM usuario u 
+                        INNER JOIN roles r ON u.rol = r.id_rol  u.estatus = 1 ORDER BY  u.idusuario DESC");
 
                          $resultado = mysqli_num_rows($sql);
 
@@ -58,23 +58,23 @@ require_once("../body/header_admin.php");
                             while ($data = mysqli_fetch_array($sql)){ 
                       ?>
                         <tr class="text-center">
-                             <td><?php echo $data['id_usuario'];?></td>
+                             <td><?php echo $data['idusuario'];?></td>
                              <td><?php echo $data['nombre'];?></td>
- 						                 <td><?php echo $data['correo'];?></td>
- 						                 <td><?php echo $data['usuario']; ?></td>
+ 						     <td><?php echo $data['correo'];?></td>
+ 						     <td><?php echo $data['usuario']; ?></td>
                              <td><?php echo $data['descripcion']?></td>
- 					        
+ 					         
                            
 	<?php if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 2) {?>
     <td>
-	  <a href="../Helpers/modificar_usuario.php?id=<?php echo $data['id_usuario']; ?>"class="btn btn-outline-info" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px  rgba(0, 0, 0, 0.25);"><i class="fas fa-edit"></i></a>
+	  <a href="../Helpers/modificar_usuario.php?id=<?php echo $data['idusuario']; ?>"class="btn btn-outline-info" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px  rgba(0, 0, 0, 0.25);"><i class="fas fa-edit"></i></a>
     </td>
     <?php } ?>
                           
                             
 	<?php if($_SESSION['rol'] == 1 ){ ?>
     <td>
-		<a href="../Helpers/eliminar_usuario.php?id=<?php echo $data['id_usuario']; ?>"class="btn btn-outline-danger" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px  rgba(0, 0, 0, 0.25);"><i class="fas fa-user-times"></i></a>
+		<a href="../Helpers/eliminar_usuario.php?id=<?php echo $data['idusuario']; ?>"class="btn btn-outline-danger" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px  rgba(0, 0, 0, 0.25);"><i class="fas fa-user-times"></i></a>
     </td>
 	<?php } ?>
 

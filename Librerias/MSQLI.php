@@ -1,6 +1,6 @@
 <?php
 
-require_once("./host.php");
+require_once("host.php");
 
 
 class MYSQL {
@@ -19,7 +19,7 @@ class MYSQL {
 
 
 
-/*
+
 	//Vamos a utlilzar la sintaxis PDO de Conexion
 	public function conexBDPDO(){
 		try{
@@ -31,7 +31,7 @@ class MYSQL {
 			return false;
 		}
 	}
-
+/*
 	//Codigo sirve para traer los parametros para las vistas
 	public function getDesembalado(){
 		$desembalado = 0;

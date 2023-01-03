@@ -4,7 +4,7 @@ require_once("../Modelos/conexion.php");
 
 $id_usuario = $_SESSION['idUser'];
 
-$query_foto = mysqli_query($conection,"SELECT nombre,usuario,foto FROM usuarios where id_usuario = '$id_usuario' AND estatus = 1");
+$query_foto = mysqli_query($conection,"SELECT nombre,usuario,foto FROM usuario where id_usuario = '$id_usuario' AND estatus = 1");
 //mysqli_close($conection);//con esto cerramos la conexion a la base de datos una vez conectado arriba con el conexion.php
 $resultado = mysqli_num_rows($query_foto);
 if ($resultado > 0) {
@@ -30,7 +30,7 @@ if ($resultado > 0) {
    <?php   }
 } ?> 
     <ul class="app-menu">  
-    <?php if ($_SESSION['rol'] == 1) {?>
+    <?php if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 2) {?>
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-users"></i><span class="app-menu__label">Usuarios</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
             <!--Menu Principal del Usuario-->
@@ -42,11 +42,11 @@ if ($resultado > 0) {
         </li>
         
 
-        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-book"></i><span class="app-menu__label">Pacientes</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-book"></i><span class="app-menu__label">Orden Trabajos</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
             <!--Menu Principal del Usuario-->
-            <li><a class="treeview-item" href="../Plantillas/pacientes.php"><i class="icon fa fa-book"></i>Lista de Pacientes</a></li>
-            <li><a class="treeview-item" href="../Plantillas/ot_Liberados.php"><i class="icon fa fa-book"></i> Historial de Pacientes</a></li>
+            <li><a class="treeview-item" href="../Plantillas/orden_Trabajo.php"><i class="icon fa fa-book"></i> OT Pendiente</a></li>
+            <li><a class="treeview-item" href="../Plantillas/ot_Liberados.php"><i class="icon fa fa-book"></i> OT Terminados</a></li>
             
           </ul>
         </li>
@@ -55,21 +55,24 @@ if ($resultado > 0) {
   
       <?php if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 2 || $_SESSION['rol'] == 11) {?>
         
-        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-thumbs-o-down"></i><span class="app-menu__label">Informes Diarios</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-thumbs-o-down"></i><span class="app-menu__label">Verificadores</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
             <!--Menu Principal del Usuario-->
-            <li><a class="treeview-item" href="../Informes/verificador_Herreria.php"><i class="icon fa fa-thumbs-o-down"></i> Informe de Doctores</a></li>
-            <li><a class="treeview-item" href="../Informes/verificador_Pintura.php"><i class="icon fa fa-thumbs-o-down"></i> Informe de Paciente</a></li>
+            <li><a class="treeview-item" href="../Informes/verificador_Herreria.php"><i class="icon fa fa-thumbs-o-down"></i> Herreria</a></li>
+            <li><a class="treeview-item" href="../Informes/verificador_Pintura.php"><i class="icon fa fa-thumbs-o-down"></i> Pintura</a></li>
+            <li><a class="treeview-item" href="../Informes/verificador_Probado.php"><i class="icon fa fa-thumbs-o-down"></i> Insp y Control</a></li>
+            <li><a class="treeview-item" href="../Informes/info_produccion.php"><i class="icon fa fa-thumbs-o-down"></i> Informe Produccion</a></li>
           </ul>
         </li>
       <?php  } ?>
        <?php if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 2 || $_SESSION['rol'] == 9) {?>
         
-        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-user-md"></i><span class="app-menu__label">Doctores</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-globe"></i><span class="app-menu__label">Desembalado</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
             <!--Menu Principal del Desembalado-->
-            <li><a class="treeview-item" href="../Plantillas/medicos.php" ><i class="icon fa fa-medkit"></i> Lista de Doctores</a></li>
-            <li><a class="treeview-item" href="../Plantillas/reclamos.php" ><i class="icon fa fa-medkit"></i> Pacientes por Doctor</a></li>
+            <li><a class="treeview-item" href="../Informes/informeDesembalado.php" ><i class="icon fa fa-pallet"></i> Informe Diario</a></li>
+            <li><a class="treeview-item" href="../Plantillas/reclamos.php" ><i class="icon fa fa-pallet"></i> Reclamos Pendientes</a></li>
+             <li><a class="treeview-item" href="../Plantillas/reclamos_lib.php" ><i class="icon fa fa-pallet"></i> Reclamos Cerrados</a></li>
           </ul>
         </li>
       <?php  } ?>
