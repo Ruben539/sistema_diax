@@ -73,14 +73,14 @@ require_once("../body/header_admin.php");
                            
 	<?php if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 2) {?>
     <td>
-	  <a href="../Helpers/modificar_estudio.php?id=<?php echo $data['id']; ?>"class="btn btn-outline-info" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px  rgba(0, 0, 0, 0.25);"><i class="fas fa-edit"></i></a>
+	  <a href="../Helpers/modificar_estudios.php?id=<?php echo $data['id']; ?>"class="btn btn-outline-info" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px  rgba(0, 0, 0, 0.25);"><i class="fas fa-edit"></i></a>
     </td>
     <?php } ?>
                           
                             
 	<?php if($_SESSION['rol'] == 1 ){ ?>
     <td>
-		<a href="../Helpers/eliminar_estudio.php?id=<?php echo $data['id']; ?>"class="btn btn-outline-danger" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px  rgba(0, 0, 0, 0.25);"><i class="fas fa-user-times"></i></a>
+		<a href="../Helpers/eliminar_estudios.php?id=<?php echo $data['id']; ?>"class="btn btn-outline-danger" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px  rgba(0, 0, 0, 0.25);"><i class="fas fa-user-times"></i></a>
     </td>
 	<?php } ?>
 
