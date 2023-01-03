@@ -30,7 +30,7 @@ if (!empty($_POST)) {
 //exit; sirve para ejectuar la consulta en mysql
 
 		$query = mysqli_query($conection,"SELECT * FROM usuarios WHERE
-		 	(usuario = '$usuario' AND id_usuario != $iduser) or (correo = '$correo' AND id_usuario != $iduser) AND estatus = 1");
+		 	(usuario = '$usuario' AND idusuario != $iduser) or (correo = '$correo' AND idusuario != $iduser) AND estatus = 1");
 
 		$resultado = mysqli_fetch_array($query);
 		if (is_countable($resultado)) {
@@ -46,12 +46,12 @@ if (!empty($_POST)) {
 				
 				$sql_update = mysqli_query($conection,"UPDATE usuarios SET 
 					 nombre = '$nombre',correo = '$correo', usuario = '$usuario',rol = '$rol', pass = '$pass'
-					 WHERE id_usuario = $iduser");
+					 WHERE idusuario = $iduser");
 			}else{
 
 				$sql_update = mysqli_query($conection,"UPDATE usuarios SET 
 					 nombre = '$nombre',correo = '$correo', usuario = '$usuario',pass = '$pass', rol = '$rol'
-					 WHERE id_usuario = $iduser");
+					 WHERE idusuario = $iduser");
 			}
 
 			if ($sql_update) {
