@@ -39,7 +39,7 @@
 		}
 	}).done(function(datos){
 	//Logica de respuesta  de los datos
-	$("#idHerreria").text(parseFloat(datos).toLocaleString());
+	$("#idPaciente").text(parseFloat(datos).toLocaleString());
 });
 	// Consulta de la sentencia para recuperar los datos para Ingresos
 	$.ajax({

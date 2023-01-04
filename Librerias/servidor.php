@@ -10,9 +10,9 @@ $rq = $_POST['rq'];
 }
 if($rq == 1){
 	$respuesta = $oMysql->getPacientes();
-// }elseif ($rq == 2) {
-// 	$respuesta = $oMysql->getHerreria();
-// }elseif ($rq == 3) {
+}elseif ($rq == 2) {
+ 	$respuesta = $oMysql->getPacientes();
+ }//elseif ($rq == 3) {
 // 	$respuesta = $oMysql->getPintura();
 // }elseif ($rq == 4) {
 // 	$respuesta = $oMysql->getRuedas();
@@ -59,8 +59,8 @@ if($rq == 1){
 // }elseif($rq == 25) {
 // 	$respuesta = $oMysql->getChamorro();
 // }elseif($rq == 26) {
-	$respuesta = $oMysql->getNofificaciones();
-}
+//	$respuesta = $oMysql->getNofificaciones();
+//}
 echo $respuesta;
 
 
