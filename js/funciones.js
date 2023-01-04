@@ -22,7 +22,7 @@
 		}
 	}).done(function(datos){
 	//Logica de respuesta  de los datos
-	$("#idDesembalado").text(parseFloat(datos).toLocaleString());
+	$("#idPaciente").text(parseFloat(datos).toLocaleString());
 });
 
 	//Consulta de la Sentencia para recuperar los datos para Almacen
