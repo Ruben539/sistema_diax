@@ -31,24 +31,26 @@ class MYSQL {
 			return false;
 		}
 	}
-/*
+
 	//Codigo sirve para traer los parametros para las vistas
-	public function getDesembalado(){
-		$desembalado = 0;
+	public function getPacientes(){
+		$pacientes = 0;
+		$mes =  date('m');
+		 $anio =  date('Y');
 		try{
-			$strQuery = "SELECT COUNT(*) AS tdesembalado FROM desembalado WHERE estatus !=0 ";
+			$strQuery = "select count(*) tpacientes  from clientes where fechaIngreso LIKE '%01-2023%';";
 			if($this->conexBDPDO()){
 				$pQuery =$this->oConBD->prepare($strQuery);
 				$pQuery->execute();
-				$desembalado= $pQuery->fetchColumn();
+				$pacientes= $pQuery->fetchColumn();
 			}
 		}catch(PDOException $e){
-			echo "MYSQL.getDesembalado: ". $e->getMessage(). "\n";
+			echo "MYSQL.getPacientes: ". $e->getMessage(). "\n";
 			return -1;;
 		}
-		return $desembalado;
+		return $pacientes;
 	}
-
+/*
 	//Codigo sirve para traer los parametros para las vistas
 	public function getHerreria(){
 		$herreria = 0;
