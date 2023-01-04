@@ -17,8 +17,8 @@ require_once("../body/header_admin.php");
 <main class="app-content">
       <div class="app-title">
         <div>
-          <h1><i class="fa fa-user-md"></i> Listado de Estudios de la Cinica  <a href="../Helpers/grabar_doctor.php"> 
-        <button id="btnNew"  class="btn btn-primary" type="button"><i class="fa fa-list-ol" aria-hidden="true"></i>
+          <h1><i class="fa fa-list-ol"></i> Listado de Estudios de la Cinica  <a href="../Helpers/grabar_estudio.php"> 
+        <button id="btnNew"  class="btn btn-primary" type="button"><i class="fa fa-plus" aria-hidden="true"></i>
          Nuevo</button></a>
         </h1>
           <p>Registro Web en Desarrollo</p>
