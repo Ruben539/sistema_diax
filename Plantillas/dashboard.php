@@ -72,12 +72,12 @@ require_once("../body/header_admin.php");
 
                   <tbody>
                       <?php 
-                     $fecha1 = "05-01-2023";
-                     $fecha2 =  date('d-m-Y');
+                    // $fecha1 = "05-01-2023";
+                     $fecha =  date('d-m-Y');
                     //  echo $fecha1." ".$fecha2;
                     //  exit;
                         $sql = mysqli_query($conection,"SELECT h.id,h.Estudio,h.Cedula,h.Atendedor,h.Fecha,h.Seguro,h.Monto,h.Comentario, h.fecha_2 FROM historial h 
-                        where h.Fecha LIKE '%$fecha1%'   ORDER BY  h.id DESC");
+                        where h.Fecha like '%$fecha%'   ORDER BY  h.id DESC");
 
                          $resultado = mysqli_num_rows($sql);
 
