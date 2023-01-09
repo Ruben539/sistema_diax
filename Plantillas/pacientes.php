@@ -137,7 +137,7 @@ require_once("../body/header_admin.php");
   function permisoAuto(){
 	Swal.fire(
 		'Lo Siento',
-		'No posee el Permiso para Eliminar un Usuario',
+		'No posee el Permiso para Eliminar un Paciente',
 		'error'
 		)
 }
@@ -147,7 +147,7 @@ require_once("../body/header_admin.php");
   function excel(){
 	Swal.fire(
 		'Lo Siento',
-		'No puede imprimir los usuarios, es informacion privada',
+		'No puede imprimir la lista de Pacientes, es informacion privada',
 		'error'
 		)
 }

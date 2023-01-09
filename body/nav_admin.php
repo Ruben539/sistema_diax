@@ -29,7 +29,7 @@ if ($resultado > 0) {
         </a>
    
     <ul class="app-menu">  
-    <?php if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 2) {?>
+    <?php if ($_SESSION['rol'] == 1) {?>
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-users"></i><span class="app-menu__label">Usuarios</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
             <!--Menu Principal del Usuario-->
@@ -44,34 +44,47 @@ if ($resultado > 0) {
         <?php if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 2) {?>
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-users"></i><span class="app-menu__label">Pacientes</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
-            <!--Menu Principal del Usuario-->
+            <!--Menu Principal del los Pacientes-->
             <li><a class="treeview-item" href="../Plantillas/registro_pacientes.php"><i class="icon fa fa-users"></i> Registro de Pacientes</a></li>
             <li><a class="treeview-item" href="../Plantillas/pacientes.php"><i class="icon fa fa-users"></i> Lista de Pacientes</a></li>
             <li><a class="treeview-item" href="#"><i class="icon fa fa-users"></i> Historial Pacientes</a></li>
-            <!--Menu Principal del Rol-->
+            <!--Menu Principal del Pacientes-->
+            
+          </ul>
+        </li>
+        <?php  } ?> 
+
+        <?php if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 2 ) {?>
+        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-address-book-o"></i><span class="app-menu__label">Comprobantes</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+          <ul class="treeview-menu">
+            <!--Menu Principal de la lista de Estudios-->
+            <li><a class="treeview-item" href="../Plantillas/comprobantes.php"><i class="icon fa fa-address-book-o"></i>Comprobantes</a></li>
+            <!--Menu Principal de la lista de Estudios-->
             
           </ul>
         </li>
         
-        <?php  } ?> 
+        <?php  } ?>
+
         <?php if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 2) {?>
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-user-md"></i><span class="app-menu__label">Medicos</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
-            <!--Menu Principal del Usuario-->
+            <!--Menu Principal de los Medicos-->
             <li><a class="treeview-item" href="../Plantillas/medicos.php"><i class="icon fa fa-user-md"></i> Lista de Medicos</a></li>
             <li><a class="treeview-item" href="#"><i class="icon fa fa-user-md"></i> Historial de Medicos</a></li>
-            <!--Menu Principal del Rol-->
+            <!--Menu Principal de los Medicos-->
             
           </ul>
         </li>
         
         <?php  } ?> 
-        <?php if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 2) {?>
+
+        <?php if ($_SESSION['rol'] == 1) {?>
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-user-md"></i><span class="app-menu__label">Estudios</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
-            <!--Menu Principal del Usuario-->
+            <!--Menu Principal de la lista de Estudios-->
             <li><a class="treeview-item" href="../Plantillas/estudios.php"><i class="icon fa fa-user-md"></i> Lista de Estudios</a></li>
-            <!--Menu Principal del Rol-->
+            <!--Menu Principal de la lista de Estudios-->
             
           </ul>
         </li>

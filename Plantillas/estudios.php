@@ -149,7 +149,7 @@ require_once("../body/header_admin.php");
   function excel(){
 	Swal.fire(
 		'Lo Siento',
-		'No puede imprimir los usuarios, es informacion privada',
+		'No puede imprimir los Estudios, es informacion privada',
 		'error'
 		)
 }

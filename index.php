@@ -54,6 +54,9 @@ if (!empty($_SESSION['active'])) {
        }else if($_SESSION['rol'] == 2){
         header('Location: Plantillas/dashboard.php');
 
+      }else if($_SESSION['rol'] == 3){
+        header('Location: Plantillas/dashboardDoctores.php');
+
       } 
       
     }else{
