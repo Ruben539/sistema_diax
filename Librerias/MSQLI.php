@@ -33,23 +33,42 @@ class MYSQL {
 	}
 
 	//Codigo sirve para traer los parametros para las vistas
-	public function getPacientes(){
-		$pacientes = 0;
+	public function getPacientePaz(){
+		$idPacientePaz = 0;
 		$fecha =  date('d-m-Y');
 		// $anio =  date('Y');
 		try{
-			$strQuery = "SELECT count(*) tpacientes  FROM historial where Fecha LIKE '%$fecha%'";
+			$strQuery = "SELECT count(*) tpacientes  FROM historial  where Fecha LIKE '%$fecha%' AND Atendedor like '%PAZ%'";
 			//$strQuery = "SELECT COUNT(*) from clientes WHERE year(FechaIngreso)= $anio AND month(FechaIngreso)= $mes ";
 			if($this->conexBDPDO()){
 				$pQuery =$this->oConBD->prepare($strQuery);
 				$pQuery->execute();
-				$pacientes= $pQuery->fetchColumn();
+				$idPacientePaz= $pQuery->fetchColumn();
 			}
 		}catch(PDOException $e){
-			echo "MYSQL.getPacientes: ". $e->getMessage(). "\n";
+			echo "MYSQL.getPacientePaz: ". $e->getMessage(). "\n";
 			return -1;;
 		}
-		return $pacientes;
+		return $idPacientePaz;
+	}
+
+	public function getPacienteDiax(){
+		$idPacienteDiax = 0;
+		$fecha =  date('d-m-Y');
+		// $anio =  date('Y');
+		try{
+			$strQuery = "SELECT count(*) tpacientes  FROM historial  where Fecha LIKE '%$fecha%' AND Atendedor like '%DIAX%'";
+			//$strQuery = "SELECT COUNT(*) from clientes WHERE year(FechaIngreso)= $anio AND month(FechaIngreso)= $mes ";
+			if($this->conexBDPDO()){
+				$pQuery =$this->oConBD->prepare($strQuery);
+				$pQuery->execute();
+				$idPacienteDiax= $pQuery->fetchColumn();
+			}
+		}catch(PDOException $e){
+			echo "MYSQL.getPacienteDiax: ". $e->getMessage(). "\n";
+			return -1;;
+		}
+		return $idPacienteDiax;
 	}
 /*
 	//Codigo sirve para traer los parametros para las vistas

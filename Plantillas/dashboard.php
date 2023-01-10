@@ -30,15 +30,23 @@ require_once("../body/header_admin.php");
           </div>
 
           <div class="row">
-            <!--widgets de Desembalado-->
+            <!--widgets de Pacientes de Paz-->
         <div class="col-md-3">
-          <div class="widget-small primary"><i class="icon fa fa-users fa-3x"></i>
+          <div class="widget-small primary"><i class="icon fa fa-user-md fa-3x"></i>
             <div class="info">
-            <h4><a class="link" href="../Plantillas/pacientes.php">Pacientes</a></h4>
+            <h4><a class="link" href="../Plantillas/pacientes.php">Pacientes PAZ</a></h4>
             
-              <p id="idPaciente" class="text-center" style="font-size: 50px;"><b>0</b></p>
-             
-              
+              <p id="idPacientePaz" class="text-center" style="font-size: 50px;"><b>0</b></p>
+  
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="widget-small primary"><i class="icon fa fa-user-md fa-3x"></i>
+            <div class="info">
+              <h4><a class="link" href="../Plantillas/pacientes.php">Pacientes DIAX</a></h4>
+              <p id="idPacienteDiax" class="text-center" style="font-size: 50px;"><b>0</b></p>
             </div>
           </div>
         </div>
@@ -66,7 +74,7 @@ require_once("../body/header_admin.php");
                             <th>Monto</th>                                
                             <th>Descuento</th>                                
                             <th>MontoS</th>                                
-                            <th>Fceha 2</th>                                
+                            <th>Fecha 2</th>                                
                    
                         </tr>
                   </thead>
@@ -129,7 +137,7 @@ require_once("../body/header_admin.php");
                             <th>Monto</th>                                
                             <th>Descuento</th>                                
                             <th>MontoS</th>                                
-                            <th>Fceha 2</th>                                
+                            <th>Fecha 2</th>                                
                    
                         </tr>
                   </thead>
@@ -184,3 +192,4 @@ require_once("../body/header_admin.php");
 		)
 }
 </script>
+
