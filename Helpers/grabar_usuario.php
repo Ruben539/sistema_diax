@@ -23,6 +23,7 @@ if (!empty($_POST)) {
             $usuario  = $_POST['usuario'];
             $pass     = md5($_POST['pass']);
             $rol      = $_POST['rol'];
+            $estatus  = 1;
 
             $foto = $_FILES['foto'] ['name'];
             $nombrefoto = $_FILES['foto'] ['name'];
@@ -50,8 +51,8 @@ if (!empty($_POST)) {
             $alert = '<p class = "msg_error">El correo o Usuario ya existe</p>';
         }else{*/
 
-            $query_insert = mysqli_query($conection,"INSERT INTO usuarios(nombre,correo,usuario,pass,rol,foto)
-                VALUES('$nombre','$correo','$usuario','$pass','$rol','$imgProducto')");
+            $query_insert = mysqli_query($conection,"INSERT INTO usuario(nombre,correo,usuario,pass,rol,foto,estatus)
+                VALUES('$nombre','$correo','$usuario','$pass','$rol','$imgProducto','$estatus')");
 
             if ($query_insert ) {
                if ($nombrefoto != '') {
