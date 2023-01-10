@@ -48,7 +48,7 @@ require_once("../body/header_admin.php");
     
 
       <div class="tile">
-            <div class="tile-body"><B>LISTA DE PACIENTES DEL DIA</B></div>
+            <div class="tile-body"><B>LISTA DE PACIENTES DEL DIA-PAZ</B></div>
       </div>
       <div class="row">
         <div class="col-md-12">
@@ -57,15 +57,16 @@ require_once("../body/header_admin.php");
                  <table id="tabla_Usuario" class="table table-striped table-bordered table-condensed" style="width:100%">
                   <thead>
                     <tr class="text-center">
-                            <th>ID</th>
+                            
                             <th>Estudio</th>
-                            <th>Sin Seguro</th>
-                            <th>Semei</th>
-                            <th>Semei Preferencial</th>                                
-                            <th>Seguros</th>                                
-                            <th>Seguros Preferencial</th>                                
-                            <th>Hospitalario</th>                                
-                            <th>Fecha</th>                                
+                            <th>Cedula</th>
+                            <th>Doctor</th>
+                            <th>Fecha</th>
+                            <th>Seguro</th>                                
+                            <th>Monto</th>                                
+                            <th>Descuento</th>                                
+                            <th>MontoS</th>                                
+                            <th>Fceha 2</th>                                
                    
                         </tr>
                   </thead>
@@ -76,8 +77,8 @@ require_once("../body/header_admin.php");
                      $fecha =  date('d-m-Y');
                     //  echo $fecha1." ".$fecha2;
                     //  exit;
-                        $sql = mysqli_query($conection,"SELECT h.id,h.Estudio,h.Cedula,h.Atendedor,h.Fecha,h.Seguro,h.Monto,h.Comentario, h.fecha_2 FROM historial h 
-                        where h.Fecha like '%$fecha%'   ORDER BY  h.id DESC");
+                        $sql = mysqli_query($conection,"SELECT h.id,h.Estudio,h.Cedula,h.Atendedor,h.Fecha,h.Seguro,h.Monto,h.Descuento,h.MontoS, h.fecha_2 FROM historial h 
+                        where h.Fecha like '%$fecha%' AND h.Atendedor like '%PAZ%'  ORDER BY  h.id DESC");
 
                          $resultado = mysqli_num_rows($sql);
 
@@ -85,14 +86,77 @@ require_once("../body/header_admin.php");
                             while ($data = mysqli_fetch_array($sql)){ 
                       ?>
                         <tr class="text-center">
-                             <td><?php echo $data['id'];?></td>
                              <td><?php echo $data['Estudio'];?></td>
  						                 <td><?php echo $data['Cedula'];?></td>
  						                 <td><?php echo $data['Atendedor'];?></td>
  						                 <td><?php echo $data['Fecha']; ?></td>
                              <td><?php echo $data['Seguro']?></td>
                              <td><?php echo $data['Monto']?></td>
-                             <td><?php echo $data['Comentario']?></td>
+                             <td><?php echo $data['Descuento']?></td>
+                             <td><?php echo $data['MontoS']?></td>
+                             <td><?php echo $data['fecha_2']?></td>
+ 					        
+                           
+                           
+                        </tr>
+                     
+                 
+                  <?php }
+                } ?>
+                 </tbody>
+                </table>
+              </div>
+            </div>
+        </div>
+      </div>
+
+      <div class="tile">
+            <div class="tile-body"><B>LISTA DE PACIENTES DEL DIA-DIAX</B></div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="tile">
+              <div class="table-responsive">
+                 <table id="tabla_Usuario" class="table table-striped table-bordered table-condensed" style="width:100%">
+                  <thead>
+                    <tr class="text-center">
+                            
+                            <th>Estudio</th>
+                            <th>Cedula</th>
+                            <th>Doctor</th>
+                            <th>Fecha</th>
+                            <th>Seguro</th>                                
+                            <th>Monto</th>                                
+                            <th>Descuento</th>                                
+                            <th>MontoS</th>                                
+                            <th>Fceha 2</th>                                
+                   
+                        </tr>
+                  </thead>
+
+                  <tbody>
+                      <?php 
+                    // $fecha1 = "05-01-2023";
+                     $fecha =  date('d-m-Y');
+                    //  echo $fecha1." ".$fecha2;
+                    //  exit;
+                        $sql = mysqli_query($conection,"SELECT h.id,h.Estudio,h.Cedula,h.Atendedor,h.Fecha,h.Seguro,h.Monto,h.Descuento,h.MontoS, h.fecha_2 FROM historial h 
+                        where h.Fecha like '%$fecha%' AND h.Atendedor like '%DIAX%'  ORDER BY  h.id DESC");
+
+                         $resultado = mysqli_num_rows($sql);
+
+                         if($resultado > 0){ 
+                            while ($data = mysqli_fetch_array($sql)){ 
+                      ?>
+                        <tr class="text-center">
+                             <td><?php echo $data['Estudio'];?></td>
+ 						                 <td><?php echo $data['Cedula'];?></td>
+ 						                 <td><?php echo $data['Atendedor'];?></td>
+ 						                 <td><?php echo $data['Fecha']; ?></td>
+                             <td><?php echo $data['Seguro']?></td>
+                             <td><?php echo $data['Monto']?></td>
+                             <td><?php echo $data['Descuento']?></td>
+                             <td><?php echo $data['MontoS']?></td>
                              <td><?php echo $data['fecha_2']?></td>
  					        
                            

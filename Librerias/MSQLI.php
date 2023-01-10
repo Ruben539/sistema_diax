@@ -35,10 +35,10 @@ class MYSQL {
 	//Codigo sirve para traer los parametros para las vistas
 	public function getPacientes(){
 		$pacientes = 0;
-		//$mes =  date('m');
+		$fecha =  date('d-m-Y');
 		// $anio =  date('Y');
 		try{
-			$strQuery = "SELECT count(*) tpacientes  FROM clientes where fechaIngreso LIKE '%01-2023%';";
+			$strQuery = "SELECT count(*) tpacientes  FROM historial where Fecha LIKE '%$fecha%'";
 			//$strQuery = "SELECT COUNT(*) from clientes WHERE year(FechaIngreso)= $anio AND month(FechaIngreso)= $mes ";
 			if($this->conexBDPDO()){
 				$pQuery =$this->oConBD->prepare($strQuery);
