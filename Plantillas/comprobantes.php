@@ -20,21 +20,35 @@ require_once("../body/header_admin.php");
         </h1>
           <p>Registro Web en Desarrollo</p>
         </div>
+        <ul class="app-breadcrumb breadcrumb">
+          <li class="breadcrumb-item">  
+            <a class="btn btn-danger" href="../Reportes/reporte_comprobantes_pdf.php" target="_blank" rel="noopener noreferrer">
+              <i class="fa fa-file-pdf-o"></i> Reporte
+            </a>
+          </li>
+          <li class="breadcrumb-item">
+            <a class="btn btn-success" href="../Reportes/reporte_comprobante_excel.php" target="_blank" rel="noopener noreferrer">
+              <i class="fa fa-file-excel-o"></i> Reporte
+            </a>
+          </li>
+        </ul>
+     
+       
       </div>
       
   
 
     
-      <form  class="row" method="GET" action = "../Buscadores/BuscarComprobante.php" id="buscar">
+      <form  class="row" method="POST" id='formFechas' name='formFechas'>
         <div class="col-md-5">
             <div class="widget-small">   
-            <input type="date" name="fecha_de" id="fecha_de"class="form-control" value="<?php echo $fecha_de; ?>" required>
+            <input type="date" name="fecha_desde" id="fecha_desde"class="form-control">
             </div>
         </div>
 
         <div class="col-md-5">
             <div class="widget-small">   
-            <input type="date" name="fecha_de" id="fecha_de"class="form-control" value="<?php echo $fecha_de; ?>" required>
+            <input type="date" name="fecha_hasta" id="fecha_hasta"class="form-control" >
             </div>
         </div>
 
@@ -54,56 +68,8 @@ require_once("../body/header_admin.php");
       <div class="row">
         <div class="col-md-12">
           <div class="tile">
-              <div class="table-responsive">
-                 <table id="tabla_Usuario" class="table table-striped table-bordered table-condensed" style="width:100%">
-                  <thead>
-                    <tr class="text-center">
-                            <th>ID</th>
-                            <th>Estudio</th>
-                            <th>Sin Seguro</th>
-                            <th>Semei</th>
-                            <th>Semei Preferencial</th>                                
-                            <th>Seguros</th>                                
-                            <th>Seguros Preferencial</th>                                
-                            <th>Hospitalario</th>                                
-                            <th>Fecha</th>                                
-                   
-                        </tr>
-                  </thead>
+             <div class="table-responsive" id="tablaResultado">
 
-                  <tbody>
-                      <?php 
-                     $fecha =  date('d-m-Y');
-                    //  echo $fecha1." ".$fecha2;
-                    //  exit;
-                        $sql = mysqli_query($conection,"SELECT h.id,h.Estudio,h.Cedula,h.Atendedor,h.Fecha,h.Seguro,h.Monto,h.Comentario, h.fecha_2 FROM historial h 
-                        where  Fecha like '%$fecha%'   ORDER BY  h.id DESC");
-
-                         $resultado = mysqli_num_rows($sql);
-
-                         if($resultado > 0){ 
-                            while ($data = mysqli_fetch_array($sql)){ 
-                      ?>
-                        <tr class="text-center">
-                             <td><?php echo $data['id'];?></td>
-                             <td><?php echo $data['Estudio'];?></td>
- 						                 <td><?php echo $data['Cedula'];?></td>
- 						                 <td><?php echo $data['Atendedor'];?></td>
- 						                 <td><?php echo $data['Fecha']; ?></td>
-                             <td><?php echo $data['Seguro']?></td>
-                             <td><?php echo $data['Monto']?></td>
-                             <td><?php echo $data['Comentario']?></td>
-                             <td><?php echo $data['fecha_2']?></td>
- 					        
-                           
-                           
-                        </tr>
-                     
-                 
-                  <?php }
-                } ?>
-                 </tbody>
-                </table>
               </div>
             </div>
         </div>
@@ -120,3 +86,24 @@ require_once("../body/header_admin.php");
 		)
 }
 </script>
+
+<script type="text/javascript" >
+    $('#formFechas').submit(function(e){
+      e.preventDefault();
+
+      var form  = $(this);
+      var url = form.attr('action');
+
+      $.ajax({
+        type: "POST",
+        url:'../Buscadores/BuscarComprobante.php',
+        data: form.serialize(),
+        success: function(data){
+          $('#tablaResultado').html('');
+          $('#tablaResultado').append(data);
+        }
+          
+      });
+    });
+</script>
+
