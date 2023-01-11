@@ -77,7 +77,7 @@ require_once("../Modelos/conexion.php");
   $html = ob_get_clean();
   //echo $html;
 
- require_once "../Libraries/dompdf/autoload.inc.php";
+ require_once "../Library/dompdf/autoload.inc.php";
  use Dompdf\Dompdf;
  $dompdf = new Dompdf();
 
