@@ -23,7 +23,8 @@ if (!empty($_POST)) {
             $usuario  = $_POST['usuario'];
             $pass     = md5($_POST['pass']);
             $rol      = $_POST['rol'];
-            $estatus  = 1;
+            $estatus  = $_POST['estatus'];
+            
 
             $foto = $_FILES['foto'] ['name'];
             $nombrefoto = $_FILES['foto'] ['name'];
@@ -133,7 +134,7 @@ require_once("../body/header_admin.php");
              <div id="form_alert"></div>
              </div>
             </div>
-		
+            <input type="hidden" name="estatus" id = "estatus" value="1">
   <br>
 		<div class="tile-footer text-center">
               <button class="btn btn-primary" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i>Registrar</button>&nbsp;&nbsp;&nbsp;<a class="btn btn-secondary" href="../Plantillas/usuarios.php"><i class="fa fa-fw fa-lg fa-times-circle"></i>Cancelar</a>
