@@ -57,7 +57,8 @@ if ($resultado->num_rows > 0) {
         </div>
       </div>
       <br>
-    </section>';
+    </section>
+    <hr>';
      }
    
 

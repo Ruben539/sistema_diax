@@ -71,7 +71,7 @@ if ($resultado > 0) {
           <ul class="treeview-menu">
             <!--Menu Principal de los Medicos-->
             <li><a class="treeview-item" href="../Plantillas/medicos.php"><i class="icon fa fa-user-md"></i> Lista de Medicos</a></li>
-            <li><a class="treeview-item" href="#"><i class="icon fa fa-user-md"></i> Historial de Medicos</a></li>
+            <li><a class="treeview-item" href="../Historial/historialMedico.php"><i class="icon fa fa-user-md"></i> Historial de Medicos</a></li>
             <!--Menu Principal de los Medicos-->
             
           </ul>
