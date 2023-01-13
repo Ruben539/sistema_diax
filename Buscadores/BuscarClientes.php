@@ -1,0 +1,71 @@
+<?php
+session_start();
+require_once("../Modelos/conexion.php");
+
+$salida = '';
+$vista = 'Ingrese su numero de Cedula';
+
+
+if (isset($_POST['consulta'])) {
+    $res = $conection->real_escape_string($_POST['consulta']);
+
+    $query = "SELECT h.id,h.Cedula,h.Estudio,h.Atendedor,h.Seguro,h.Monto,h.Descuento,h.Comentario,h.Montos,h.Fecha
+    FROM historial h  WHERE Cedula LIKE '%".$res."%'";
+
+
+$resultado =  $conection->query($query);
+
+if ($resultado->num_rows > 0) {
+    while ($datos = $resultado->fetch_assoc()) {
+       
+      $salida.= '<section class="invoice">
+      <div class="row mb-4">
+
+        <div class="col-6">
+          <h2 class="page-header"><i class="fa fa-user"></i> DATOS DEL PACIENTE :</h2>
+        </div>
+        <div class="col-6">
+          <h5 class="text-right">Fecha de Ingreso :</b>'.' '.$datos['Fecha'].'</h5>
+        </div>
+      </div>
+      <hr>
+    <div class="col-4"><b>Nro de Cedula :</b>'.' '.$datos['Cedula'].'.</div>
+    <br>
+    <div class="col-4"><b>Nombre del Doctor :</b>'.' '.$datos['Atendedor'].'.</div>
+    <hr>
+      <div class="row">
+        <div class="col-12 table-responsive">
+          <table class="table table-striped text-center">
+            <thead>
+              <tr>
+                <th>Estudio</th>
+                <th>Costo</th>
+                <th>Descuento</th>
+                <th>Observación</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>'.$datos['Estudio'].'</td>
+                <td>'.$datos['Monto'].'</td>
+                <td>'.$datos['Descuento'].'</td>
+                <td>'.$datos['Comentario'].'</td>
+              </tr>
+             
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <br>
+    </section>';
+     }
+   
+
+    }
+}else {
+    echo $vista;
+}
+
+echo $salida;
+
+?>

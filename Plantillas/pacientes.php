@@ -62,8 +62,8 @@ require_once("../body/header_admin.php");
                         <tr class="text-center">
                              <td><?php echo $data['id'];?></td>
                              <td><?php echo $data['Nombre'];?></td>
- 						     <td><?php echo $data['Apellido'];?></td>
- 						     <td><?php echo $data['Sexo']; ?></td>
+ 						                 <td><?php echo $data['Apellido'];?></td>
+ 						                 <td><?php echo $data['Sexo']; ?></td>
                              <td><?php echo $data['Celular']?></td>
                              <td><?php echo $data['Nacimiento']?></td>
                              <td><?php echo $data['FechaIngreso']?></td>

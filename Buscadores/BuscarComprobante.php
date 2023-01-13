@@ -10,26 +10,30 @@ $desde = date("d-m-Y", strtotime($fecha_desde));
 $fecha_hasta = $_POST['fecha_hasta'];
 $hasta = date("d-m-Y", strtotime($fecha_hasta));
 
-// echo $desde.$hasta;
-// exit;
+ //echo $desde.$hasta;
+ //exit;
 
 
 $hoy = date("d-m-Y");
-
-if (!empty($desde) || !empty($hasta)) {
+//echo $hoy;
+//exit;
+if (empty($fecha_desde) || empty($fecha_hasta))  {
   $sql = mysqli_query($conection,"SELECT h.id,h.Estudio,h.Cedula,h.Atendedor,h.Fecha,h.Seguro,h.Monto,h.Descuento,h.MontoS, h.fecha_2 FROM historial h 
     where h.Fecha like '%$hoy%' ORDER BY  h.id DESC");
-}else{
+} else{
 
   $sql = mysqli_query($conection,"SELECT h.id,h.Estudio,h.Cedula,h.Atendedor,h.Fecha,h.Seguro,h.Monto,h.Descuento,h.MontoS, h.fecha_2 FROM historial h 
     where h.Fecha BETWEEN '{$desde}' AND '{$hasta}' ORDER BY  h.id DESC");
 
 }
-  $resultado = mysqli_num_rows($sql);
+
+
+$resultado = mysqli_num_rows($sql);
+
 
 echo ' 
-  <table "tabla_Usuario" class="table table-striped table-bordered table-condensed" style="width:100%">
-    <thead>
+
+<thead>
       <tr class="text-center">      
         <th>Cedula</th>
         <th>Estudio</th>
@@ -58,3 +62,4 @@ echo '
   echo
   '</tbody>
    </table>';
+?>

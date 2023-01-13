@@ -47,7 +47,7 @@ if ($resultado > 0) {
             <!--Menu Principal del los Pacientes-->
             <li><a class="treeview-item" href="../Plantillas/registro_pacientes.php"><i class="icon fa fa-users"></i> Registro de Pacientes</a></li>
             <li><a class="treeview-item" href="../Plantillas/pacientes.php"><i class="icon fa fa-users"></i> Lista de Pacientes</a></li>
-            <li><a class="treeview-item" href="#"><i class="icon fa fa-users"></i> Historial Pacientes</a></li>
+            <li><a class="treeview-item" href="../Historial/historialPaciente.php"><i class="icon fa fa-users"></i> Historial Pacientes</a></li>
             <!--Menu Principal del Pacientes-->
             
           </ul>
