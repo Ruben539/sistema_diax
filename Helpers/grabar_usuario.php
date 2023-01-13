@@ -52,7 +52,7 @@ if (!empty($_POST)) {
             $alert = '<p class = "msg_error">El correo o Usuario ya existe</p>';
         }else{*/
 
-            $query_insert = mysqli_query($conection,"INSERT INTO usuario(nombre,correo,usuario,pass,rol,foto,estatus)
+            $query_insert = mysqli_query($conection,"INSERT INTO usuarios(nombre,correo,usuario,pass,rol,foto,estatus)
                 VALUES('$nombre','$correo','$usuario','$pass','$rol','$imgProducto','$estatus')");
 
             if ($query_insert ) {
