@@ -31,7 +31,7 @@ require_once("../body/header_admin.php");
       <div class="row">
         <div class="col-md-12">
           <div class="tile">
-            <form action="busqueda_paciente.php" method="POST">
+            <form action="busqueda_pacientes.php" method="POST">
                 <div class="form-group">
                         <label class="control-label">Busqueda de Cliente</label>
                         <input class="form-control" type="text" name="Cedula" id="Cedula"  placeholder="Ingrese la Cedula">

@@ -53,9 +53,18 @@ echo '
     <tbody>';
     $total = 0;
     $monto = 0;
+    $montos = 0;
+    $descuentos = 0;
   while ($data = mysqli_fetch_array($sql)){
-    $total += $data['Monto'];
-    $monto += $data['MontoS'];
+    $monto += $data['Monto'];
+    $montos += $data['MontoS'];
+    $descuentos += $data['Descuento'];
+    if(-$data['MontoS']){
+        $total = $monto + $montos;
+   }
+    $total = $monto - $montos;
+ 
+
     echo '<tr>
 
              <td>'. $data['Cedula']. '</td>
@@ -77,11 +86,11 @@ echo '
       <td></td>
       <td></td>
       <td></td>
-      <td class="text-center">'.$total.'</td>
-      <td></td>
       <td class="text-center">'.$monto.'</td>
-      <td></td>
-     
+      <td class="text-center">'.$descuentos.'</td>
+      <td class="text-center">'.$montos.'</td>
+      <td class="text-center">'.$total.'</td>
+
     </tr>
   </tfoot>
    </table>';

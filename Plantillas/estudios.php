@@ -63,9 +63,9 @@ require_once("../body/header_admin.php");
                         <tr class="text-center">
                              <td><?php echo $data['id'];?></td>
                              <td><?php echo $data['Estudio'];?></td>
- 						     <td><?php echo $data['SinSeguro'];?></td>
- 						     <td><?php echo $data['SEMEI'];?></td>
- 						     <td><?php echo $data['SemeiPref']; ?></td>
+ 						                 <td><?php echo $data['SinSeguro'];?></td>
+ 						                 <td><?php echo $data['SEMEI'];?></td>
+ 						                 <td><?php echo $data['SemeiPref']; ?></td>
                              <td><?php echo $data['Seguros']?></td>
                              <td><?php echo $data['SegurosPref']?></td>
                              <td><?php echo $data['Hospitalar']?></td>
