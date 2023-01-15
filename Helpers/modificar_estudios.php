@@ -11,7 +11,7 @@ if (empty($_SESSION['active'])) {
 	if (!empty($_POST)) {
 		$alert = '';
 	
-		if (empty( $_POST['Estudio']) || empty($_POST['SinSeguro']) || empty($_POST['SEMEI']) ||empty($_POST['Seguros'])) {
+		if (empty( $_POST['Estudio']) || empty($_POST['SinSeguro']) || empty($_POST['SEMEI']) || empty($_POST['SemeiPref']) ||empty($_POST['Seguros'])) {
 	
 			$alert = '<p class = "msg_error">Debe llenar Todos los Campos</p>';
 	

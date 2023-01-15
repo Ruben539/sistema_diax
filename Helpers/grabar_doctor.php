@@ -62,7 +62,7 @@ if (!empty($_POST)) {
 
                     <div class="form-group">
                         <label class="control-label">Especialidad</label>
-                        <input class="form-control" type="text" name="Especialidad" id="Especialidad" placeholder="Ingrese la Especialidad" required>
+                        <input class="form-control" type="text" name="Especialidad" id="Especialidad" placeholder="Ingrese la Especialidad" >
                     </div>
 
 
@@ -78,7 +78,7 @@ if (!empty($_POST)) {
                     </div>
                     <div class="form-group">
                     <label class="control-label">Cantidad de Cobro</label>
-                    <input class="form-control" type="text"  name="Tcobro" id="Tcobro"  placeholder="Ingrese el parametro" required>
+                    <input class="form-control" type="text"  name="Tcobro" id="Tcobro"  placeholder="Ingrese el parametro" >
                     </div>
                     
                     <div class="tile-footer">
