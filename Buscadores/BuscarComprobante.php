@@ -22,8 +22,8 @@ if (empty($fecha_desde) || empty($fecha_hasta))  {
     where h.Fecha like '%$hoy%' ORDER BY  h.id DESC");
 } else{
 
-  $sql = mysqli_query($conection,"SELECT h.id,h.Estudio,h.Cedula,h.Atendedor,h.Fecha,h.Seguro,h.Monto,h.Descuento,h.MontoS, h.fecha_2 FROM historial h 
-    where h.Fecha BETWEEN '{$desde}' AND '{$hasta}' ORDER BY  h.id DESC");
+  $sql = mysqli_query($conection,"SELECT h.id,h.Estudio,h.Cedula,h.Atendedor,h.Fecha,h.Seguro,h.Monto,h.Descuento,h.MontoS, h.fecha_2,clientes.Nombre
+  FROM historial h INNER JOIN clientes.Cedula = h.cedula  where h.Fecha BETWEEN '{$desde}' AND '{$hasta}' ORDER BY  h.id DESC");
 
 }
 
@@ -35,6 +35,7 @@ echo '
 
 <thead>
       <tr class="text-center">      
+        <th>Nombre</th>
         <th>Cedula</th>
         <th>Estudio</th>
         <th>Doctor</th>
@@ -46,8 +47,12 @@ echo '
       </tr>
     </thead>
     <tbody>';
+    $monto = 0;
+
   while ($data = mysqli_fetch_array($sql)){
+    $monto += $data['Monto'];
     echo '<tr>
+             <td>'. $data['Nombre']. '</td>
              <td>'. $data['Cedula']. '</td>
              <td>'. $data['Estudio']. '</td>
              <td>'. $data['Atendedor']. '</td>
@@ -61,5 +66,19 @@ echo '
   }
   echo
   '</tbody>
+  <tfoot>
+    <tr>
+      <td><b>Total A Rendir : </b></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td class="alert alert-success text-center">'.$monto.'.000GS</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      
+    </tr>
+  </tfoot>
    </table>';
 ?>
