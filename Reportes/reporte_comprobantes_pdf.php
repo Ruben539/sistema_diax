@@ -43,7 +43,7 @@ ob_start();
 
     <tbody>
       <?php
-      $fecha =  date('d-m-Y');
+      $fecha =  '14-01-2023';
       //  echo $fecha1." ".$fecha2;
       //  exit;
       $sql = mysqli_query($conection, "SELECT h.id,h.Estudio,h.Cedula,h.Atendedor,h.Fecha,h.Seguro,h.Monto,h.Comentario, h.fecha_2 FROM historial h 
