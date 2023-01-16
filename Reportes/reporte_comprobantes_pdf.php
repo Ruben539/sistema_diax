@@ -50,13 +50,14 @@ ob_start();
                         where  Fecha like '%$fecha%'   ORDER BY  h.id DESC");
 
       $resultado = mysqli_num_rows($sql);
-
+      $monto = 0;
       if ($resultado > 0) {
-        $monto = 0;
+        
         while ($data = mysqli_fetch_array($sql)) {
-          $monto = $data['Monto'];
+          
 
       ?>
+     
           <tr class="text-center">
             <td><?php echo $data['id']; ?></td>
             <td><?php echo $data['Estudio']; ?></td>
@@ -86,11 +87,11 @@ ob_start();
           <td></td>
           <td></td>
           <td class="alert alert-success text-center">
-            <?php echo $monto;?>
+            
           </td>
           <td></td>
       <td></td>
-      <td></td>
+   
         </tr>
   </table>
 </body>
