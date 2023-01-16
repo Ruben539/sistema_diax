@@ -28,14 +28,12 @@ ob_start();
 
     <thead>
       <tr class="text-center">
-        <th>ID</th>
+        <th>Cedula</th>
         <th>Estudio</th>
-        <th>Sin Seguro</th>
-        <th>Semei</th>
-        <th>Semei Preferencial</th>
-        <th>Seguros</th>
-        <th>Seguros Preferencial</th>
-        <th>Hospitalario</th>
+        <th>Doctor/a</th>
+        <th>Seguro</th>
+        <th>Monto</th>
+        <th>Cometario</th>
         <th>Fecha</th>
 
       </tr>
@@ -59,15 +57,13 @@ ob_start();
       ?>
      
           <tr class="text-center">
-            <td><?php echo $data['id']; ?></td>
-            <td><?php echo $data['Estudio']; ?></td>
             <td><?php echo $data['Cedula']; ?></td>
+            <td><?php echo $data['Estudio']; ?></td>
             <td><?php echo $data['Atendedor']; ?></td>
-            <td><?php echo $data['Fecha']; ?></td>
-            <td><?php echo $data['Seguro'] ?></td>
+            <td><?php echo $data['Seguro']; ?></td>
             <td><?php echo $data['Monto'] ?></td>
             <td><?php echo $data['Comentario'] ?></td>
-            <td><?php echo $data['fecha_2'] ?></td>
+            <td><?php echo $data['Fecha'] ?></td>
 
           </tr>
 
