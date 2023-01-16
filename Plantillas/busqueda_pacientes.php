@@ -113,7 +113,7 @@ require_once("../body/header_admin.php");
                                    
                                     <div class="form-group">
                                     <label class="control-label" style="font-size: 20px;">Medico Tratante :</label>
-                                        <select class="form-control" name="medico" required data-placeholder="Seleccione un Medico">
+                                        <select class="chosen form-control" name="medico[]" required data-placeholder="Seleccione un Medico">
                                             <option value=""></option>
                                             <?php
                                             $raw_results4 = mysqli_query($conection, "select * from medicos;") or die(mysqli_error($conection));
