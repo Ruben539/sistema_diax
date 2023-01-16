@@ -75,7 +75,7 @@ require_once("../body/header_admin.php");
             <div class="row">
                 <div class="col-md-12">
                      <div class="tile">
-                         <h3 class="tile-title alert alert-success">Datos de la Orden</h3>
+                         <h3 class="tile-title alert alert-success">Datos de la Orden del Paciente</h3>
                         <div class="tile-body">
                             <form action="resultado.php" method="POST">
                                 
