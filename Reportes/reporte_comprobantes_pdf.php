@@ -54,7 +54,8 @@ ob_start();
       if ($resultado > 0) {
         $monto = 0;
         while ($data = mysqli_fetch_array($sql)) {
-          $monto += $data['Monto'];
+          $monto = $data['Monto'];
+
       ?>
           <tr class="text-center">
             <td><?php echo $data['id']; ?></td>
@@ -69,25 +70,28 @@ ob_start();
 
           </tr>
 
-
-
-    </tbody>
-    <tfoot>
-      <tr>
-        <td><b>Total A Rendir : </b></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td class="alert alert-success text-center"><?php echo $monto; ?>.000GS</td>
-        <td></td>
-        <td></td>
-        <td></td>
-
-      </tr>
-    </tfoot>
-<?php }
+         
+      <?php }
+      
       } ?>
+      
+    </tbody>
+      <tfoot>
+        
+        <tr>
+          <td><b>Total A Rendir : </b></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="alert alert-success text-center">
+            <?php echo $monto;?>
+          </td>
+          <td></td>
+      <td></td>
+      <td></td>
+        </tr>
   </table>
 </body>
 
