@@ -28,13 +28,13 @@ ob_start();
 
     <thead>
       <tr class="text-center">
+        <th>Fecha</th>
         <th>Cedula</th>
         <th>Estudio</th>
         <th>Doctor/a</th>
         <th>Seguro</th>
         <th>Monto</th>
-        <th>Cometario</th>
-        <th>Fecha</th>
+        <th>Comentario</th>
 
       </tr>
     </thead>

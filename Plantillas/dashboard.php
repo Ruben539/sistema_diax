@@ -27,6 +27,7 @@ require_once("../body/header_admin.php");
       
           <div class="tile">
             <div class="tile-body"><B>CANTIDAD DE PACIENTES DEL MES</B></div>
+              
           </div>
 
           <div class="row">
@@ -56,7 +57,19 @@ require_once("../body/header_admin.php");
     
 
       <div class="tile">
-            <div class="tile-body"><B>LISTA DE PACIENTES DEL DIA-PAZ</B></div>
+        <div class="tile-body"><B>LISTA DE PACIENTES PAZ</B></div>
+          <ul class="app-breadcrumb breadcrumb">
+            <li class="breadcrumb-item">  
+              <a class="btn btn-danger" href="../Reportes/reporte_orden_paz.php" target="_blank" rel="noopener noreferrer">
+                <i class="fa fa-file-pdf-o"></i> Reporte PDF
+              </a>
+            </li>
+            <li class="breadcrumb-item">
+              <a class="btn btn-success" href="../Reportes/reporte_comprobante_paz.php" target="_blank" rel="noopener noreferrer">
+                <i class="fa fa-file-excel-o"></i> Reporte Excel
+              </a>
+            </li>
+          </ul>
       </div>
       <div class="row">
         <div class="col-md-12">
@@ -66,6 +79,7 @@ require_once("../body/header_admin.php");
                   <thead>
                     <tr class="text-center">
                             
+                            
                             <th>Estudio</th>
                             <th>Cedula</th>
                             <th>Doctor</th>
@@ -73,9 +87,7 @@ require_once("../body/header_admin.php");
                             <th>Seguro</th>                                
                             <th>Monto</th>                                
                             <th>Descuento</th>                                
-                            <th>MontoS</th>                                
-                            <th>Fecha 2</th>                                
-                   
+                            
                         </tr>
                   </thead>
 
@@ -85,15 +97,19 @@ require_once("../body/header_admin.php");
                      $fecha =  date('d-m-Y');
                     //  echo $fecha1." ".$fecha2;
                     //  exit;
-                        $sql = mysqli_query($conection,"SELECT h.id,h.Estudio,h.Cedula,h.Atendedor,h.Fecha,h.Seguro,h.Monto,h.Descuento,h.MontoS, h.fecha_2 FROM historial h 
-                        where h.Fecha like '%$fecha%' AND h.Atendedor like '%PAZ%'  ORDER BY  h.id DESC");
+                    $sql = mysqli_query($conection,"SELECT h.id,h.Estudio,h.Cedula,h.Atendedor,h.Fecha,h.Seguro,h.Monto,h.Descuento,h.MontoS, h.fecha_2 FROM historial h 
+                    where h.Fecha like '%$fecha%' AND h.Atendedor like '%PAZ%'  ORDER BY  h.id ASC");
 
                          $resultado = mysqli_num_rows($sql);
+                          $monto = 0;
 
                          if($resultado > 0){ 
                             while ($data = mysqli_fetch_array($sql)){ 
+                              $monto += (int)$data['Monto']; 
+
                       ?>
                         <tr class="text-center">
+
                              <td><?php echo $data['Estudio'];?></td>
  						                 <td><?php echo $data['Cedula'];?></td>
  						                 <td><?php echo $data['Atendedor'];?></td>
@@ -101,10 +117,7 @@ require_once("../body/header_admin.php");
                              <td><?php echo $data['Seguro']?></td>
                              <td><?php echo $data['Monto']?></td>
                              <td><?php echo $data['Descuento']?></td>
-                             <td><?php echo $data['MontoS']?></td>
-                             <td><?php echo $data['fecha_2']?></td>
- 					        
-                           
+                                                      
                            
                         </tr>
                      
@@ -112,6 +125,19 @@ require_once("../body/header_admin.php");
                   <?php }
                 } ?>
                  </tbody>
+                 <tr>
+          <td><b>Total A Rendir : </b></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="alert alert-success text-center">
+            <?php echo $monto;?>.000GS
+          </td>
+
+   
+        </tr>
                 </table>
               </div>
             </div>
@@ -119,7 +145,19 @@ require_once("../body/header_admin.php");
       </div>
 
       <div class="tile">
-            <div class="tile-body"><B>LISTA DE PACIENTES DEL DIA-DIAX</B></div>
+        <div class="tile-body"><B>LISTA DE PACIENTES DIAX</B></div>
+            <ul class="app-breadcrumb breadcrumb">
+              <li class="breadcrumb-item">  
+                <a class="btn btn-danger" href="../Reportes/reporte_orden_diax.php" target="_blank" rel="noopener noreferrer">
+                  <i class="fa fa-file-pdf-o"></i> Reporte PDF
+                </a>
+              </li>
+              <li class="breadcrumb-item">
+                <a class="btn btn-success" href="../Reportes/reporte_comprobante_diax.php" target="_blank" rel="noopener noreferrer">
+                  <i class="fa fa-file-excel-o"></i> Reporte Excel
+                </a>
+              </li>
+            </ul>
       </div>
       <div class="row">
         <div class="col-md-12">
@@ -149,12 +187,14 @@ require_once("../body/header_admin.php");
                     //  echo $fecha1." ".$fecha2;
                     //  exit;
                         $sql = mysqli_query($conection,"SELECT h.id,h.Estudio,h.Cedula,h.Atendedor,h.Fecha,h.Seguro,h.Monto,h.Descuento,h.MontoS, h.fecha_2 FROM historial h 
-                        where h.Fecha like '%$fecha%' AND h.Atendedor like '%DIAX%'  ORDER BY  h.id DESC");
+                        where h.Fecha like '%$fecha%' AND h.Atendedor like '%DIAX%'  ORDER BY  h.id ASC");
 
                          $resultado = mysqli_num_rows($sql);
+                        $monto = 0;
 
                          if($resultado > 0){ 
                             while ($data = mysqli_fetch_array($sql)){ 
+                              $monto += (int)$data['Monto']; 
                       ?>
                         <tr class="text-center">
                              <td><?php echo $data['Estudio'];?></td>
@@ -175,12 +215,27 @@ require_once("../body/header_admin.php");
                   <?php }
                 } ?>
                  </tbody>
+                 <tr>
+          <td><b>Total A Rendir : </b></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="alert alert-success text-center">
+            <?php echo $monto;?>.000GS
+          </td>
+
+   
+        </tr>
                 </table>
               </div>
             </div>
         </div>
       </div>
-
+</main>
 
       <script src="../js/funciones.js"></script>
       <script>
