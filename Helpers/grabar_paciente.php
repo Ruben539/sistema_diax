@@ -36,7 +36,9 @@ if (!empty($_POST)) {
 				VALUES('$Cedula','$Apellido','$Nombre','$Nacimiento','$Sexo','$Celular')");
 
 			if ($query_insert ) {
-				$alert = '<p class = "msg_save">Registro Guardado Correctamente</p>';
+        
+				header("Location: ../Plantillas/registro_pacientes.php");
+
 
 			}else{
 				$alert = '<p class = "msg_error">Error al Guardar el Registro</p>';

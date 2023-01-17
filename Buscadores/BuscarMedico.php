@@ -21,13 +21,13 @@ $hoy = date("d-m-Y");
 //echo $hoy;
 //exit;
 if (empty($fecha_desde) || empty($fecha_hasta))  {
-  
-  $sql =  mysqli_query($conection,"SELECT h.id,h.Estudio,h.Cedula,h.Atendedor,h.Fecha,h.Seguro,h.Monto,h.Descuento,h.MontoS, h.fecha_2 FROM historial h 
-    where h.Atendedor like '%$medico%' AND h.Fecha like '%$hoy%' ORDER BY  h.id DESC");
+  $sql = mysqli_query($conection, "SELECT h.id,c.nombre,h.Estudio,h.Cedula,h.Atendedor,h.Fecha,h.Seguro,h.Monto,h.Descuento,h.MontoS,h.Comentario, h.fecha_2 
+    FROM historial h inner join clientes c on c.cedula = h.cedula where  h.Fecha like '%$hoy%'   ORDER BY  h.id ASC");
+
 } else{
 
-  $sql = mysqli_query($conection,"SELECT h.id,h.Estudio,h.Cedula,h.Atendedor,h.Fecha,h.Seguro,h.Monto,h.Descuento,h.MontoS, h.fecha_2 FROM historial h 
-    where h.Atendedor like '%$medico%' AND h.Fecha BETWEEN '{$desde}' AND '{$hasta}' ORDER BY  h.id DESC");
+  $sql = mysqli_query($conection, "SELECT h.id,c.nombre,h.Estudio,h.Cedula,h.Atendedor,h.Fecha,h.Seguro,h.Monto,h.Descuento,h.MontoS,h.Comentario, h.fecha_2 
+  FROM historial h inner join clientes c on c.cedula = h.cedula  where h.Fecha BETWEEN '{$desde}' AND '{$hasta}' ORDER BY  h.id ASC");
 
 }
 
@@ -40,6 +40,7 @@ echo '
 
 <thead>
       <tr class="text-center">      
+        <th>Nombre</th>
         <th>Cedula</th>
         <th>Estudio</th>
         <th>Doctor</th>
@@ -47,7 +48,7 @@ echo '
         <th>Monto</th>                                
         <th>Descuento</th>                                
         <th>MontoS</th>                                
-        <th>Fecha</th>                                
+        <th>Fecha</th>                              
       </tr>
     </thead>
     <tbody>';
@@ -67,14 +68,15 @@ echo '
 
     echo '<tr>
 
-             <td>'. $data['Cedula']. '</td>
-             <td>'. $data['Estudio']. '</td>
-             <td>'. $data['Atendedor']. '</td>
-             <td>'. $data['Seguro']. '</td>
-             <td>'. $data['Monto']. '</td>
-             <td>'. $data['Descuento']. '</td>
-             <td>'. $data['MontoS']. '</td>
-             <td>'. $data['Fecha']. '</td>
+    <td>'. $data['nombre']. '</td>
+    <td>'. $data['Cedula']. '</td>
+    <td>'. $data['Estudio']. '</td>
+    <td>'. $data['Atendedor']. '</td>
+    <td>'. $data['Seguro']. '</td>
+    <td>'. $data['Monto']. '</td>
+    <td>'. $data['Descuento']. '</td>
+    <td>'. $data['MontoS']. '</td>
+    <td>'. $data['Fecha']. '</td>
 
         </tr>';
   }
@@ -86,10 +88,11 @@ echo '
       <td></td>
       <td></td>
       <td></td>
-      <td class="text-center">'.$monto.'</td>
-      <td class="text-center">'.$descuentos.'</td>
-      <td class="text-center">'.$montos.'</td>
-      <td class="text-center">'.$total.'</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td class="text-center alert alert-success">'.number_format($monto, 3, '.', '.').'</td>
 
     </tr>
   </tfoot>

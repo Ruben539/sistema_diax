@@ -1,3 +1,4 @@
+
 <?php
 //echo 'Hola desde el buscador';
 //print_r($_POST);
@@ -18,12 +19,13 @@ $hoy = date("d-m-Y");
 //echo $hoy;
 //exit;
 if (empty($fecha_desde) || empty($fecha_hasta))  {
-  $sql = mysqli_query($conection,"SELECT h.id,h.Estudio,h.Cedula,h.Atendedor,h.Fecha,h.Seguro,h.Monto,h.Descuento,h.MontoS, h.fecha_2 FROM historial h 
-    where h.Fecha like '%$hoy%' ORDER BY  h.id DESC");
+  $sql = mysqli_query($conection, "SELECT h.id,c.nombre,h.Estudio,h.Cedula,h.Atendedor,h.Fecha,h.Seguro,h.Monto,h.Descuento,h.MontoS,h.Comentario, h.fecha_2 
+    FROM historial h inner join clientes c on c.cedula = h.cedula where  h.Fecha like '%$hoy%'   ORDER BY  h.id ASC");
+
 } else{
 
-  $sql = mysqli_query($conection,"SELECT h.id,h.Estudio,h.Cedula,h.Atendedor,h.Fecha,h.Seguro,h.Monto,h.Descuento,h.MontoS, h.fecha_2,clientes.Nombre
-  FROM historial h INNER JOIN clientes.Cedula = h.cedula  where h.Fecha BETWEEN '{$desde}' AND '{$hasta}' ORDER BY  h.id DESC");
+  $sql = mysqli_query($conection, "SELECT h.id,c.nombre,h.Estudio,h.Cedula,h.Atendedor,h.Fecha,h.Seguro,h.Monto,h.Descuento,h.MontoS,h.Comentario, h.fecha_2 
+  FROM historial h inner join clientes c on c.cedula = h.cedula  where h.Fecha BETWEEN '{$desde}' AND '{$hasta}' ORDER BY  h.id ASC");
 
 }
 
@@ -52,7 +54,7 @@ echo '
   while ($data = mysqli_fetch_array($sql)){
     $monto += $data['Monto'];
     echo '<tr>
-             <td>'. $data['Nombre']. '</td>
+             <td>'. $data['nombre']. '</td>
              <td>'. $data['Cedula']. '</td>
              <td>'. $data['Estudio']. '</td>
              <td>'. $data['Atendedor']. '</td>
@@ -73,10 +75,11 @@ echo '
       <td></td>
       <td></td>
       <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
       <td class="alert alert-success text-center">'.$monto.'.000GS</td>
-      <td></td>
-      <td></td>
-      <td></td>
+      
       
     </tr>
   </tfoot>

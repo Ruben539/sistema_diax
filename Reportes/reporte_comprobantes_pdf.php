@@ -28,25 +28,46 @@ ob_start();
 
     <thead>
       <tr class="text-center">
-        <th>Fecha</th>
+        <th>Nombre</th>
         <th>Cedula</th>
         <th>Estudio</th>
-        <th>Doctor/a</th>
-        <th>Seguro</th>
-        <th>Monto</th>
-        <th>Comentario</th>
+        <th>Doctor</th>
+        <th>Seguro</th>                                
+        <th>Monto</th>                                
+        <th>Descuento</th>                                
+        <th>MontoS</th>                                
+        <th>Fecha</th>>
 
       </tr>
     </thead>
 
     <tbody>
       <?php
-      $fecha =  '14-01-2023';
-      //  echo $fecha1." ".$fecha2;
-      //  exit;
-      $sql = mysqli_query($conection, "SELECT h.id,h.Estudio,h.Cedula,h.Atendedor,h.Fecha,h.Seguro,h.Monto,h.Comentario, h.fecha_2 FROM historial h 
-                        where  Fecha like '%$fecha%'   ORDER BY  h.id DESC");
-
+      $fecha_desde = $_POST['fecha_desde'];
+      $desde = date("d-m-Y", strtotime($fecha_desde));
+      
+      $fecha_hasta = $_POST['fecha_hasta'];
+      $hasta = date("d-m-Y", strtotime($fecha_hasta));
+      
+       //echo $desde.$hasta;
+       //exit;
+      
+      
+      $hoy = date("d-m-Y");
+      //echo $hoy;
+      //exit;
+      if (empty($fecha_desde) || empty($fecha_hasta))  {
+        $sql = mysqli_query($conection, "SELECT h.id,c.nombre,h.Estudio,h.Cedula,h.Atendedor,h.Fecha,h.Seguro,h.Monto,h.Descuento,h.MontoS,h.Comentario, h.fecha_2 
+          FROM historial h inner join clientes c on c.cedula = h.cedula where  h.Fecha like '%$hoy%'   ORDER BY  h.id ASC");
+      
+      } else{
+      
+        $sql = mysqli_query($conection, "SELECT h.id,c.nombre,h.Estudio,h.Cedula,h.Atendedor,h.Fecha,h.Seguro,h.Monto,h.Descuento,h.MontoS,h.Comentario, h.fecha_2 
+        FROM historial h inner join clientes c on c.cedula = h.cedula  where h.Fecha BETWEEN '{$desde}' AND '{$hasta}' ORDER BY  h.id ASC");
+      
+      }
+      
+      
       $resultado = mysqli_num_rows($sql);
       $monto = 0;
       if ($resultado > 0) {
@@ -57,12 +78,14 @@ ob_start();
       ?>
      
           <tr class="text-center">
+            <td><?php echo $data['nombre']; ?></td>
             <td><?php echo $data['Cedula']; ?></td>
             <td><?php echo $data['Estudio']; ?></td>
             <td><?php echo $data['Atendedor']; ?></td>
             <td><?php echo $data['Seguro']; ?></td>
             <td><?php echo $data['Monto'] ?></td>
-            <td><?php echo $data['Comentario'] ?></td>
+            <td><?php echo $data['Descuento'] ?></td>
+            <td><?php echo $data['MontoS'] ?></td>
             <td><?php echo $data['Fecha'] ?></td>
 
           </tr>
