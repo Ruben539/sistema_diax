@@ -19,20 +19,6 @@ require_once("../body/header_admin.php");
       </h1>
       <p>Registro Web en Desarrollo</p>
     </div>
-    <ul class="app-breadcrumb breadcrumb">
-      <li class="breadcrumb-item">
-        <a class="btn btn-danger" href="../Reportes/reporte_comprobantes_pdf.php" target="_blank" rel="noopener noreferrer">
-          <i class="fa fa-file-pdf-o"></i> Reporte
-        </a>
-      </li>
-      <li class="breadcrumb-item">
-        <a class="btn btn-success" href="../Reportes/reporte_comprobante_excel.php" target="_blank" rel="noopener noreferrer">
-          <i class="fa fa-file-excel-o"></i> Reporte
-        </a>
-      </li>
-    </ul>
-
-
   </div>
 
 

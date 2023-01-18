@@ -6,6 +6,51 @@ header("Pragma: no-cache");
 header("Expires: 0");
 ?>
 
+<?php
+session_start();
+
+require_once("../Modelos/conexion.php");
+$fecha_desde = '';
+$fecha_hasta  = '';
+if(empty($_POST['fecha_desde']) || empty($_POST['fecha_hasta'])) {
+  
+  echo '<div class="alert alert-danger" role="alert">
+    Debes seleccionar las fechas a buscar
+  </div>';
+  exit();
+  
+}
+
+if (!empty($_REQUEST['fecha_desde']) && !empty($_REQUEST['fecha_hasta']) ) {
+  $fecha_desde = date_create($_REQUEST['fecha_desde']);
+  $desde = date_format($fecha_desde, 'd-m-Y');
+
+
+  $fecha_hasta = date_create($_REQUEST['fecha_hasta']);
+  $hasta = date_format($fecha_hasta, 'd-m-Y');
+
+ 
+
+ $buscar = '';
+ $where = '';
+
+}if ($desde > $hasta) {
+ echo $alert = '<p class = "alert alert-danger">La Fecha de Inicio de la busqueda debe ser mayor a la del final</p>';
+  exit();
+  
+}else if ($desde == $hasta) {
+
+  $where = "Fecha LIKE '%$desde%'";
+
+  $buscar = "fecha_desde=$desde&fecha_hasta=$hasta ";
+}else {
+  $f_de = $desde.'-00:00:00';
+  $f_a  = $hasta.'-23:00:00';
+  $where = "Fecha BETWEEN '$f_de' AND '$f_a' ";
+  $buscar = "fecha_desde=$desde&fecha_hasta=$hasta ";
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,56 +64,90 @@ header("Expires: 0");
 
 <body>
 
-  <table class="table table-striped table-bordered table-condensed">
-    <caption>Listado de Comprobantes del Dia</caption>
+  <main class="app-content">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="tile">
+          <h5 class="text-center">Lista de Pacientes Diax</h5>
+          <div class="table-responsive">
+            <table id="tabla_Usuario" class="table table-striped table-bordered table-condensed" style=" font-size: 10px;">
+              <thead>
+                <tr class="text-center">
 
-    <thead>
-      <tr class="text-center">
-        <th>ID</th>
-        <th>Estudio</th>
-        <th>Sin Seguro</th>
-        <th>Semei</th>
-        <th>Semei Preferencial</th>
-        <th>Seguros</th>
-        <th>Seguros Preferencial</th>
-        <th>Hospitalario</th>
-        <th>Fecha</th>
+                <th>Fecha</th>
+                <th>Nombre</th>
+                <th>Cedula</th>
+                <th>Estudio</th>
+                <th>Doctor/a</th>
+                <th>Seguro</th>
+                <th>Monto</th>
+                <th>Monto Seguro</th>
+                <th>Descuento</th>
+                <th>Comentario</th>
 
-      </tr>
-    </thead>
+                </tr>
+              </thead>
 
-    <tbody>
-      <?php
-      require_once("../Modelos/conexion.php");
-      $fecha =  date('d-m-Y');
-      //  echo $fecha1." ".$fecha2;
-      //  exit;
-      $sql = mysqli_query($conection, "SELECT h.id,h.Estudio,h.Cedula,h.Atendedor,h.Fecha,h.Seguro,h.Monto,h.Comentario, h.fecha_2 FROM historial h 
-                        where  Fecha like '%$fecha%'   ORDER BY  h.id DESC");
+              <tbody>
+                <?php
+                $hoy = date("Y");
 
-      $resultado = mysqli_num_rows($sql);
+                $sql = mysqli_query($conection, "SELECT h.id,c.nombre,h.Estudio,h.Cedula,h.Atendedor,h.Fecha,h.Seguro,h.Monto,h.Descuento,h.MontoS,h.Comentario, h.fecha_2 
+                FROM historial h inner join clientes c on c.cedula = h.cedula  where $where and Fecha like '%".$hoy."%' ORDER BY  h.id ASC");
+              
+              
+                $resultado = mysqli_num_rows($sql);
+                $monto = 0;
 
-      if ($resultado > 0) {
-        while ($data = mysqli_fetch_array($sql)) {
-      ?>
-          <tr class="text-center">
-            <td><?php echo $data['id']; ?></td>
-            <td><?php echo $data['Estudio']; ?></td>
-            <td><?php echo $data['Cedula']; ?></td>
-            <td><?php echo $data['Atendedor']; ?></td>
-            <td><?php echo $data['Fecha']; ?></td>
-            <td><?php echo $data['Seguro'] ?></td>
-            <td><?php echo $data['Monto'] ?></td>
-            <td><?php echo $data['Comentario'] ?></td>
-            <td><?php echo $data['fecha_2'] ?></td>
+                if ($resultado > 0) {
+                  while ($data = mysqli_fetch_array($sql)) {
+                    $monto += (int)$data['Monto'];
 
-          </tr>
+                ?>
+                    <tr class="text-center">
+
+                    <td><?php echo $data['Fecha'] ?></td>
+                    <td><?php echo $data['nombre']; ?></td>
+                    <td><?php echo $data['Cedula']; ?></td>
+                    <td><?php echo $data['Estudio']; ?></td>
+                    <td><?php echo $data['Atendedor']; ?></td>
+                    <td><?php echo $data['Seguro']; ?></td>
+                    <td><?php echo $data['Monto'] ?></td>
+                    <td><?php echo $data['MontoS'] ?></td>
+                    <td><?php echo $data['Descuento'] ?></td>
+                    <td><?php echo $data['Comentario'] ?></td>
 
 
-      <?php }
-      } ?>
-    </tbody>
-  </table>
+                    </tr>
+
+
+                <?php }
+                } ?>
+              </tbody>
+              <tr>
+                <td><b>Total A Rendir : </b></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="alert alert-success text-center">
+                <?php echo number_format($monto, 3, '.', '.'); ?>.<b>G</b>
+                </td>
+
+
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </main>
 </body>
 
 </html>
