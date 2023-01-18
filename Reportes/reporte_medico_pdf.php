@@ -85,7 +85,7 @@ ob_start();
                 <th>Monto</th>
                 <th>Monto Seguro</th>
                 <th>Descuento</th>
-                <th>Comentario</th>
+                
 
                 </tr>
               </thead>
@@ -117,9 +117,6 @@ ob_start();
                     <td><?php echo $data['Monto'] ?></td>
                     <td><?php echo $data['MontoS'] ?></td>
                     <td><?php echo $data['Descuento'] ?></td>
-                    <td><?php echo $data['Comentario'] ?></td>
-
-
                     </tr>
 
 
