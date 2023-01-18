@@ -12,6 +12,15 @@
 
 require_once("../body/header_admin.php");
  ?>
+ <link rel="stylesheet" href="../node_modules/chosen-js/chosen.css" type="text/css" />
+    <script src="../node_modules/chosen-js/chosen.jquery.min.js"></script>
+    <script src="../js/jquery-3.3.1.min.js"></script>
+    <script src="../node_modules/chosen-js/chosen.jquery.js"></script>
+ <script>
+        $(document).ready(function() {
+            $(".chosen").chosen();
+        });
+  </script>
 
 <main class="app-content">
       <div class="app-title">
@@ -63,7 +72,7 @@ require_once("../body/header_admin.php");
 				$resultado = mysqli_num_rows($query_medicos);
 
 				?>
-           <select name="medico" id="medico" class="form-control">
+           <select name="medico" id="medico" class="chosen form-control">
            <?php
 
           if ($resultado > 0) {
@@ -110,7 +119,6 @@ require_once("../body/header_admin.php");
       </div>
 
 
-      <script src="../js/funciones.js"></script>
       <script>
   function permisoAuto(){
 	Swal.fire(
