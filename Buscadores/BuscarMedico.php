@@ -16,14 +16,17 @@ if(empty($_POST['fecha_desde']) || empty($_POST['fecha_hasta'])) {
 }
 #$medico=$_POST['medico'];
 if (!empty($_REQUEST['fecha_desde']) && !empty($_REQUEST['fecha_hasta']) && !empty($_REQUEST['medico'])) {
-  $fecha_desde = $_REQUEST['fecha_desde'];
-  $desde = date("d-m-Y", strtotime($fecha_desde));
+  $fecha_desde = date_create($_REQUEST['fecha_desde']);
+  $desde = date_format($fecha_desde, 'd-m-Y');
 
-  $fecha_hasta = $_REQUEST['fecha_hasta'];
-  $hasta = date("d-m-Y", strtotime($fecha_hasta));
+
+  $fecha_hasta = date_create($_REQUEST['fecha_hasta']);
+  $hasta = date_format($fecha_hasta, 'd-m-Y');
 
   $medico = trim($_POST['medico']);
 
+// echo $desde. ' - '. $hasta. ' - '. $medico;
+// exit();
 
  $buscar = '';
  $where = '';
@@ -38,8 +41,8 @@ if (!empty($_REQUEST['fecha_desde']) && !empty($_REQUEST['fecha_hasta']) && !emp
 
   $buscar = "fecha_desde=$desde&fecha_hasta=$hasta AND Atendedor LIKE '%$medico%'";
 }else {
-  $f_de = $desde.' 00:00:00';
-  $f_a  = $hasta.' 23:00:00';
+  $f_de = $desde.'-00:00:00';
+  $f_a  = $hasta.'-23:00:00';
   $where = "Fecha BETWEEN '$f_de' AND '$f_a' AND Atendedor LIKE '%$medico%'";
   $buscar = "fecha_desde=$desde&fecha_hasta=$hasta AND Atendedor LIKE '%$medico%'";
 }
@@ -55,13 +58,13 @@ if (!empty($_REQUEST['fecha_desde']) && !empty($_REQUEST['fecha_hasta']) && !emp
 //  exit;
 
 
-$hoy = date("d-m-Y");
+$hoy = date("Y");
 //echo $hoy;
 //exit;
 
 
   $sql = mysqli_query($conection, "SELECT h.id,c.nombre,h.Estudio,h.Cedula,h.Atendedor,h.Fecha,h.Seguro,h.Monto,h.Descuento,h.MontoS,h.Comentario, h.fecha_2 
-  FROM historial h inner join clientes c on c.cedula = h.cedula  where $where  ORDER BY  h.id ASC");
+  FROM historial h inner join clientes c on c.cedula = h.cedula  where $where and Fecha like '%".$hoy."%' ORDER BY  h.id ASC");
 
 
 
