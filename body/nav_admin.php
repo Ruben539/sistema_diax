@@ -35,19 +35,19 @@ if ($resultado > 0) {
             <!--Menu Principal del Usuario-->
             <li><a class="treeview-item" href="../Plantillas/usuarios.php"><i class="icon fa fa-users"></i> Usuarios Activos</a></li>
             <li><a class="treeview-item" href="../Plantillas/usuario_trash.php"><i class="icon fa fa-users"></i> Usuarios Inactivos</a></li>
-            <!--Menu Principal del Rol-->
+            <!--Menu Principal del Usuario-->
             
           </ul>
         </li>
         
         <?php  } ?>  
         <?php if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 2) {?>
-        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-users"></i><span class="app-menu__label">Pacientes</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-user-plus"></i><span class="app-menu__label">Pacientes</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
             <!--Menu Principal del los Pacientes-->
-            <li><a class="treeview-item" href="../Plantillas/registro_pacientes.php"><i class="icon fa fa-users"></i> Registro de Pacientes</a></li>
-            <li><a class="treeview-item" href="../Plantillas/pacientes.php"><i class="icon fa fa-users"></i> Lista de Pacientes</a></li>
-            <li><a class="treeview-item" href="../Historial/historialPaciente.php"><i class="icon fa fa-users"></i> Historial Pacientes</a></li>
+            <li><a class="treeview-item" href="../Plantillas/registro_pacientes.php"><i class="icon fa fa-user-plus"></i> Registro de Pacientes</a></li>
+            <li><a class="treeview-item" href="../Plantillas/pacientes.php"><i class="icon fa fa-user-plus"></i> Lista de Pacientes</a></li>
+            <li><a class="treeview-item" href="../Historial/historialPaciente.php"><i class="icon fa fa-user-plus"></i> Historial Pacientes</a></li>
             <!--Menu Principal del Pacientes-->
             
           </ul>
@@ -57,9 +57,10 @@ if ($resultado > 0) {
         <?php if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 2 ) {?>
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-address-book-o"></i><span class="app-menu__label">Comprobantes</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
-            <!--Menu Principal de la lista de Estudios-->
-            <li><a class="treeview-item" href="../Plantillas/comprobantes.php"><i class="icon fa fa-address-book-o"></i>Comprobantes</a></li>
-            <!--Menu Principal de la lista de Estudios-->
+            <!--Menu Principal de la lista de Comprobantes-->
+            <li><a class="treeview-item" href="../Plantillas/comprobantes.php"><i class="icon fa fa-list"></i>Comprobantes</a></li>
+            <li><a class="treeview-item" href="../Plantillas/reporte_comprobante.php"><i class="icon fa fa-file-pdf-o"></i>Reporte de Comprobantes</a></li>
+            <!--Menu Principal de la lista de Comprobantes-->
             
           </ul>
         </li>
