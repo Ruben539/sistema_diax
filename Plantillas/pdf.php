@@ -2,7 +2,7 @@
 require_once("../Modelos/conexion.php");
 date_default_timezone_set('America/Asuncion');
 // include autoloader
-require '../vendor/autoload.php';
+require_once "../Library/dompdf/autoload.inc.php";
 // reference the Dompdf namespace
 use Dompdf\Dompdf;
 $ci=$_POST['ci'];
@@ -12,7 +12,7 @@ $segurot=$_POST['segurot'];
 $estudio=$_POST['estudio'];
 $medico=$_POST['medico'];
 $descuento=$_POST['descuento'];
-$Fecha=date('d-m-Y-H:i:s');
+$Fecha=date('d-m-Y H:i:s');
 $monto=$_POST['monto'];
 $comentario=$_POST['comentario'];
 $nacimiento=$_POST['nacimiento'];
@@ -28,7 +28,8 @@ $result = mysqli_query($conection,$sql);
 $sql2 = "select ID from historial where Fecha='$Fecha';";
 $result2= mysqli_query($conection,$sql2);
 $identificador= mysqli_fetch_array($result2);
-header('location: ../Plantillas/registro_pacientes.php');
+header('location: registro_pacientes.php');
+
 // if ($seguro == "SEMEI" or $seguro == "Seguros")
 // {
 // $html =
