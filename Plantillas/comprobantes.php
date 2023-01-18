@@ -41,13 +41,13 @@ require_once("../body/header_admin.php");
   <form class="row" method="POST" id='formFechas' name='formFechas'>
     <div class="col-md-5">
       <div class="widget-small">
-        <input type="date" name="fecha_desde" id="fecha_desde" class="form-control">
+        <input type="date" name="fecha_desde" id="fecha_desde" class="form-control" required>
       </div>
     </div>
 
     <div class="col-md-5">
       <div class="widget-small">
-        <input type="date" name="fecha_hasta" id="fecha_hasta" class="form-control">
+        <input type="date" name="fecha_hasta" id="fecha_hasta" class="form-control" required>
       </div>
     </div>
 
@@ -75,6 +75,38 @@ require_once("../body/header_admin.php");
 
 
 <script src="../js/funciones.js"></script>
+<script type="text/javascript" src="../js/plugins/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="../js/plugins/dataTables.bootstrap.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+    tablaComprobante = $("#tablaResultado").DataTable({
+       "columnDefs":[{
+        "target": 1,
+        "data":null
+       }],
+        
+        //Para cambiar el lenguaje a español
+    "language": {
+            "lengthMenu": "Mostrar _MENU_ registros",
+            "zeroRecords": "No se encontraron resultados",
+            "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+            "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+            "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+            "sSearch": "Buscar:",
+            "oPaginate": {
+                "sFirst": "Primero",
+                "sLast":"Último",
+                "sNext":"Siguiente",
+                "sPrevious": "Anterior"
+             },
+             "sProcessing":"Procesando...",
+        }
+    });
+
+      
+    
+});
+</script>
 <script>
   function permisoAuto() {
     Swal.fire(
@@ -105,5 +137,3 @@ require_once("../body/header_admin.php");
 
   });
 </script>
-<script type="text/javascript" src="../js/plugins/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="../js/plugins/dataTables.bootstrap.min.js"></script>

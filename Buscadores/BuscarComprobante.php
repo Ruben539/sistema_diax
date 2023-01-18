@@ -5,29 +5,56 @@
 session_start();
 require_once("../Modelos/conexion.php");
 
-$fecha_desde = $_POST['fecha_desde'];
-$desde = date("d-m-Y", strtotime($fecha_desde));
 
-$fecha_hasta = $_POST['fecha_hasta'];
-$hasta = date("d-m-Y", strtotime($fecha_hasta));
-
- //echo $desde.$hasta;
- //exit;
-
-
-$hoy = date("d-m-Y");
-//echo $hoy;
-//exit;
-if (empty($fecha_desde) || empty($fecha_hasta))  {
-  $sql = mysqli_query($conection, "SELECT h.id,c.nombre,h.Estudio,h.Cedula,h.Atendedor,h.Fecha,h.Seguro,h.Monto,h.Descuento,h.MontoS,h.Comentario, h.fecha_2 
-    FROM historial h inner join clientes c on c.cedula = h.cedula where  h.Fecha like '%$hoy%'   ORDER BY  h.id ASC");
-
-} else{
-
-  $sql = mysqli_query($conection, "SELECT h.id,c.nombre,h.Estudio,h.Cedula,h.Atendedor,h.Fecha,h.Seguro,h.Monto,h.Descuento,h.MontoS,h.Comentario, h.fecha_2 
-  FROM historial h inner join clientes c on c.cedula = h.cedula  where h.Fecha BETWEEN '{$desde}' AND '{$hasta}' ORDER BY  h.id ASC");
-
+$fecha_desde = '';
+$fecha_hasta  = '';
+if(empty($_POST['fecha_desde']) || empty($_POST['fecha_hasta'])) {
+  
+  echo '<div class="alert alert-danger" role="alert">
+    Debes seleccionar las fechas a buscar
+  </div>';
+  exit();
+  
 }
+#$medico=$_POST['medico'];
+if (!empty($_REQUEST['fecha_desde']) && !empty($_REQUEST['fecha_hasta']) ) {
+  $fecha_desde = date_create($_REQUEST['fecha_desde']);
+  $desde = date_format($fecha_desde, 'd-m-Y');
+
+
+  $fecha_hasta = date_create($_REQUEST['fecha_hasta']);
+  $hasta = date_format($fecha_hasta, 'd-m-Y');
+
+ 
+
+// echo $desde. ' - '. $hasta. ' - '. $medico;
+// exit();
+
+ $buscar = '';
+ $where = '';
+
+}if ($desde > $hasta) {
+ echo $alert = '<p class = "alert alert-danger">La Fecha de Inicio de la busqueda debe ser mayor a la del final</p>';
+  exit();
+  
+}else if ($desde == $hasta) {
+
+  $where = "Fecha LIKE '%$desde%'";
+
+  $buscar = "fecha_desde=$desde&fecha_hasta=$hasta ";
+}else {
+  $f_de = $desde.'-00:00:00';
+  $f_a  = $hasta.'-23:00:00';
+  $where = "Fecha BETWEEN '$f_de' AND '$f_a' ";
+  $buscar = "fecha_desde=$desde&fecha_hasta=$hasta ";
+}
+
+$hoy = date("Y");
+
+  $sql = mysqli_query($conection, "SELECT h.id,c.nombre,h.Estudio,h.Cedula,h.Atendedor,h.Fecha,h.Seguro,h.Monto,h.Descuento,h.MontoS,h.Comentario, h.fecha_2 
+  FROM historial h inner join clientes c on c.cedula = h.cedula  where $where and Fecha like '%".$hoy."%' ORDER BY  h.id ASC");
+
+
 
 
 $resultado = mysqli_num_rows($sql);
@@ -78,7 +105,7 @@ echo '
       <td></td>
       <td></td>
       <td></td>
-      <td class="alert alert-success text-center">'.$monto.'.000GS</td>
+      <td class="text-center alert alert-success">'.number_format($monto, 3, '.', '.').'.<b>GS</b></td>
       
       
     </tr>

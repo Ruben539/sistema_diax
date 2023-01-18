@@ -128,7 +128,7 @@ if ($resultado > 0) {
         <td></td>
         <td></td>
         <td></td>
-        <td class="text-center alert alert-success">'.number_format($monto, 3, '.', '.').'</td>
+        <td class="text-center alert alert-success">'.number_format($monto, 3, '.', '.').'.<b>GS</b></td>
   
       </tr>
     </tfoot>

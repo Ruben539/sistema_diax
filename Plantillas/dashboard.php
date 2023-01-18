@@ -142,7 +142,7 @@ require_once("../body/header_admin.php");
               <td></td>
               <td></td>
               <td class="alert alert-success text-center">
-                <?php echo number_format($monto, 3, '.', '.'); ?>.<b>G</b>
+                <?php echo number_format($monto, 3, '.', '.'); ?>.<b>GS</b>
               </td>
 
 
@@ -240,7 +240,7 @@ require_once("../body/header_admin.php");
               <td></td>
               <td></td>
               <td class="alert alert-success text-center">
-                <?php echo number_format($monto, 3, '.', '.'); ?>.<b>G</b>
+                <?php echo number_format($monto, 3, '.', '.'); ?>.<b>GS</b>
               </td>
 
 
