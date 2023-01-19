@@ -83,7 +83,9 @@ if ($resultado > 0) {
       <tbody class="text-center">';
     
     while ($data = mysqli_fetch_array($sql)){
-     $total = $data['cantidad'];
+     $total += $data['cantidad'];
+     $estudio = $data['Estudio'];
+
 
 
   
@@ -97,10 +99,10 @@ if ($resultado > 0) {
     }
     echo
     '</tbody>
-    <setion>
-    <p>Cantidad Total</p>
-    <p style="text-align: right;" class="alert alert-danger">'.$total.'</p>
-    </setion>
+          <tr>
+             <td><b>Cantidad Total: </b></td>
+              <td class="alert alert-success text-center">'.$total.' '. $estudio.'</td>
+            </tr>
 
 
      </table>';
