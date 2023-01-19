@@ -30,7 +30,7 @@ if (!empty($_POST)) {
 
 
 
-			$query_insert = mysqli_query($conection,"INSERT INTO gastos(descripcion,monto,estatus
+			$query_insert = mysqli_query($conection,"INSERT INTO gastos(descripcion,monto,estatus)
 				VALUES('$descripcion','$monto','$estatus')");
 
 
