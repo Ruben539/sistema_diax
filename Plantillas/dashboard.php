@@ -275,7 +275,7 @@ require_once("../body/header_admin.php");
             <tbody>
               <?php
               // $fecha1 = "05-01-2023";
-              $fecha =  date('d-m-Y');
+              $fecha =  date('Y-m-d');
               //  echo $fecha1." ".$fecha2;
               //  exit;
               $sql = mysqli_query($conection, "SELECT g.id,g.descripcion,g.monto,g.created_at  FROM gastos g 
