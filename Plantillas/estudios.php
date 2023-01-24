@@ -52,8 +52,8 @@ require_once("../body/header_admin.php");
 
                   <tbody>
                       <?php 
-                        $sql = mysqli_query($conection,"SELECT t.id,t.Estudio,t.SinSeguro,t.SEMEI,t.SemeiPref,t.Seguros,t.SegurosPref,t.Hospitalar FROM tarifas t 
-                        ORDER BY  t.id DESC");
+                        $sql = mysqli_query($conection,"SELECT t.id,t.Estudio,t.SinSeguro,t.SEMEI,t.SemeiPref,t.Seguros,t.SegurosPref,t.Hospitalar 
+                        FROM tarifas t ORDER BY  t.id DESC");
 
                          $resultado = mysqli_num_rows($sql);
 

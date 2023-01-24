@@ -80,14 +80,30 @@ if ($resultado > 0) {
         </li>
         
         <?php  } ?> 
+        <?php if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 4) {?>
+        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-users"></i><span class="app-menu__label">Pacientes</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+          <ul class="treeview-menu">
+            <!--Menu Principal del Usuario-->
+            <li><a class="treeview-item" href="../doctores/lista_pacientes.php"><i class="icon fa fa-users"></i> Lista de Pacientes</a></li>
+            <li><a class="treeview-item" href="../doctores/historialPacientes.php"><i class="icon fa fa-users"></i> Historial de Pacientes</a></li>
+            <!--Menu Principal del Usuario-->
+            
+          </ul>
+        </li>
+        
+        <?php  } ?>
 
         <?php if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 2) {?>
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-money"></i><span class="app-menu__label">Gastos Varios</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
             <!--Menu Principal de los Gastos-->
             <li><a class="treeview-item" href="../Plantillas/gastos.php"><i class="icon fa fa-money"></i> Lista de Gastos</a></li>
+            <?php if ($_SESSION['rol'] == 1 ) {?>
+            <li><a class="treeview-item" href="../Plantillas/gastos.php"><i class="icon fa fa-money"></i> Movimientos de Egreso</a></li>
+            <li><a class="treeview-item" href="../Plantillas/gastos.php"><i class="icon fa fa-money"></i> Movimientos de Ingreso</a></li>
+            <li><a class="treeview-item" href="../Plantillas/gastos.php"><i class="icon fa fa-money"></i> Movimientos de Depositos</a></li>
             <!--Menu Principal de los Gastos-->
-            
+            <?php }?>
           </ul>
         </li>
         
