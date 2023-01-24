@@ -40,7 +40,7 @@ require_once("../body/header_admin.php");
 
 
         <div class="col-md-10">
-            <div class="widget-small">
+            
                 <?php
                 include "../Modelos/conexion.php";
 
@@ -68,7 +68,7 @@ require_once("../body/header_admin.php");
 
                     ?>
                 </select>
-            </div>
+            
         </div>
 
         <div class="col-md-2">
@@ -100,7 +100,7 @@ require_once("../body/header_admin.php");
         </div>
 
         <div class="col-md-10">
-            <div class="widget-small">
+           
                 <?php
                 include "../Modelos/conexion.php";
 
@@ -128,7 +128,7 @@ require_once("../body/header_admin.php");
 
                     ?>
                 </select>
-            </div>
+            
         </div>
 
         <div class="col-md-2">
