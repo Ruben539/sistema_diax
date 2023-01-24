@@ -9,8 +9,10 @@ $vista = 'Ingrese su numero de Cedula';
 if (isset($_POST['consulta'])) {
     $res = $conection->real_escape_string($_POST['consulta']);
 
-    $query = "SELECT h.id,h.Cedula,h.Estudio,h.Atendedor,h.Seguro,h.Monto,h.Descuento,h.Comentario,h.Montos,h.Fecha
-    FROM historial h  WHERE Cedula LIKE '%".$res."%'";
+    $query = "SELECT h.id,h.Cedula,c.Nombre,h.Estudio,h.Atendedor,h.Seguro,h.Monto,h.Descuento,h.Comentario,h.Montos,h.Fecha
+    FROM historial h  inner join clientes c on c.cedula = h.cedula WHERE h.Cedula LIKE '%".$res."%' OR C.Nombre LIKE '%".$res."%' ";
+
+
 
 
 $resultado =  $conection->query($query);
@@ -29,7 +31,9 @@ if ($resultado->num_rows > 0) {
         </div>
       </div>
       <hr>
-    <div class="col-4"><b>Nro de Cedula :</b>'.' '.$datos['Cedula'].'.</div>
+      <div class="col-4"><b>Nro de Cedula :</b>'.' '.$datos['Cedula'].'.</div>
+    <br>
+    <div class="col-4"><b>Nombre del Paciente :</b>'.' '.$datos['Nombre'].'.</div>
     <br>
     <div class="col-4"><b>Nombre del Doctor :</b>'.' '.$datos['Atendedor'].'.</div>
     <hr>
