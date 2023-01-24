@@ -99,9 +99,9 @@ if ($resultado > 0) {
             <!--Menu Principal de los Gastos-->
             <li><a class="treeview-item" href="../Plantillas/gastos.php"><i class="icon fa fa-money"></i> Lista de Gastos</a></li>
             <?php if ($_SESSION['rol'] == 1 ) {?>
-            <li><a class="treeview-item" href="../Plantillas/gastos.php"><i class="icon fa fa-money"></i> Movimientos de Egreso</a></li>
-            <li><a class="treeview-item" href="../Plantillas/gastos.php"><i class="icon fa fa-money"></i> Movimientos de Ingreso</a></li>
-            <li><a class="treeview-item" href="../Plantillas/gastos.php"><i class="icon fa fa-money"></i> Movimientos de Depositos</a></li>
+            <li><a class="treeview-item" href="../Plantillas/ingreso.php"><i class="icon fa fa-money"></i> Movimientos de Ingreso</a></li>
+            <li><a class="treeview-item" href="../Plantillas/egresos.php"><i class="icon fa fa-money"></i> Movimientos de Egreso</a></li>
+            <li><a class="treeview-item" href="../Plantillas/deposito.php"><i class="icon fa fa-money"></i> Movimientos de Depositos</a></li>
             <!--Menu Principal de los Gastos-->
             <?php }?>
           </ul>
