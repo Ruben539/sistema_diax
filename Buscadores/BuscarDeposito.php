@@ -18,7 +18,7 @@ $desposito ='Depositos';
 if (empty($_POST['fecha_desde']) && empty($_POST['fecha_hasta']) ) {
 
  
-    $sql = mysqli_query($conection, "SELECT i.ID,i.Tipo,i.SubTipo,i.Monto,i.Factura,i.Concepto,i.Fmovimiento,i.Estado
+    $sql = mysqli_query($conection, "SELECT i.id,i.Tipo,i.SubTipo,i.Monto,i.Factura,i.Concepto,i.Fmovimiento,i.Estado
     FROM historialie i  where Tipo LIKE '%".$desposito."%' AND  Fecha like '%".$hoy."%' AND Fecha like '%".$anio."%' ");
 
 }else{ 
@@ -29,7 +29,7 @@ if (empty($_POST['fecha_desde']) && empty($_POST['fecha_hasta']) ) {
     $hasta  = date_format($fecha_hasta, 'd-m-Y 23:00:00');
     //exit();
 
-   $sql = mysqli_query($conection, "SELECT i.ID,i.Tipo,i.SubTipo,i.Monto,i.Factura,i.Concepto,i.Fmovimiento,i.Estado
+   $sql = mysqli_query($conection, "SELECT i.id,i.Tipo,i.SubTipo,i.Monto,i.Factura,i.Concepto,i.Fmovimiento,i.Estado
    FROM historialie i  where Tipo LIKE '%".$desposito."%' AND Fecha BETWEEN '$desde' AND '$hasta' ");
 }
 
@@ -55,6 +55,7 @@ echo '
         <th>Concepto</th>     
         <th>Estado</th>      
         <th>Fecha</th>                     
+        <th>Editar</th>                     
       </tr>
     </thead>
     <tbody class="text-center">';
@@ -70,6 +71,9 @@ echo '
              <td>'. $data['Concepto']. '</td>
              <td>'. $data['Estado']. '</td>
              <td>'. $data['Fmovimiento']. '</td>
+             <td>
+                <a href="../Helpers/modificar_movimiento.php?id='. $data['id'].' " class="btn btn-outline-info"><i class="fas fa-edit"></i></a></td>
+             </td>
         </tr>';
   }
   echo
@@ -77,6 +81,7 @@ echo '
   <tfoot>
     <tr>
       <td><b>Total A Rendir : </b></td>
+      <td></td>
       <td></td>
       <td></td>
       <td></td>
