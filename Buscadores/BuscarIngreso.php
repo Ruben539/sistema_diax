@@ -10,6 +10,8 @@ $fecha_desde = '';
 $fecha_hasta  = '';
 $hoy = date("d-m-Y");
 $ingreso ='Ingresos';
+$anio = date("Y");
+
 
 
 
@@ -28,7 +30,9 @@ if (empty($_POST['fecha_desde']) && empty($_POST['fecha_hasta']) ) {
     //exit();
 
    $sql = mysqli_query($conection, "SELECT i.ID,i.Tipo,i.SubTipo,i.Monto,i.Factura,i.Concepto,i.Fmovimiento,i.Estado
-   FROM historialie i  where Tipo LIKE '%".$ingreso."%' AND Fecha BETWEEN '$desde' AND '$hasta' ");
+   FROM historialie i  where Tipo LIKE '%".$ingreso."%' AND Fecha BETWEEN '$desde' AND '$hasta'  
+   AND Fecha Like '%".$anio."%'  ");
+
 }
 
 

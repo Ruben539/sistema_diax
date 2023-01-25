@@ -9,6 +9,8 @@ require_once("../Modelos/conexion.php");
 $fecha_desde = '';
 $fecha_hasta  = '';
 $hoy = date("d-m-Y");
+$anio = date("Y");
+
 $egreso ='Egresos';
 
 
@@ -28,7 +30,7 @@ if (empty($_POST['fecha_desde']) && empty($_POST['fecha_hasta']) ) {
     //exit();
 
    $sql = mysqli_query($conection, "SELECT i.ID,i.Tipo,i.SubTipo,i.Monto,i.Factura,i.Concepto,i.Fmovimiento,i.Estado
-   FROM historialie i  where Tipo LIKE '%".$egreso."%' AND Fecha BETWEEN '$desde' AND '$hasta' ");
+   FROM historialie i  where Tipo LIKE '%".$egreso."%' AND Fecha BETWEEN '$desde' AND '$hasta' AND LIKE '%".$anio."%'");
 }
 
 

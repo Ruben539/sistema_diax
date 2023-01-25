@@ -9,6 +9,8 @@ require_once("../Modelos/conexion.php");
 $fecha_desde = '';
 $fecha_hasta  = '';
 $hoy = date("d-m-Y");
+$anio = date("Y");
+
 $desposito ='Depositos';
 
 
@@ -17,7 +19,7 @@ if (empty($_POST['fecha_desde']) && empty($_POST['fecha_hasta']) ) {
 
  
     $sql = mysqli_query($conection, "SELECT i.ID,i.Tipo,i.SubTipo,i.Monto,i.Factura,i.Concepto,i.Fmovimiento,i.Estado
-    FROM historialie i  where Tipo LIKE '%".$desposito."%' AND  Fecha like '%".$hoy."%'  ");
+    FROM historialie i  where Tipo LIKE '%".$desposito."%' AND  Fecha like '%".$hoy."%' AND Fecha like '%".$anio."%' ");
 
 }else{ 
     $fecha_desde = date_create($_REQUEST['fecha_desde']);
