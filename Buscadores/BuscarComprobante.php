@@ -73,9 +73,10 @@ echo '
         <th>Descuento</th>                                
         <th>MontoS</th>                                
         <th>Fecha</th>                                
+        <th>PDF</th>                                
       </tr>
     </thead>
-    <tbody>';
+    <tbody class="text-center">';
     $monto = 0;
 
   while ($data = mysqli_fetch_array($sql)){
@@ -90,6 +91,9 @@ echo '
              <td>'. $data['Descuento']. '</td>
              <td>'. $data['MontoS']. '</td>
              <td>'. $data['Fecha']. '</td>
+             <td>
+                <a href="../Reportes/reporte_paciente.php?id='. $data['id'].' " class="btn btn-outline-danger" target="_blank"><i class="fa fa-file-pdf-o"></i></a></td>
+             </td>
 
         </tr>';
   }
@@ -98,6 +102,7 @@ echo '
   <tfoot>
     <tr>
       <td><b>Total A Rendir : </b></td>
+      <td></td>
       <td></td>
       <td></td>
       <td></td>
