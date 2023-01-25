@@ -19,12 +19,12 @@ if (empty($_POST['fecha_desde']) && empty($_POST['fecha_hasta']) ) {
 
 }else{ 
 
-    $fecha_desde = $_POST['fecha_desde'].
+    $fecha_desde = $_POST['fecha_desde'];
     $fecha_hasta  = $_POST['fecha_hasta'];
    // exit();
 
     $sql = mysqli_query($conection, "SELECT g.id,g.descripcion,g.monto,g.created_at
-  FROM gastos g  where created_at BETWEEN '.$fecha_desde.' AND '.$fecha_hasta.' ORDER BY  h.id ASC");
+  FROM gastos g  where created_at BETWEEN '$fecha_desde' AND '$fecha_hasta'");
 }
 
 
@@ -39,6 +39,7 @@ echo '
         <th>Descripcion</th>
         <th>Monto</th>                               
         <th>Fecha</th>                                
+        <th>Editar</th>                                
       </tr>
     </thead>
     <tbody class="text-center">';
@@ -50,7 +51,8 @@ echo '
              <td>'. $data['descripcion']. '</td>
              <td>'. $data['monto']. '</td>
              <td>'. $data['created_at']. '</td>
-
+             <td>
+             <a href="../Helpers/modificar_gasto.php?id='. $data['id'].' " class="btn btn-outline-info"><i class="fas fa-edit"></i></a></td>
         </tr>';
   }
   echo
@@ -59,7 +61,7 @@ echo '
     <tr>
       <td><b>Total A Rendir : </b></td>
       <td></td>
-    
+      <td></td>
       <td class="text-center alert alert-success">'.number_format($monto, 3, '.', '.').'.<b>GS</b></td>
       
       
