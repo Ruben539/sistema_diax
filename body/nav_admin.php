@@ -93,6 +93,18 @@ if ($resultado > 0) {
         
         <?php  } ?>
 
+        <?php if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 3) {?>
+        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-user-plus"></i><span class="app-menu__label">Informantes</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+          <ul class="treeview-menu">
+            <!--Menu Principal del Usuario-->
+            <li><a class="treeview-item" href="../Historial/AsignarInformante.php"><i class="icon fa fa-user-plus"></i> Buscar Paciente</a></li>
+            <!--Menu Principal del Usuario-->
+            
+          </ul>
+        </li>
+        
+        <?php  } ?>
+
         <?php if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 2) {?>
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-money"></i><span class="app-menu__label">Administración </span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">

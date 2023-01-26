@@ -16,7 +16,7 @@ require_once("../body/header_admin.php");
 <main class="app-content">
       <div class="app-title">
         <div>
-          <h1>Historial del Paciente</h1>
+          <h1><i class="fa fa-user-md"></i> Asignar Informante</h1>
           <p>Registro web  de Pacientes en Desarrollo</p>
         </div>
         <ul class="app-breadcrumb breadcrumb">
@@ -56,7 +56,7 @@ require_once("../body/header_admin.php");
 
   function buscarDatos(consulta) {
     $.ajax({
-      url: '../Buscadores/BuscarClientes.php',
+      url: '../Buscadores/BuscarPaciente.php',
       type: 'POST',
       dataType: 'html',
       data:{ consulta: consulta }
