@@ -51,7 +51,7 @@ if (!empty($_REQUEST['fecha_desde']) && !empty($_REQUEST['fecha_hasta']) ) {
 
 $hoy = date("Y");
 
-  $sql = mysqli_query($conection, "SELECT h.id,c.nombre,h.Estudio,h.Cedula,h.Atendedor,h.Fecha,h.Seguro,h.Monto,h.Descuento,h.MontoS,h.Comentario, h.fecha_2 
+  $sql = mysqli_query($conection, "SELECT h.id,c.nombre,c.apellido,h.Estudio,h.Cedula,h.Atendedor,h.Fecha,h.Seguro,h.Monto,h.Descuento,h.MontoS,h.Comentario, h.fecha_2 
   FROM historial h inner join clientes c on c.cedula = h.cedula  where $where and Fecha like '%".$hoy."%' ORDER BY  h.id ASC");
 
 
@@ -82,7 +82,7 @@ echo '
   while ($data = mysqli_fetch_array($sql)){
     $monto += $data['Monto'];
     echo '<tr>
-             <td>'. $data['nombre']. '</td>
+             <td>'. $data['nombre'].' '. $data['apellido'].'</td>
              <td>'. $data['Cedula']. '</td>
              <td>'. $data['Estudio']. '</td>
              <td>'. $data['Atendedor']. '</td>

@@ -69,7 +69,7 @@ ob_start();
         <div class="tile">
           <h5 class="text-center">Lista de Pacientes Diax</h5>
           <div class="table-responsive">
-            <table id="tabla_Usuario" class="table table-striped table-bordered table-condensed" style=" font-size: 10px;">
+            <table id="tabla_Usuario" class="table table-striped table-bordered table-condensed " style=" font-size: 10px;">
               <thead>
                 <tr class="text-center">
 
@@ -91,7 +91,7 @@ ob_start();
                 <?php
                 $hoy = date("Y");
 
-                $sql = mysqli_query($conection, "SELECT h.id,c.nombre,h.Estudio,h.Cedula,h.Atendedor,h.Fecha,h.Seguro,h.Monto,h.Descuento,h.MontoS,h.Comentario, h.fecha_2 
+                $sql = mysqli_query($conection, "SELECT h.id,c.nombre,c.apellido,h.Estudio,h.Cedula,h.Atendedor,h.Fecha,h.Seguro,h.Monto,h.Descuento,h.MontoS,h.Comentario, h.fecha_2 
                 FROM historial h inner join clientes c on c.cedula = h.cedula  where $where and Fecha like '%".$hoy."%' ORDER BY  h.id ASC");
               
               
@@ -106,7 +106,7 @@ ob_start();
                     <tr class="text-center">
 
                     <td><?php echo $data['Fecha'] ?></td>
-                    <td><?php echo $data['nombre']; ?></td>
+                    <td><?php echo $data['nombre'].' '.$data['apellido'];  ?></td>
                     <td><?php echo $data['Cedula']; ?></td>
                     <td><?php echo $data['Estudio']; ?></td>
                     <td><?php echo $data['Atendedor']; ?></td>

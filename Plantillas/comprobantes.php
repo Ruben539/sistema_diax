@@ -49,7 +49,7 @@ require_once("../body/header_admin.php");
     <div class="col-md-12">
       <div class="tile">
         <div class="table-responsive">
-          <table id="tablaResultado" class="table table-striped table-bordered table-condensed" style="width:100%">
+          <table id="tablaResultado" class="table table-striped table-bordered table-condensed table-hover" style="width:100%">
 
           </table>
         </div>
@@ -60,7 +60,6 @@ require_once("../body/header_admin.php");
 </main>
 
 
-<script src="../js/funciones.js"></script>
 <script type="text/javascript" src="../js/plugins/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="../js/plugins/dataTables.bootstrap.min.js"></script>
 <script type="text/javascript">

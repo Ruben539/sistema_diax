@@ -53,7 +53,7 @@ ob_start();
                 $fecha =  date('d-m-Y');
                 //  echo $fecha1." ".$fecha2;
                 //  exit;
-                $sql = mysqli_query($conection, "SELECT h.id,c.nombre,h.Estudio,h.Cedula,h.Atendedor,h.Fecha,h.Seguro,h.Monto,h.Descuento,h.MontoS,h.Comentario, h.fecha_2 
+                $sql = mysqli_query($conection, "SELECT h.id,c.nombrec.apellido,h.Estudio,h.Cedula,h.Atendedor,h.Fecha,h.Seguro,h.Monto,h.Descuento,h.MontoS,h.Comentario, h.fecha_2 
                 FROM historial h inner join clientes c on c.cedula = h.cedula where  h.Fecha like '%$fecha%' AND h.Atendedor like '%PAZ%'  ORDER BY  h.id ASC");
 
                 $resultado = mysqli_num_rows($sql);
@@ -67,7 +67,7 @@ ob_start();
                     <tr class="text-center">
 
                     <td><?php echo $data['Fecha'] ?></td>
-                    <td><?php echo $data['nombre']; ?></td>
+                    <td><?php echo $data['nombre'].' '.$data['apellido'];  ?></td>
                     <td><?php echo $data['Cedula']; ?></td>
                     <td><?php echo $data['Estudio']; ?></td>
                     <td><?php echo $data['Atendedor']; ?></td>
