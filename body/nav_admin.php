@@ -67,6 +67,19 @@ if ($resultado > 0) {
         
         <?php  } ?>
 
+        <?php if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 2 ) {?>
+        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-user-times"></i><span class="app-menu__label">Cancelaciones</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+          <ul class="treeview-menu">
+            <!--Menu Principal de la lista de Comprobantes-->
+            <li><a class="treeview-item" href="../Historial/CancelarOrden.php"><i class="icon fa fa-user-times"></i>Buscar Orden</a></li>
+            <li><a class="treeview-item" href="../Historial/Ordenes_canceladas.php"><i class="icon fa fa-user-times"></i>Ordenes Canceladas</a></li>
+            <!--Menu Principal de la lista de Comprobantes-->
+            
+          </ul>
+        </li>
+        
+        <?php  } ?>
+
         <?php if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 2) {?>
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-user-md"></i><span class="app-menu__label">Medicos</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
