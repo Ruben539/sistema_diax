@@ -1,8 +1,4 @@
-$(document).ready(function() {
-    setTimeout(clickbutton, 5000);
-    initMap();
-    
-});
+
 function initMap() {
     const map = new google.maps.Map(mapDiv, {
        center: { lat: -34.397, lng: 150.644 },
