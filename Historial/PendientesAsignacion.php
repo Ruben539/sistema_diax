@@ -53,7 +53,7 @@ require_once("../body/header_admin.php");
                         $hoy = date('m-Y');
                         
                          $sql = mysqli_query($conection, "SELECT h.id,h.Cedula,c.nombre,c.apellido,h.estudio,h.atendedor,h.placas,h.informa,h.fecha FROM historial h INNER JOIN clientes c on c.cedula = h.cedula
-                         WHERE  fecha like '%".$hoy."%' ORDER BY ID ASC ");
+                         WHERE atendedor like '%Fabiola%'  AND  fecha like '%".$hoy."%' ORDER BY ID ASC ");
                        
 
                          $resultado = mysqli_num_rows($sql);
