@@ -8,35 +8,31 @@ require_once("../Modelos/conexion.php");
 
 $fecha_desde = '';
 $fecha_hasta  = '';
-$estudio  = '';
-
-#$medico=$_POST['medico'];
-if (!empty($_REQUEST['fecha_desde']) && !empty($_REQUEST['fecha_hasta']) ) {
-  $fecha_desde = date_create($_REQUEST['fecha_desde']);
-  $desde = date_format($fecha_desde, 'd-m-Y');
 
 
-  $fecha_hasta = date_create($_REQUEST['fecha_hasta']);
-  $hasta = date_format($fecha_hasta, 'd-m-Y');
+$hoy = date("m-Y");
 
-  $estudio = $_REQUEST['estudio'];
 
+
+if (empty($_POST['fecha_desde']) && empty($_POST['fecha_hasta']) ) {
+
+ //echo  $hoy.''.$estudio;
+ //exit();
+
+  $sql = mysqli_query($conection,"SELECT Estudio,count(*) as cantidad FROM historial 
+  where  Fecha LIKE '%".$hoy."%' group BY Estudio order by cantidad ");
+  //$rtotal=0;
+
+}else if(!empty($_POST['fecha_desde']) && !empty($_POST['fecha_hasta']) ){ 
+    $fecha_desde = date_create($_POST['fecha_desde']);
+    $fecha_hasta = date_create($_POST['fecha_hasta']);
+
+    $desde = date_format($fecha_desde, 'd-m-Y');
+    $hasta  = date_format($fecha_hasta, 'd-m-Y');
+       
+   $sql = mysqli_query($conection,"SELECT Estudio,count(*) as cantidad FROM historial 
+   where  Fecha BETWEEN '$desde' AND '$hasta' group BY Estudio order by cantidad");
 }
-
-if(empty($desde) || empty($hasta)){
-    $hoy = date("d-m-Y");
-
-    $sql = mysqli_query($conection, "SELECT Estudio,count(*) as cantidad FROM historial WHERE
-     Estudio LIKE '%".$estudio."%' AND FECHA LIKE '".$hoy."' GROUP BY Estudio ORDER BY cantidad");   
-
- }
- //else{
-
-// $hoy = date("Y");
-
-//   $sql = mysqli_query($conection, "SELECT h.id,c.nombre,h.Estudio,h.Cedula,h.Atendedor,h.Fecha,h.Seguro,h.Monto,h.Descuento,h.MontoS,h.Comentario, h.fecha_2 
-//   FROM historial h inner join clientes c on c.cedula = h.cedula  where $where and Fecha like '%".$hoy."%' ORDER BY  h.id ASC");
-// }
 
 
 
@@ -61,7 +57,7 @@ echo '
     $total += $data['cantidad'];
     echo '<tr>
              <td>'. $data['Estudio']. '</td>
-             <td>'. $data['cantidad']. '</td>
+             <td class="text-center">'. $data['cantidad']. '</td>
              
 
         </tr>';
@@ -72,7 +68,7 @@ echo '
     <tr>
       <td><b>Cantidad Total : </b></td>
     
-      <td class="text-center alert alert-success">'.number_format($total, 3, '.', '.').'.<b>GS</b></td>
+      <td class="text-center alert alert-success">'.$total.'</td>
       
       
     </tr>

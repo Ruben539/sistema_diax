@@ -22,6 +22,7 @@ if (empty($_POST['fecha_desde']) && empty($_POST['fecha_hasta']) ) {
     FROM historialie i  where Tipo LIKE '%".$desposito."%' AND  Fecha like '%".$hoy."%' AND Fecha like '%".$anio."%' ");
 
 }else{ 
+    $anio = date("Y");
     $fecha_desde = date_create($_REQUEST['fecha_desde']);
     $fecha_hasta = date_create($_REQUEST['fecha_hasta']);
 
@@ -30,7 +31,7 @@ if (empty($_POST['fecha_desde']) && empty($_POST['fecha_hasta']) ) {
     //exit();
 
    $sql = mysqli_query($conection, "SELECT i.id,i.Tipo,i.SubTipo,i.Monto,i.Factura,i.Concepto,i.Fmovimiento,i.Estado
-   FROM historialie i  where Tipo LIKE '%".$desposito."%' AND Fecha BETWEEN '$desde' AND '$hasta' ");
+   FROM historialie i  where Tipo LIKE '%".$desposito."%' AND Fecha BETWEEN '$desde' AND '$hasta' AND Fecha like '%".$anio."%' ");
 }
 
 

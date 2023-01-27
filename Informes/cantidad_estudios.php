@@ -48,37 +48,6 @@ require_once("../body/header_admin.php");
             </div>
         </div>
 
-        <div class="col-md-10">
-              
-            <?php
-				include "../Modelos/conexion.php";
-
-				$query_estudios = mysqli_query($conection,"SELECT * FROM tarifas");
-
-				mysqli_close($conection);//con esto cerramos la conexion a la base de datos una vez conectado arriba con el conexion.php
-				$resultado = mysqli_num_rows($query_estudios);
-
-				?>
-           <select name="estudio" id="estudio" class="chosen form-control">
-           <?php
-
-          if ($resultado > 0) {
-              while ($estudio = mysqli_fetch_array($query_estudios)) {
-
-          ?>
-            <option value="<?php echo $estudio["Estudio"]; ?>"><?php echo
-            $estudio["Estudio"] ?></option>
-
-        <?php
-
-
-         }
-      }
-
-?>
-           </select>
-           
-        </div>
 
         <div class="col-md-2">
              
