@@ -1,6 +1,6 @@
 <?php
 session_start();
-if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 2){
+if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 5){
     if (empty($_SESSION['active'])) {
     header('location: salir.php');
 }
@@ -42,7 +42,7 @@ require_once("../body/header_admin.php");
                             <th>Placas</th>                                
                             <th>Informante</th>                                
                             <th>Fecha</th>                                
-                            <?php if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 3) {?>
+                            <?php if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 5) {?>
                             <th>Asignar</th> 
                             <?php } ?>    
                         </tr>
