@@ -12,6 +12,7 @@ $fecha_hasta  = '';
 
 $hoy = date("m-Y");
 
+$anio = date("Y");
 
 
 if (empty($_POST['fecha_desde']) && empty($_POST['fecha_hasta']) ) {
@@ -20,7 +21,7 @@ if (empty($_POST['fecha_desde']) && empty($_POST['fecha_hasta']) ) {
  //exit();
 
   $sql = mysqli_query($conection,"SELECT Estudio,count(*) as cantidad FROM historial 
-  where  Fecha LIKE '%".$hoy."%' group BY Estudio order by cantidad ");
+  where  Fecha LIKE '%".$hoy."%' AND Fecha LIKE '%".$hoy."%' group BY Estudio order by cantidad ");
   //$rtotal=0;
 
 }else if(!empty($_POST['fecha_desde']) && !empty($_POST['fecha_hasta']) ){ 
@@ -31,7 +32,7 @@ if (empty($_POST['fecha_desde']) && empty($_POST['fecha_hasta']) ) {
     $hasta  = date_format($fecha_hasta, 'd-m-Y');
        
    $sql = mysqli_query($conection,"SELECT Estudio,count(*) as cantidad FROM historial 
-   where  Fecha BETWEEN '$desde' AND '$hasta' group BY Estudio order by cantidad");
+   where  Fecha BETWEEN '$desde' AND '$hasta' AND Fecha LIKE '%".$hoy."%' group BY Estudio order by cantidad");
 }
 
 
