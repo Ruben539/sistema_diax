@@ -113,6 +113,9 @@ if ($resultado > 0) {
             <li><a class="treeview-item" href="../Historial/AsignarInformante.php"><i class="icon fa fa-user-plus"></i> Buscar Paciente</a></li>
             <li><a class="treeview-item" href="../Historial/PendientesAsignacion.php"><i class="icon fa fa-user-plus"></i> Pendientes</a></li>
             <!--Menu Principal del Informantes-->
+            <?php if ($_SESSION['rol'] == 1) {?>
+              <li><a class="treeview-item" href="../Historial/HistorialInformante.php"><i class="icon fa fa-money"></i> Rendicion Informante</a></li>
+              <?php  } ?>
             
           </ul>
         </li>
