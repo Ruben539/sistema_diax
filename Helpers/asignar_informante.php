@@ -77,6 +77,15 @@ if ($resultado == 0) {
 
 require_once("../body/header_admin.php");
 ?>
+  <link rel="stylesheet" href="../node_modules/chosen-js/chosen.css" type="text/css" />
+    <script src="../node_modules/chosen-js/chosen.jquery.min.js"></script>
+    <script src="../js/jquery-3.3.1.min.js"></script>
+    <script src="../node_modules/chosen-js/chosen.jquery.js"></script>
+    <script>
+        $(document).ready(function() {
+            $(".chosen").chosen();
+        });
+    </script>
 <main class="app-content">
 
     <div class="row" style="justify-content: center;">
@@ -94,7 +103,7 @@ require_once("../body/header_admin.php");
                             <?php
                             include "../Modelos/conexion.php";
 
-                            $query_medicos = mysqli_query($conection, "SELECT * FROM medicos");
+                            $query_medicos = mysqli_query($conection, "SELECT * FROM medicos WHERE Especialidad like '%Informante%'");
 
                             mysqli_close($conection); //con esto cerramos la conexion a la base de datos una vez conectado arriba con el conexion.php
                             $resultado = mysqli_num_rows($query_medicos);
