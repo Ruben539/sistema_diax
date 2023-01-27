@@ -2,7 +2,7 @@
 session_start();
 if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 2){
     if (empty($_SESSION['active'])) {
-    header('location: salir.php');
+    header('location: ../salir.php');
 }
 
 }else{
