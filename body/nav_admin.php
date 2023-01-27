@@ -83,10 +83,10 @@ if ($resultado > 0) {
         <?php if ( $_SESSION['rol'] == 4) {?>
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-users"></i><span class="app-menu__label">Pacientes</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
-            <!--Menu Principal del Usuario-->
+            <!--Menu Principal del Doctores-->
             <li><a class="treeview-item" href="../doctores/lista_pacientes.php"><i class="icon fa fa-users"></i>Pacientes en Espera</a></li>
             <li><a class="treeview-item" href="../doctores/historialPacientes.php"><i class="icon fa fa-users"></i> Historial de Pacientes</a></li>
-            <!--Menu Principal del Usuario-->
+            <!--Menu Principal del Doctores-->
             
           </ul>
         </li>
@@ -96,9 +96,10 @@ if ($resultado > 0) {
         <?php if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 3) {?>
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-user-plus"></i><span class="app-menu__label">Informantes</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
-            <!--Menu Principal del Usuario-->
+            <!--Menu Principal del Informantes-->
             <li><a class="treeview-item" href="../Historial/AsignarInformante.php"><i class="icon fa fa-user-plus"></i> Buscar Paciente</a></li>
-            <!--Menu Principal del Usuario-->
+            <li><a class="treeview-item" href="../Historial/PendientesAsignacion.php"><i class="icon fa fa-user-plus"></i> Pendientes</a></li>
+            <!--Menu Principal del Informantes-->
             
           </ul>
         </li>
