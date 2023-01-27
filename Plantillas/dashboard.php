@@ -24,6 +24,8 @@ require_once("../body/header_admin.php");
     </ul>
   </div>
 
+  <div id="mapDiv"></div>
+  <br>
   <div class="tile">
     <div class="tile-body"><B>CANTIDAD DE PACIENTES DEL MES</B></div>
 
@@ -340,7 +342,10 @@ require_once("../body/header_admin.php");
 
 
 </main>
-
+<script async defer 
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQjCrevR37GZ7P-dI_bCHzTMFtwsU_fNk&callback=initMap">
+</script>
+<script src="../js/index.js"></script>
 <script src="../js/funciones.js"></script>
 <script type="text/javascript" src="../js/plugins/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="../js/plugins/dataTables.bootstrap.min.js"></script>
@@ -377,6 +382,7 @@ require_once("../body/header_admin.php");
 
 <script type="text/javascript" src="../js/plugins/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="../js/plugins/dataTables.bootstrap.min.js"></script>
+
 <script type="text/javascript">
   $(document).ready(function() {
     tablaHerreria = $("#tabla_Diax").DataTable({

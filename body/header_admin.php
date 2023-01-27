@@ -16,6 +16,7 @@ $sesion = $_SESSION['rol'];
     <!-- Main CSS-->
     <link rel="stylesheet" type="text/css" href="../css/main.css">
     <link rel="stylesheet" type="text/css" href="../css/estilos.css">
+    <link rel="stylesheet" type="text/css" href="../css/index.css">
     <link rel="stylesheet" href="../css/reclamos.css">
     
     <!-- Font-icon css-->
