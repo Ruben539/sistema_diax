@@ -13,6 +13,9 @@ function initMap() {
        if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(
              ({ coords: { latitude, longitude } }) => {
+               var latitude = -25.3181295
+               var longitude = -57.5739351
+
                 //console.log(;
                 const coords = {
                    lat: latitude,
