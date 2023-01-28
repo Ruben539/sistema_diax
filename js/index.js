@@ -1,8 +1,8 @@
 
 function initMap() {
     const map = new google.maps.Map(mapDiv, {
-       center: { lat: -34.397, lng: 150.644 },
-       zoom: 20,
+       center: { lat: -25.3181295, lng: -57.5739351 },
+       zoom:20
     });
  
     const marker = new google.maps.Marker({
@@ -29,7 +29,7 @@ function initMap() {
                 console.log("Tu navegador esta bien pero ocurrio un error");
              })
        } else {
-          alert('Geolocation is not supported by this browser.');
+          alert('Geolocation no soporta tu navegador, revisar actualizaciones.');
  
        }
    
