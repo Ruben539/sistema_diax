@@ -6,32 +6,32 @@ session_start();
 require_once("../Modelos/conexion.php");
 
 
-$fecha_desde = '';
-$fecha_hasta  = '';
-$hoy = date("d-m-Y");
-$anio = date("Y");
+$anio = date_create($_REQUEST['fecha_desde']);
+$fecha = date_format($anio, 'm-Y');
+
+$fecha_desde = date_create($_REQUEST['fecha_desde']);
+$fecha_hasta = date_create($_REQUEST['fecha_hasta']);
+
+$desde = date_format($fecha_desde, 'd-m-Y 00:00:00');
+$hasta  = date_format($fecha_hasta, 'd-m-Y 23:00:00');
+
+$hoy = date('d-m-Y');
 
 $desposito ='Depositos';
 
 
 
-if (empty($_POST['fecha_desde']) && empty($_POST['fecha_hasta']) ) {
+if (empty($desde) && empty($hasta)) {
 
  
     $sql = mysqli_query($conection, "SELECT i.id,i.Tipo,i.SubTipo,i.Monto,i.Factura,i.Concepto,i.Fmovimiento,i.Estado
-    FROM historialie i  where Tipo LIKE '%".$desposito."%' AND  Fecha like '%".$hoy."%' AND Fecha like '%".$anio."%' ");
+    FROM historialie i  where Tipo LIKE '%".$desposito."%' AND  Fecha like '%".$hoy."%' ");
 
 }else{ 
-    $anio = date("Y");
-    $fecha_desde = date_create($_REQUEST['fecha_desde']);
-    $fecha_hasta = date_create($_REQUEST['fecha_hasta']);
-
-    $desde = date_format($fecha_desde, 'd-m-Y 00:00:00');
-    $hasta  = date_format($fecha_hasta, 'd-m-Y 23:00:00');
-    //exit();
-
+// echo $desde.' '.$hasta.' '.$desposito.' '.$fecha;
+// exit();
    $sql = mysqli_query($conection, "SELECT i.id,i.Tipo,i.SubTipo,i.Monto,i.Factura,i.Concepto,i.Fmovimiento,i.Estado
-   FROM historialie i  where Tipo LIKE '%".$desposito."%' AND Fecha BETWEEN '$desde' AND '$hasta' AND Fecha like '%".$anio."%' ");
+   FROM historialie i  where Fecha BETWEEN '{$desde}' AND '{$hasta}' AND Tipo LIKE '%".$desposito."%' AND Fecha like '%".$fecha."%' ");
 }
 
 

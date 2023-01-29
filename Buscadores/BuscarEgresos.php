@@ -5,32 +5,32 @@
 session_start();
 require_once("../Modelos/conexion.php");
 
+$anio = date_create($_REQUEST['fecha_desde']);
+$fecha = date_format($anio, 'm-Y');
 
-$fecha_desde = '';
-$fecha_hasta  = '';
-$hoy = date("d-m-Y");
-$anio = date("Y");
+$fecha_desde = date_create($_REQUEST['fecha_desde']);
+$fecha_hasta = date_create($_REQUEST['fecha_hasta']);
 
+$desde = date_format($fecha_desde, 'd-m-Y 00:00:00');
+$hasta  = date_format($fecha_hasta, 'd-m-Y 23:00:00');
+
+$hoy = date('d-m-Y');
 $egreso ='Egresos';
 
 
 
-if (empty($_POST['fecha_desde']) && empty($_POST['fecha_hasta']) ) {
+
+if (empty($desde) && empty($hasta)) {
 
  
     $sql = mysqli_query($conection, "SELECT i.id,i.Tipo,i.SubTipo,i.Monto,i.Factura,i.Concepto,i.Fmovimiento,i.Estado
     FROM historialie i  where Tipo LIKE '%".$egreso."%' AND  Fecha like '%".$hoy."%'  ");
 
 }else{ 
-    $fecha_desde = date_create($_REQUEST['fecha_desde']);
-    $fecha_hasta = date_create($_REQUEST['fecha_hasta']);
 
-    $desde = date_format($fecha_desde, 'd-m-Y 00:00:00');
-    $hasta  = date_format($fecha_hasta, 'd-m-Y 23:00:00');
-    //exit();
 
    $sql = mysqli_query($conection, "SELECT i.id,i.Tipo,i.SubTipo,i.Monto,i.Factura,i.Concepto,i.Fmovimiento,i.Estado
-   FROM historialie i  where Tipo LIKE '%".$egreso."%' AND Fecha BETWEEN '$desde' AND '$hasta' AND LIKE '%".$anio."%'");
+   FROM historialie i Fecha BETWEEN '{$desde}' AND '{$hasta}' AND Tipo LIKE '%".$egreso."%' AND Fecha like '%".$fecha."%' ");
 }
 
 
