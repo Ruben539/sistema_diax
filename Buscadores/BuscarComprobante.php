@@ -6,53 +6,32 @@ session_start();
 require_once("../Modelos/conexion.php");
 
 
-$fecha_desde = '';
-$fecha_hasta  = '';
-if(empty($_POST['fecha_desde']) || empty($_POST['fecha_hasta'])) {
-  
-  echo '<div class="alert alert-danger" role="alert">
-    Debes seleccionar las fechas a buscar
-  </div>';
-  exit();
-  
-}
-#$medico=$_POST['medico'];
-if (!empty($_REQUEST['fecha_desde']) && !empty($_REQUEST['fecha_hasta']) ) {
-  $fecha_desde = date_create($_REQUEST['fecha_desde']);
-  $desde = date_format($fecha_desde, 'd-m-Y');
+$anio = date_create($_REQUEST['fecha_desde']);
+$fecha = date_format($anio, 'm-Y');
 
+$fecha_desde = date_create($_REQUEST['fecha_desde']);
+$fecha_hasta = date_create($_REQUEST['fecha_hasta']);
 
-  $fecha_hasta = date_create($_REQUEST['fecha_hasta']);
-  $hasta = date_format($fecha_hasta, 'd-m-Y');
+$desde = date_format($fecha_desde, 'd-m-Y 00:00:00');
+$hasta  = date_format($fecha_hasta, 'd-m-Y 23:00:00');
 
- 
+$hoy = date('d-m-Y');
 
-// echo $desde. ' - '. $hasta. ' - '. $medico;
-// exit();
+//echo $fecha;
+//exit();
 
- $buscar = '';
- $where = '';
+if (empty($desde) && empty($hasta)) {
+  $sql = mysqli_query($conection, "SELECT h.id,c.nombre,c.apellido,h.Estudio,h.Cedula,h.Atendedor,h.Fecha,h.Seguro,h.Monto,h.Descuento,h.MontoS,h.Comentario, h.fecha_2 
+  FROM historial h inner join clientes c on c.cedula = h.cedula  where   Fecha LIKE '%".$hoy."%' ORDER BY  h.id ASC");
 
-}if ($desde > $hasta) {
- echo $alert = '<p class = "alert alert-danger">La Fecha de Inicio de la busqueda debe ser mayor a la del final</p>';
-  exit();
-  
-}else if ($desde == $hasta) {
-
-  $where = "Fecha LIKE '%$desde%'";
-
-  $buscar = "fecha_desde=$desde&fecha_hasta=$hasta ";
-}else {
-  $f_de = $desde.'-00:00:00';
-  $f_a  = $hasta.'-23:00:00';
-  $where = "Fecha BETWEEN '$f_de' AND '$f_a' ";
-  $buscar = "fecha_desde=$desde&fecha_hasta=$hasta ";
-}
-
-$hoy = date("Y");
+}else{
 
   $sql = mysqli_query($conection, "SELECT h.id,c.nombre,c.apellido,h.Estudio,h.Cedula,h.Atendedor,h.Fecha,h.Seguro,h.Monto,h.Descuento,h.MontoS,h.Comentario, h.fecha_2 
-  FROM historial h inner join clientes c on c.cedula = h.cedula  where $where and Fecha like '%".$hoy."%' ORDER BY  h.id ASC");
+  FROM historial h inner join clientes c on c.cedula = h.cedula  where Fecha BETWEEN '{$desde}' AND '{$hasta}'AND  Fecha LIKE '%".$fecha."%' ORDER BY  h.id ASC");
+
+}
+
+
 
 
 
