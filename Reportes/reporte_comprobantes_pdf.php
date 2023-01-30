@@ -80,7 +80,6 @@ ob_start();
                 <th>Doctor/a</th>
                 <th>Seguro</th>
                 <th>Monto</th>
-                <th>Monto Seguro</th>
                 <th>Descuento</th>
                 <th>Comentario</th>
 
@@ -113,7 +112,6 @@ ob_start();
                     <td><?php echo $data['Atendedor']; ?></td>
                     <td><?php echo $data['Seguro']; ?></td>
                     <td><?php echo $data['Monto'] ?></td>
-                    <td><?php echo $data['MontoS'] ?></td>
                     <td><?php echo $data['Descuento'] ?></td>
                     <td><?php echo $data['Comentario'] ?></td>
 
