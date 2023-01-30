@@ -10,8 +10,7 @@ if (isset($_POST['consulta'])) {
     $res = $conection->real_escape_string($_POST['consulta']);
 
     $query = "SELECT h.id,h.Cedula,c.Nombre,c.Apellido,h.Estudio,h.Atendedor,h.Seguro,h.Monto,h.Descuento,h.Comentario,h.Montos,h.Fecha
-    FROM historial h  inner join clientes c on c.cedula = h.cedula WHERE h.Cedula LIKE '%".$res."%' OR C.Nombre LIKE 
-    '%".$res."%' ";
+    FROM historial h  inner join clientes c on c.cedula = h.cedula WHERE h.Cedula LIKE '%".$res."%' ";
 
 
 
