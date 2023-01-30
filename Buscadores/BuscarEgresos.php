@@ -14,22 +14,22 @@ $desde = date_format($fecha_desde, 'd-m-Y');
 $hasta  = date_format($fecha_hasta, 'd-m-Y');
 
 $hoy = date('d-m-Y');
-$ingreso ='Egresos';
+$egreso ='Egresos';
 
 
-//echo $desde.' '.$hasta.' '.$ingreso;
+//echo $desde.' '.$hasta.' '.$egreso;
 //exit();
 
 if (empty($_POST['fecha_desde']) && empty($_POST['fecha_hasta'])) {
 
  
   $sql = mysqli_query($conection, "SELECT i.id,i.Tipo,i.SubTipo,i.Monto,i.Factura,i.Concepto,i.Fmovimiento,i.Estado
-  FROM historialie i where Fecha LIKE '%".$hoy."%' AND Tipo LIKE '%".$ingreso."%' ");
+  FROM historialie i where Fecha LIKE '%".$hoy."%' AND Tipo LIKE '%".$egreso."%' AND Fecha LIKE '%".$fecha."%'");
 
 }else{ 
 
    $sql = mysqli_query($conection, "SELECT i.id,i.Tipo,i.SubTipo,i.Monto,i.Factura,i.Concepto,i.Fmovimiento,i.Estado
-   FROM historialie i where Fecha BETWEEN '{$desde}' AND '{$hasta}' AND Tipo LIKE '%".$ingreso."%' ");
+   FROM historialie i where Fecha BETWEEN '{$desde}' AND '{$hasta}' AND Tipo LIKE '%".$egreso."%' AND Fecha LIKE '%".$fecha."%' ");
 
 }
 

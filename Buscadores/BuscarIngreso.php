@@ -25,12 +25,12 @@ if (empty($_POST['fecha_desde']) && empty($_POST['fecha_hasta'])) {
 
  
   $sql = mysqli_query($conection, "SELECT i.id,i.Tipo,i.SubTipo,i.Monto,i.Factura,i.Concepto,i.Fmovimiento,i.Estado
-  FROM historialie i where Fecha LIKE '%".$hoy."%' AND Tipo LIKE '%".$ingreso."%' ");
+  FROM historialie i where Fecha LIKE '%".$hoy."%' AND Tipo LIKE '%".$ingreso."%' AND Fecha LIKE '%".$fecha."%'");
 
 }else{ 
 
    $sql = mysqli_query($conection, "SELECT i.id,i.Tipo,i.SubTipo,i.Monto,i.Factura,i.Concepto,i.Fmovimiento,i.Estado
-   FROM historialie i where Fecha BETWEEN '{$desde}' AND '{$hasta}' AND Tipo LIKE '%".$ingreso."%' ");
+   FROM historialie i where Fecha BETWEEN '{$desde}' AND '{$hasta}' AND Tipo LIKE '%".$ingreso."%' AND Fecha LIKE '%".$fecha."%' ");
 
 }
 
