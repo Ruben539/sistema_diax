@@ -130,7 +130,6 @@ ob_start();
                 <td></td>
                 <td></td>
                 <td></td>
-                <td></td>
                 <td class="alert alert-success text-center">
                 <?php echo number_format($monto, 3, '.', '.'); ?>.<b>G</b>
                 </td>
