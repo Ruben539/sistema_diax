@@ -1,39 +1,37 @@
-
 <?php
 //echo 'Hola desde el buscador';
 //print_r($_POST);
 session_start();
 require_once("../Modelos/conexion.php");
 
-
-$anio = date_create($_REQUEST['fecha_desde']);
+$anio = date_create($_POST['fecha_desde']);
 $fecha = date_format($anio, 'm-Y');
 
-$fecha_desde = date_create($_REQUEST['fecha_desde']);
-$fecha_hasta = date_create($_REQUEST['fecha_hasta']);
+$fecha_desde = date_create($_POST['fecha_desde']);
+$fecha_hasta = date_create($_POST['fecha_hasta']);
 
-$desde = date_format($fecha_desde, 'd-m-Y 00:00:00');
-$hasta  = date_format($fecha_hasta, 'd-m-Y 23:00:00');
+$desde = date_format($fecha_desde, 'd-m-Y');
+$hasta  = date_format($fecha_hasta, 'd-m-Y');
 
 $hoy = date('d-m-Y');
-
-$desposito ='Depositos';
-
+$ingreso ='Depositos';
 
 
-if (empty($desde) && empty($hasta)) {
+//echo $desde.' '.$hasta.' '.$ingreso;
+//exit();
+
+if (empty($_POST['fecha_desde']) && empty($_POST['fecha_hasta'])) {
 
  
-    $sql = mysqli_query($conection, "SELECT i.id,i.Tipo,i.SubTipo,i.Monto,i.Factura,i.Concepto,i.Fmovimiento,i.Estado
-    FROM historialie i  where Tipo LIKE '%".$desposito."%' AND  Fecha like '%".$hoy."%' ");
+  $sql = mysqli_query($conection, "SELECT i.id,i.Tipo,i.SubTipo,i.Monto,i.Factura,i.Concepto,i.Fmovimiento,i.Estado
+  FROM historialie i where Fecha LIKE '%".$hoy."%' AND Tipo LIKE '%".$ingreso."%' ");
 
 }else{ 
-// echo $desde.' '.$hasta.' '.$desposito.' '.$fecha;
-// exit();
-   $sql = mysqli_query($conection, "SELECT i.id,i.Tipo,i.SubTipo,i.Monto,i.Factura,i.Concepto,i.Fmovimiento,i.Estado
-   FROM historialie i  where Fecha BETWEEN '{$desde}' AND '{$hasta}' AND Tipo LIKE '%".$desposito."%' AND Fecha like '%".$fecha."%' ");
-}
 
+   $sql = mysqli_query($conection, "SELECT i.id,i.Tipo,i.SubTipo,i.Monto,i.Factura,i.Concepto,i.Fmovimiento,i.Estado
+   FROM historialie i where Fecha BETWEEN '{$desde}' AND '{$hasta}' AND Tipo LIKE '%".$ingreso."%' ");
+
+}
 
 
 $resultado = mysqli_num_rows($sql);
