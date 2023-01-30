@@ -54,8 +54,8 @@ require_once("../body/header_admin.php");
 <script type="text/javascript" >
   $(buscarDatos());
 
-  function buscarDatos(consulta) {
-    $.ajax({
+  async function  buscarDatos(consulta) {
+    await $.ajax({
       url: '../Buscadores/BuscarClientes.php',
       type: 'POST',
       dataType: 'html',
