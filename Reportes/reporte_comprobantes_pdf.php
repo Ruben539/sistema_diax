@@ -104,7 +104,6 @@ ob_start();
 
                 ?>
                     <tr class="text-center">
-
                     <td><?php echo $data['Fecha'] ?></td>
                     <td><?php echo $data['nombre'].' '.$data['apellido'];  ?></td>
                     <td><?php echo $data['Cedula']; ?></td>
