@@ -4,32 +4,54 @@
 session_start();
 require_once("../Modelos/conexion.php");
 
-$anio = date_create($_POST['fecha_desde']);
+$medico = '';
+$fecha_desde = '';
+$fecha_hasta  = '';
+if(empty($_POST['fecha_desde']) || empty($_POST['fecha_hasta']) || empty($_POST['medico'])) {
+  
+  echo '<div class="alert alert-danger" role="alert">
+    Debes seleccionar los parametros a buscar
+
+  </div>';
+  exit();
+  
+}
+
+if (!empty($_REQUEST['fecha_desde']) && !empty($_REQUEST['fecha_hasta'])|| !empty($_REQUEST['medico'])) {
+  $fecha_desde = date_create($_REQUEST['fecha_desde']);
+  $desde = date_format($fecha_desde, 'd-m-Y');
+
+
+  $fecha_hasta = date_create($_REQUEST['fecha_hasta']);
+  $hasta = date_format($fecha_hasta, 'd-m-Y');
+
+  $medico = trim($_POST['medico']);
+
+ $buscar = '';
+ $where = '';
+
+}if ($desde > $hasta) {
+ echo $alert = '<p class = "alert alert-danger">La Fecha de Inicio de la busqueda debe ser mayor a la del final</p>';
+  exit();
+  
+}else if ($desde == $hasta) {
+
+  $where = "Fecha LIKE '%$desde%' AND Atendedor LIKE '%$medico%'";
+
+  $buscar = "fecha_desde=$desde&fecha_hasta=$hasta AND Atendedor LIKE '%$medico%' ";
+}else {
+  $f_de = $desde.'-00:00:00';
+  $f_a  = $hasta.'-23:00:00';
+  $where = "Fecha BETWEEN '$f_de' AND '$f_a' AND Atendedor LIKE '%$medico%' ";
+  $buscar = "fecha_desde=$desde&fecha_hasta=$hasta AND Atendedor LIKE '%$medico%'";
+}
+
+$anio = date_create($_REQUEST['fecha_desde']);
 $fecha = date_format($anio, 'm-Y');
 
-$fecha_desde = date_create($_POST['fecha_desde']);
-$fecha_hasta = date_create($_POST['fecha_hasta']);
-
-$desde = date_format($fecha_desde, 'd-m-Y');
-$hasta  = date_format($fecha_hasta, 'd-m-Y');
-
-$hoy = date('d-m-Y');
-$doctor = $_POST['medico'];
-
-
-//echo $desde.' '.$hasta.' '.$fecha.''.$doctor;
-//exit();
-
-if (empty($desde) && empty($hasta)) {
   $sql = mysqli_query($conection, "SELECT h.id,c.nombre,c.apellido,h.Estudio,h.Cedula,h.Atendedor,h.Fecha,h.Seguro,h.Monto,h.Descuento,h.MontoS,h.Comentario, h.fecha_2 
-  FROM historial h inner join clientes c on c.cedula = h.cedula  
-  where Fecha LIKE '%".$hoy."%' AND  Atendedor LIKE '%".$doctor."%'  ");
-
-}else{
-
-  $sql = mysqli_query($conection, "SELECT h.id,c.nombre,c.apellido,h.Estudio,h.Cedula,h.Atendedor,h.Fecha,h.Seguro,h.Monto,h.Descuento,h.MontoS,h.Comentario, h.fecha_2 
-  FROM historial h inner join clientes c on c.cedula = h.cedula  where Fecha BETWEEN '{$desde}' AND '{$hasta}' AND Atendedor LIKE '%".$doctor."%' AND Fecha LIKE '%".$fecha."%' ");
-}
+  FROM historial h inner join clientes c on c.cedula = h.cedula  where $where and Fecha like '%".$fecha."%' ORDER BY  h.id ASC");
+              
 
 
 
