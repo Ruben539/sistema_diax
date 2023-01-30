@@ -92,7 +92,8 @@ ob_start();
 
               <tbody>
                 <?php
-                $hoy = date("Y");
+                  $anio = date_create($_REQUEST['fecha_desde']);
+                  $hoy = date_format($anio, 'm-Y');
 
                 $sql = mysqli_query($conection, "SELECT h.id,c.nombre,c.apellido,h.Estudio,h.Cedula,h.Atendedor,h.Fecha,h.Seguro,h.Monto,h.Descuento,h.MontoS,h.Comentario, h.fecha_2 
                 FROM historial h inner join clientes c on c.cedula = h.cedula  where $where and Fecha like '%".$hoy."%' ORDER BY  h.id ASC");
