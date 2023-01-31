@@ -32,7 +32,7 @@ $sesion = $_SESSION['rol'];
   <body class="app sidebar-mini">
     <!-- Navbar-->
     <header class="app-header">
-      <?php if ($sesion == 1 || $sesion == 2) {?>
+      <?php if ($sesion == 1 || $sesion == 2 || $sesion == 5 || $sesion == 6) {?>
         <a class="app-header__logo" href="../Plantillas/dashboard.php">Sistema Diax</a>
       <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a> 
       <?php } ?>
