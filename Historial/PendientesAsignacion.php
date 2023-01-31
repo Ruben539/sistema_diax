@@ -1,6 +1,6 @@
 <?php
 session_start();
-if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 5){
+if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 5 || $_SESSION['rol'] == 5.1){
     if (empty($_SESSION['active'])) {
     header('location: salir.php');
 }
@@ -51,9 +51,14 @@ require_once("../body/header_admin.php");
                   <tbody>
                       <?php 
                         $hoy = date('m-Y');
-                        
-                         $sql = mysqli_query($conection, "SELECT h.id,h.Cedula,c.nombre,c.apellido,h.estudio,h.atendedor,h.placas,h.informa,h.fecha FROM historial h INNER JOIN clientes c on c.cedula = h.cedula
+                        if($_SESSION['rol'] == 5){
+                          $sql = mysqli_query($conection, "SELECT h.id,h.Cedula,c.nombre,c.apellido,h.estudio,h.atendedor,h.placas,h.informa,h.fecha FROM historial h INNER JOIN clientes c on c.cedula = h.cedula
                          WHERE atendedor like '%Fabiola%'  AND  fecha like '%".$hoy."%' ORDER BY ID ASC ");
+                        }else if(['rol'] == 5.1){
+                          $sql = mysqli_query($conection, "SELECT h.id,h.Cedula,c.nombre,c.apellido,h.estudio,h.atendedor,h.placas,h.informa,h.fecha FROM historial h INNER JOIN clientes c on c.cedula = h.cedula
+                         WHERE atendedor like '%Elena%'  AND  fecha like '%".$hoy."%' ORDER BY ID ASC ");
+
+                        }
                        
 
                          $resultado = mysqli_num_rows($sql);

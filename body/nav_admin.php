@@ -47,7 +47,7 @@ if ($resultado > 0) {
             <!--Menu Principal del los Pacientes-->
             <li><a class="treeview-item" href="../Plantillas/registro_pacientes.php"><i class="icon fa fa-user-plus"></i> Registro de Pacientes</a></li>
             <li><a class="treeview-item" href="../Plantillas/pacientes.php"><i class="icon fa fa-user-plus"></i> Lista de Pacientes</a></li>
-            <li><a class="treeview-item" href="../Historial/historialPaciente.php"><i class="icon fa fa-user-plus"></i> Historial Pacientes</a></li>
+            <li><a class="treeview-item" href="../Historial/Buscar_porFiltro.php"><i class="icon fa fa-user-plus"></i> Historial Pacientes</a></li>
             <!--Menu Principal del Pacientes-->
             
           </ul>
@@ -106,7 +106,7 @@ if ($resultado > 0) {
         
         <?php  } ?>
 
-        <?php if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 5) {?>
+        <?php if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 5 || $_SESSION['rol'] == 5.1) {?>
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-user-plus"></i><span class="app-menu__label">Informantes</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
             <!--Menu Principal del Informantes-->
