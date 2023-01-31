@@ -3,7 +3,9 @@
 session_start();
 
 require_once("../Modelos/conexion.php");
-
+if (empty($_SESSION['active'])) {
+    header('location: ../Plantillas/salir.php');
+}
 
 
 if (!empty($_POST)) {
