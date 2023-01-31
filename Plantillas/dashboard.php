@@ -1,6 +1,6 @@
 <?php
 session_start();
-if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 2 || $_SESSION['rol'] == 5 || $_SESSION['rol'] == 5.1) {
+if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 2 || $_SESSION['rol'] == 5 || $_SESSION['rol'] == 6) {
   if (empty($_SESSION['active'])) {
     header('location: salir.php');
   }
