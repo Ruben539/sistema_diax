@@ -28,7 +28,7 @@ if (!empty($_SESSION['active'])) {
 
 
 
-        $query = mysqli_query($conection,"SELECT * FROM usuario WHERE usuario = '$user'
+        $query = mysqli_query($conection,"SELECT * FROM usuarios WHERE usuario = '$user'
           AND pass = '$pass' AND estatus = 1");
 
       mysqli_close($conection);//con esto cerramos la conexion a la base de datos una vez conectado arriba con el conexion.php
