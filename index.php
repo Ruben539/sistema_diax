@@ -61,7 +61,11 @@ if (!empty($_SESSION['active'])) {
 
         header('Location: Plantillas/dashboard.php');
 
-      } 
+      }else if($_SESSION['rol'] == 6){
+
+        header('Location: Plantillas/dashboard.php');
+
+      }
       
     }else{
 

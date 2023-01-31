@@ -1,6 +1,6 @@
 <?php
 session_start();
-if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 5 || $_SESSION['rol'] == 5.1){
+if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 5 || $_SESSION['rol'] == 6){
     if (empty($_SESSION['active'])) {
     header('location: salir.php');
 }
@@ -42,7 +42,7 @@ require_once("../body/header_admin.php");
                             <th>Placas</th>                                
                             <th>Informante</th>                                
                             <th>Fecha</th>                                
-                            <?php if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 5) {?>
+                            <?php if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 6) {?>
                             <th>Asignar</th> 
                             <?php } ?>    
                         </tr>
@@ -51,14 +51,10 @@ require_once("../body/header_admin.php");
                   <tbody>
                       <?php 
                         $hoy = date('m-Y');
-                        if($_SESSION['rol'] == 5){
-                          $sql = mysqli_query($conection, "SELECT h.id,h.Cedula,c.nombre,c.apellido,h.estudio,h.atendedor,h.placas,h.informa,h.fecha FROM historial h INNER JOIN clientes c on c.cedula = h.cedula
-                         WHERE atendedor like '%Fabiola%'  AND  fecha like '%".$hoy."%' ORDER BY ID ASC ");
-                        }else if(['rol'] == 5.1){
+                        
                           $sql = mysqli_query($conection, "SELECT h.id,h.Cedula,c.nombre,c.apellido,h.estudio,h.atendedor,h.placas,h.informa,h.fecha FROM historial h INNER JOIN clientes c on c.cedula = h.cedula
                          WHERE atendedor like '%Elena%'  AND  fecha like '%".$hoy."%' ORDER BY ID ASC ");
-
-                        }
+                        
                        
 
                          $resultado = mysqli_num_rows($sql);
@@ -79,7 +75,7 @@ require_once("../body/header_admin.php");
 
                           
                             
-	<?php if($_SESSION['rol'] == 1  || $_SESSION['rol'] == 5){ ?>
+	<?php if($_SESSION['rol'] == 1  || $_SESSION['rol'] == 6){ ?>
     <td>
 		<a href="../Helpers/asignar_informante.php?id=<?php echo $data['id']; ?>"class="btn btn-outline-primary" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px  rgba(0, 0, 0, 0.25);"><i class="fas fa-edit"></i></a>
     </td>

@@ -106,12 +106,27 @@ if ($resultado > 0) {
         
         <?php  } ?>
 
-        <?php if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 5 || $_SESSION['rol'] == 5.1) {?>
+        <?php if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 5 ) {?>
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-user-plus"></i><span class="app-menu__label">Informantes</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
             <!--Menu Principal del Informantes-->
             <li><a class="treeview-item" href="../Historial/AsignarInformante.php"><i class="icon fa fa-user-plus"></i> Buscar Paciente</a></li>
-            <li><a class="treeview-item" href="../Historial/PendientesAsignacion.php"><i class="icon fa fa-user-plus"></i> Pendientes</a></li>
+            <li><a class="treeview-item" href="../Historial/PendientesAsignacionFabiola.php"><i class="icon fa fa-user-plus"></i> Pendientes</a></li>
+            <!--Menu Principal del Informantes-->
+            <?php if ($_SESSION['rol'] == 1) {?>
+              <li><a class="treeview-item" href="../Historial/HistorialInformante.php"><i class="icon fa fa-money"></i> Rendicion Informante</a></li>
+              <?php  } ?>
+            
+          </ul>
+        </li>
+        
+        <?php  } ?>
+        <?php if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 6) {?>
+        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-user-plus"></i><span class="app-menu__label">Informantes</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+          <ul class="treeview-menu">
+            <!--Menu Principal del Informantes-->
+            <li><a class="treeview-item" href="../Historial/AsignarInformante.php"><i class="icon fa fa-user-plus"></i> Buscar Paciente</a></li>
+            <li><a class="treeview-item" href="../Historial/PendientesAsignacionElena.php"><i class="icon fa fa-user-plus"></i> Pendientes</a></li>
             <!--Menu Principal del Informantes-->
             <?php if ($_SESSION['rol'] == 1) {?>
               <li><a class="treeview-item" href="../Historial/HistorialInformante.php"><i class="icon fa fa-money"></i> Rendicion Informante</a></li>

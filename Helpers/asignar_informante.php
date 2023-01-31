@@ -20,8 +20,6 @@ if (!empty($_POST)) {
         $Informa      = $_POST['Informa'];
         $Placas       = $_POST['Placas'];
 
-
-
         $query = mysqli_query($conection,"SELECT * FROM historial
 			WHERE  id != id"
         );
