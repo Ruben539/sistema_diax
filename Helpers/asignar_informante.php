@@ -57,7 +57,7 @@ if (empty($_REQUEST['id'])) {
 
 $id = $_REQUEST['id'];
 
-$sql = mysqli_query($conection,"SELECT * FROM historial  WHERE idusuario = $id ");   
+$sql = mysqli_query($conection,"SELECT * FROM historial  WHERE id = $id ");   
 
 //mysqli_close($conection);//con esto cerramos la conexion a la base de datos una vez conectado arriba con el conexion.php
 
