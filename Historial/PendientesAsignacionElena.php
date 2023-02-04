@@ -1,12 +1,12 @@
 <?php
 session_start();
-if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 5 || $_SESSION['rol'] == 6){
+if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 6){
     if (empty($_SESSION['active'])) {
-    header('location: salir.php');
+    header('location: ../Plantillas/salir.php');
 }
 
 }else{
-  header('location: salir.php');  
+  header('location: ../Plantillas/salir.php');  
 }
 
 require_once("../Modelos/conexion.php");

@@ -62,7 +62,7 @@ $sql = mysqli_query($conection, "SELECT * FROM historial  WHERE id = $id");
 $resultado = mysqli_num_rows($sql);
 
 if ($resultado == 0) {
-    header("location: ../Plantillas/salir.php");
+    header("location: ../Historial/AsignarInformante.php");
 } else {
 
     while ($data = mysqli_fetch_array($sql)) {
@@ -89,10 +89,10 @@ require_once("../body/header_admin.php");
     <div class="row" style="justify-content: center;">
         <div class="col-md-5">
             <div class="tile">
-                <h3 class="tile-title">Modificar de Movimiento</h3>
+                <h3 class="tile-title text-center">Asignar Informante <i class="fa fa-user-md"></i></h3>
                 <div class="tile-body">
                     <form action="" method="POST">
-                        <input type="hidden" name="id" id="id" value="<?php echo $id; ?>">
+                        <input type="text" name="id" id="id" value="<?php echo $id; ?>" class="form-control">
 
                         <div class="form-group">
                             <label class="control-label">Doctor Informante</label>

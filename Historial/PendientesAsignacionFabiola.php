@@ -1,12 +1,12 @@
 <?php
 session_start();
-if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 5 || $_SESSION['rol'] == 5){
+if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 5 ){
     if (empty($_SESSION['active'])) {
-    header('location: salir.php');
+    header('location: ../Plnatillas/salir.php');
 }
 
 }else{
-  header('location: salir.php');  
+  header('location: ../Plantillas/salir.php');  
 }
 
 require_once("../Modelos/conexion.php");
@@ -136,7 +136,7 @@ require_once("../body/header_admin.php");
   function permisoAuto(){
 	Swal.fire(
 		'Lo Siento',
-		'No posee el Permiso para Eliminar un Medico',
+		'No posee el Permiso para asignar un Medico',
 		'error'
 		)
 }
