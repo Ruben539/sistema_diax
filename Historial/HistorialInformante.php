@@ -53,7 +53,7 @@ require_once("../body/header_admin.php");
             <?php
 				include "../Modelos/conexion.php";
 
-				$query_medicos = mysqli_query($conection,"SELECT * FROM medicos");
+				$query_medicos = mysqli_query($conection,"SELECT * FROM medicos WHERE Especialidad like '%Informante%'");
 
 				mysqli_close($conection);//con esto cerramos la conexion a la base de datos una vez conectado arriba con el conexion.php
 				$resultado = mysqli_num_rows($query_medicos);

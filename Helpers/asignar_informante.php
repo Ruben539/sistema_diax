@@ -37,8 +37,11 @@ if (!empty($_POST)) {
         if ($sql_update) {
 
             $alert = '<p class = "msg_success">Actualizado Correctamente</p>';
+
         } else {
+
             $alert = '<p class = "msg_error">Error al Asignar el Informante</p>';
+
         }
     }
 }
@@ -46,15 +49,15 @@ if (!empty($_POST)) {
 //Recuperacion de datos para mostrar al seleccionar Actualizar
 
 if (empty($_REQUEST['id'])) {
-    header('location: ../Plantillas/AsignarInformante.php');
+	header('location: ../Historial/AsignarInformante.php');
 
-    //mysqli_close($conection);//con esto cerramos la conexion a la base de datos una vez conectado arriba con el conexion.php
+	//mysqli_close($conection);//con esto cerramos la conexion a la base de datos una vez conectado arriba con el conexion.php
 
 }
 
 $id = $_REQUEST['id'];
 
-$sql = mysqli_query($conection, "SELECT * FROM historial  WHERE id = $id");
+$sql = mysqli_query($conection,"SELECT * FROM historial  WHERE idusuario = $id ");   
 
 //mysqli_close($conection);//con esto cerramos la conexion a la base de datos una vez conectado arriba con el conexion.php
 
@@ -62,28 +65,34 @@ $sql = mysqli_query($conection, "SELECT * FROM historial  WHERE id = $id");
 $resultado = mysqli_num_rows($sql);
 
 if ($resultado == 0) {
-    header("location: ../Historial/AsignarInformante.php");
-} else {
+	header("location: ../Historial/AsignarInformante.php");
+}else{
+	$option = '';
+	while ($data = mysqli_fetch_array($sql)) {
+		
+		$id       = $data['id'];
+		$Informa  = $data['Informa'];
+		$Placas   = $data['Placas'];
+		
 
-    while ($data = mysqli_fetch_array($sql)) {
-
-        $id           = $data['id'];
-        $Informa      = $data['Informa'];
-        $Placas       = $data['Placas'];
-    }
+	}
 }
 
 require_once("../body/header_admin.php");
 ?>
-  <link rel="stylesheet" href="../node_modules/chosen-js/chosen.css" type="text/css" />
+    <link rel="stylesheet" href="../node_modules/chosen-js/chosen.css" type="text/css"/>
     <script src="../node_modules/chosen-js/chosen.jquery.min.js"></script>
     <script src="../js/jquery-3.3.1.min.js"></script>
     <script src="../node_modules/chosen-js/chosen.jquery.js"></script>
+
     <script>
+
         $(document).ready(function() {
             $(".chosen").chosen();
         });
+
     </script>
+
 <main class="app-content">
 
     <div class="row" style="justify-content: center;">
