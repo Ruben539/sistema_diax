@@ -46,7 +46,7 @@ if (!empty($_POST)) {
 //Recuperacion de datos para mostrar al seleccionar Actualizar
 
 if (empty($_REQUEST['id'])) {
-    header('location: ../Plantillas/salir.php');
+    header('location: ../Plantillas/AsignarInformante.php');
 
     //mysqli_close($conection);//con esto cerramos la conexion a la base de datos una vez conectado arriba con el conexion.php
 
@@ -62,7 +62,7 @@ $sql = mysqli_query($conection, "SELECT * FROM historial  WHERE id = $id");
 $resultado = mysqli_num_rows($sql);
 
 if ($resultado == 0) {
-    header("location: ../Historial/AsignarInformante.php");
+    header("location: ../Plantillas/salir.php");
 } else {
 
     while ($data = mysqli_fetch_array($sql)) {
