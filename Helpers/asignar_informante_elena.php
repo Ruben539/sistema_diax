@@ -28,8 +28,7 @@ if (!empty($_POST)) {
         //exit; sirve para ejectuar la consulta en mysql
         $query = mysqli_query(
             $conection,
-            "SELECT * FROM historial
-				WHERE  id != id"
+            "SELECT * FROM historial WHERE  id != id"
         );
 
         $resultado = mysqli_fetch_array($query);
@@ -53,34 +52,47 @@ if (!empty($_POST)) {
 
 //Recuperacion de datos para mostrar al seleccionar Actualizar
 
-if (empty($_REQUEST['id'])) {
-    header('location: ../Plantillas/dashboard.php');
 
-    //mysqli_close($conection);//con esto cerramos la conexion a la base de datos una vez conectado arriba con el conexion.php
+if (empty($_REQUEST['id'])) {
+	header('location: ../Plantillas/dashboard.php');
+
+	//mysqli_close($conection);//con esto cerramos la conexion a la base de datos una vez conectado arriba con el conexion.php
 
 }
 
 $id = $_REQUEST['id'];
 
-$sql = mysqli_query($conection, "SELECT * FROM Historial  WHERE id = $id and Atendedor like '%Elena%' ");
+$sql = mysqli_query($conection,"SELECT * FROM historial  WHERE id = $id");   
 
 //mysqli_close($conection);//con esto cerramos la conexion a la base de datos una vez conectado arriba con el conexion.php
+
+//echo 'paso el sql';
+//exit();
 
 
 $resultado = mysqli_num_rows($sql);
 
 if ($resultado == 0) {
-    header("location: ../Plantillas/dashboard.php");
-} else {
-    $option = '';
-    while ($data = mysqli_fetch_array($sql)) {
+     
+	header("location: ../Plantillas/dashboard.php");
+}else{
+	$option = '';
+	while ($data = mysqli_fetch_array($sql)) {
+		
+		$id          = $data['id'];
+		$Cedula      = $data['Cedula'];
+		$Estudio     = $data['Estudio'];
+		$Atendedor   = $data['Atendedor'];
+		$Seguro      = $data['Seguro'];
+		$Monto       = $data['Monto'];
+		$Descuento   = $data['Descuento'];
+		$Comentario  = $data['Comentario'];
+		$Fecha       = $data['Fecha'];
+		$Informa     = $data['Informa'];
+		$Placas      = $data['Placas'];
 
-        $id       = $data['id'];
-        $Informa  = $data['Informa'];
-        $Placas   = $data['Placas'];
-    }
+	}
 }
-
 require_once("../body/header_admin.php");
 ?>
 <link rel="stylesheet" href="../node_modules/chosen-js/chosen.css" type="text/css" />
@@ -144,7 +156,7 @@ require_once("../body/header_admin.php");
 
 
                         <div class="tile-footer">
-                            <button class="btn btn-primary" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i>Actualizar</button>&nbsp;&nbsp;&nbsp;<a class="btn btn-secondary" href="../Plantillas/gastos.php"><i class="fa fa-fw fa-lg fa-times-circle"></i>Cancelar</a>
+                            <button class="btn btn-primary" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i>Actualizar</button>&nbsp;&nbsp;&nbsp;<a class="btn btn-secondary" href="../Historial/PendientesAsignacionElena.php"><i class="fa fa-fw fa-lg fa-times-circle"></i>Cancelar</a>
 
                         </div>
                     </form>
