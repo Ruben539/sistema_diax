@@ -11,17 +11,25 @@ if (empty($_SESSION['active'])) {
 if (!empty($_POST)) {
     $alert = '';
 
-    if (empty($_POST['Informa'])) {
+    if (empty($_POST['Informa']) || empty($_POST['Placas'])) {
 
         $alert = '<p class = "msg_error">Debe llenar Todos los Campos</p>';
     } else {
 
-        $id           = $_POST['id'];
-        $Informa      = $_POST['Informa'];
-        $Placas       = $_POST['Placas'];
+        $id          = $_POST['id'];
+        $Informa     = $_POST['Informa'];
+        $Placas      = $_POST['Placas'];
 
-        $query = mysqli_query($conection,"SELECT * FROM historial
-			WHERE  id != id"
+
+
+        //echo "SELECT * FROM usuario
+
+        //WHERE(usuario = '$user' AND idusuario != $iduser) or (correo = '$email' AND idusuario != $iduser";
+        //exit; sirve para ejectuar la consulta en mysql
+        $query = mysqli_query(
+            $conection,
+            "SELECT * FROM historial
+				WHERE  id != id"
         );
 
         $resultado = mysqli_fetch_array($query);
@@ -31,17 +39,14 @@ if (!empty($_POST)) {
         $alert = '<p class = "msg_error">El Registro ya existe,ingrese otro</p>';
     } else {
 
-        $sql_update = mysqli_query($conection, "UPDATE historial SET Informa = '$Informa', Placas = '$Placas'
-			WHERE id = $id");
+        $sql_update = mysqli_query($conection, "UPDATE Historial SET Informa = '$Informa',Placas = '$Placas'
+				WHERE id = $id");
 
         if ($sql_update) {
 
             $alert = '<p class = "msg_success">Actualizado Correctamente</p>';
-
         } else {
-
-            $alert = '<p class = "msg_error">Error al Asignar el Informante</p>';
-
+            $alert = '<p class = "msg_error">Error al Actualizar el Registro</p>';
         }
     }
 }
@@ -49,15 +54,15 @@ if (!empty($_POST)) {
 //Recuperacion de datos para mostrar al seleccionar Actualizar
 
 if (empty($_REQUEST['id'])) {
-	header('location: ../Historial/AsignarInformante.php');
+    header('location: ../Plantillas/dashboard.php');
 
-	//mysqli_close($conection);//con esto cerramos la conexion a la base de datos una vez conectado arriba con el conexion.php
+    //mysqli_close($conection);//con esto cerramos la conexion a la base de datos una vez conectado arriba con el conexion.php
 
 }
 
 $id = $_REQUEST['id'];
 
-$sql = mysqli_query($conection,"SELECT * FROM historial  WHERE id = $id ");   
+$sql = mysqli_query($conection, "SELECT * FROM Historial  WHERE id = $id");
 
 //mysqli_close($conection);//con esto cerramos la conexion a la base de datos una vez conectado arriba con el conexion.php
 
@@ -65,48 +70,42 @@ $sql = mysqli_query($conection,"SELECT * FROM historial  WHERE id = $id ");
 $resultado = mysqli_num_rows($sql);
 
 if ($resultado == 0) {
-	header("location: ../Historial/AsignarInformante.php");
-}else{
-	$option = '';
-	while ($data = mysqli_fetch_array($sql)) {
-		
-		$id       = $data['id'];
-		$Informa  = $data['Informa'];
-		$Placas   = $data['Placas'];
-		
+    header("location: ../Plantillas/dashboard.php");
+} else {
+    $option = '';
+    while ($data = mysqli_fetch_array($sql)) {
 
-	}
+        $id       = $data['id'];
+        $Informa  = $data['Informa'];
+        $Placas   = $data['Placas'];
+    }
 }
 
 require_once("../body/header_admin.php");
 ?>
-    <link rel="stylesheet" href="../node_modules/chosen-js/chosen.css" type="text/css"/>
+<link rel="stylesheet" href="../node_modules/chosen-js/chosen.css" type="text/css" />
     <script src="../node_modules/chosen-js/chosen.jquery.min.js"></script>
     <script src="../js/jquery-3.3.1.min.js"></script>
     <script src="../node_modules/chosen-js/chosen.jquery.js"></script>
-
-    <script>
-
+ <script>
         $(document).ready(function() {
             $(".chosen").chosen();
         });
-
-    </script>
-
+  </script>
 <main class="app-content">
 
     <div class="row" style="justify-content: center;">
         <div class="col-md-5">
             <div class="tile">
-                <h3 class="tile-title text-center">Asignar Informante <i class="fa fa-user-md"></i></h3>
+                <h3 class="tile-title">Asignar Informante</h3>
                 <div class="tile-body">
                     <form action="" method="POST">
-                        <input type="text" name="id" id="id" value="<?php echo $id; ?>" class="form-control">
-
+                        <input type="hidden" name="id" id="id" value="<?php echo $id; ?>">
                         <div class="form-group">
-                            <label class="control-label">Doctor Informante</label>
-
-
+                            <input class="form-control" type="hidden" name="Informa" id="Informa" placeholder="Ingrese el Informa" value="<?php echo $Informa; ?>">
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Medico Informante</label>
                             <?php
                             include "../Modelos/conexion.php";
 
@@ -137,16 +136,15 @@ require_once("../body/header_admin.php");
 
                         </div>
 
-
                         <div class="form-group">
-                            <label class="control-label">Nro de Placas</label>
-                            <input class="form-control" type="number" name="Placas" id="Placas" placeholder="Ingrese la Cantidad"  value="<?php echo $Placas; ?>">
+                            <label class="control-label">Placas</label>
+                            <input class="form-control" type="text" name="Placas" id="Placas" placeholder="Ingrese el Placas" required value="<?php echo $Placas; ?>">
                         </div>
 
 
 
                         <div class="tile-footer">
-                            <button class="btn btn-primary" type="submit"><i class="fa fa-fw fa-lg fa-user-md"></i>Asignar</button>&nbsp;&nbsp;&nbsp;<a class="btn btn-secondary" href="../Historial/AsignarInformante.php"><i class="fa fa-fw fa-lg fa-times-circle"></i>Cancelar</a>
+                            <button class="btn btn-primary" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i>Actualizar</button>&nbsp;&nbsp;&nbsp;<a class="btn btn-secondary" href="../Plantillas/gastos.php"><i class="fa fa-fw fa-lg fa-times-circle"></i>Cancelar</a>
 
                         </div>
                     </form>
