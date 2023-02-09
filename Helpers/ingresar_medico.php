@@ -18,7 +18,7 @@ if (!empty($_POST)) {
 		$id       = $_POST['id'];
 		$usuario  = $_POST['usuario'];
 		$pass     = md5($_POST['pass']);
-		$rol      = md5($_POST['rol']);
+		$rol      = $_POST['rol'];
 		
 		
 		
@@ -42,7 +42,7 @@ if (!empty($_POST)) {
 
 	}else{
 
-		$sql_update = mysqli_query($conection,"UPDATE medicos SET rol = '$rol',usuario = '$usuario', pass = '$pass',rol = '$rol' WHERE id = '$id'");
+		$sql_update = mysqli_query($conection,"UPDATE medicos SET usuario = '$usuario', pass = '$pass',rol = '$rol' WHERE id = '$id'");
 
 		
 
@@ -82,7 +82,7 @@ if ($resultado == 0) {
 
 		$id        = $data['id'];
 		$usuario   = $data['usuario'];
-		$pass      = $data['pass'];
+		$pass      = md5($data['pass']);
 		$rol       = $data['rol'];
 
 
