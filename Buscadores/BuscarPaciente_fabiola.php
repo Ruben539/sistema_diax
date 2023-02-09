@@ -61,7 +61,7 @@ require_once("../body/header_admin.php");
                             echo "</div>";
                             echo'<p>
                                 <td>
-                                     <a href="../Helpers/asignar_informante_elena.php?id='. $results['id'].' " class="btn btn-outline-primary" target="_blank"><i class="fa fa-user-md"></i> Asingar Informante</a></td>
+                                     <a href="../Helpers/asignar_informante_fabiola.php?id='. $results['id'].' " class="btn btn-outline-primary" target="_blank"><i class="fa fa-user-md"></i> Asingar Informante</a></td>
                                 </td></p>';
                             echo "</div>";
                         }
