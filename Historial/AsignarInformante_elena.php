@@ -1,6 +1,6 @@
 <?php
 session_start();
-if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 5 || $_SESSION['rol'] == 6){
+if ($_SESSION['rol'] == 1  || $_SESSION['rol'] == 6){
     if (empty($_SESSION['active'])) {
     header('location: ../Plantillas/salir.php');
 }
@@ -26,7 +26,7 @@ require_once("../body/header_admin.php");
       <div class="row">
         <div class="col-md-12">
           <div class="tile">
-            <form action="../Buscadores/BuscarPaciente.php" method="POST">
+            <form action="../Buscadores/BuscarPaciente_elena.php" method="POST">
                 <div class="form-group">
                         <label class="control-label">Busqueda del Paciente</label>
                         <input class="form-control" type="text" name="id" id="id"  placeholder="Ingrese el ID">

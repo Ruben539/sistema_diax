@@ -110,7 +110,7 @@ if ($resultado > 0) {
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-user-plus"></i><span class="app-menu__label">Informantes</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
             <!--Menu Principal del Informantes-->
-            <li><a class="treeview-item" href="../Historial/AsignarInformante.php"><i class="icon fa fa-user-plus"></i> Buscar Paciente</a></li>
+            <li><a class="treeview-item" href="../Historial/AsignarInformante_fabiola.php"><i class="icon fa fa-user-plus"></i> Buscar Paciente</a></li>
             <li><a class="treeview-item" href="../Historial/PendientesAsignacionFabiola.php"><i class="icon fa fa-user-plus"></i> Pendientes</a></li>
             <!--Menu Principal del Informantes-->
             <?php if ($_SESSION['rol'] == 1) {?>
@@ -125,7 +125,7 @@ if ($resultado > 0) {
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-user-plus"></i><span class="app-menu__label">Informantes</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
             <!--Menu Principal del Informantes-->
-            <li><a class="treeview-item" href="../Historial/AsignarInformante.php"><i class="icon fa fa-user-plus"></i> Buscar Paciente</a></li>
+            <li><a class="treeview-item" href="../Historial/AsignarInformante_elena.php"><i class="icon fa fa-user-plus"></i> Buscar Paciente</a></li>
             <li><a class="treeview-item" href="../Historial/PendientesAsignacionElena.php"><i class="icon fa fa-user-plus"></i> Pendientes</a></li>
             <!--Menu Principal del Informantes-->
             <?php if ($_SESSION['rol'] == 1) {?>
