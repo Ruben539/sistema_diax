@@ -43,7 +43,7 @@ require_once("../body/header_admin.php");
                             <th>Tcobro</th>                                
                             <?php if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 2) {?>
                             <th>Editar</th>
-                            <th>Eliminar</th> 
+                            <th>Agregar</th> 
                             <?php } ?>    
                         </tr>
                   </thead>
@@ -76,7 +76,8 @@ require_once("../body/header_admin.php");
                             
 	<?php if($_SESSION['rol'] == 1 ){ ?>
     <td>
-		<a href="../Helpers/eliminar_medico.php?id=<?php echo $data['id']; ?>"class="btn btn-outline-danger" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px  rgba(0, 0, 0, 0.25);"><i class="fas fa-user-times"></i></a>
+		<a href="../Helpers/ingresar_medico.php?id=<?php echo $data['id']; ?>"class="btn btn-outline-danger" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px  rgba(0, 0, 0, 0.25);"><i class="fa fa-address-card-o" aria-hidden="true"></i>
+</a>
     </td>
 	<?php } ?>
 
