@@ -44,7 +44,7 @@ if (!empty($_POST)) {
 
 	}else{
 
-		$sql_update = mysqli_query($conection,"UPDATE clientes SET Cedula = '$Cedula',Nombre = '$Nombre', Apellido = '$Apellido',Celular = '$Celular',Sexo = '$Sexo',Nacimiento = '$Nacimiento',FechaIngreso = '$FechaIngreso', estatus = 1
+		$sql_update = mysqli_query($conection,"UPDATE clientes SET Cedula = '$Cedula',Nombre = '$Nombre', Apellido = '$Apellido',Celular = '$Celular',Sexo = '$Sexo',Nacimiento = '$Nacimiento',FechaIngreso = '$FechaIngreso'
 			WHERE id = $id");
 
 		if ($sql_update) {
