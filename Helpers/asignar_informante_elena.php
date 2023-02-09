@@ -45,7 +45,7 @@ if (empty($_SESSION['active'])) {
 		}else{
 	
 			$sql_update = mysqli_query($conection,"UPDATE historial SET Informa = '$Informa',usuario = '$usuario', pass = '$pass',correo = '$correo',rol = '$rol', estatus = 1
-				WHERE idusuario = $id");
+				WHERE id = $id");
 	
 			if ($sql_update) {
 	
