@@ -76,14 +76,38 @@ require_once("../body/header_admin.php");
                    value="<?php echo $Informa; ?>">
                 </div>
                 <div class="form-group">
-                  <label class="control-label"> Informa</label>
-                  <input class="form-control" type="text" name="Informa" id="Informa" placeholder="Ingrese el Informa" 
-                  value="<?php echo $Informa; ?>">
+                  <label class="control-label">Medico Informante</label>
+                  <?php
+                include "../Modelos/conexion.php";
+
+                $query_medicos = mysqli_query($conection, "SELECT * FROM medicos where Especialidad like '%Informante%'");
+
+                mysqli_close($conection); //con esto cerramos la conexion a la base de datos una vez conectado arriba con el conexion.php
+                $resultado = mysqli_num_rows($query_medicos);
+
+                ?>
+                <select name="medico" id="medico" class="chosen form-control">
+                    <?php
+
+                    if ($resultado > 0) {
+                        while ($medico = mysqli_fetch_array($query_medicos)) {
+
+                    ?>
+                            <option value="<?php echo $medico["Nombre"]; ?>"><?php echo
+                                                                                $medico["Nombre"] ?></option>
+
+                    <?php
+
+
+                        }
+                    }
+
+                    ?>
+                </select>
                 </div>
                 <div class="form-group">
                   <label class="control-label">Numero de Placas</label>
-                  <input class="form-control" type="number" name="Placas" id="Placas" placeholder="Ingrese el coreo" 
-                  value="<?php echo $Placas; ?>">
+                  <input class="form-control" type="number" name="Placas" id="Placas" placeholder="Ingrese el numero de Placas" >
                 </div>
             
                                   
@@ -102,3 +126,12 @@ require_once("../body/header_admin.php");
         </div>
       </div>
     </main>
+<link rel="stylesheet" href="../node_modules/chosen-js/chosen.css" type="text/css" />
+<script src="../node_modules/chosen-js/chosen.jquery.min.js"></script>
+<script src="../js/jquery-3.3.1.min.js"></script>
+<script src="../node_modules/chosen-js/chosen.jquery.js"></script>
+<script>
+    $(document).ready(function() {
+        $(".chosen").chosen();
+    });
+</script>
