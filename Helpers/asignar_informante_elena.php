@@ -11,7 +11,7 @@ if (empty($_SESSION['active'])) {
 	if (!empty($_POST)) {
 		$alert = '';
 	
-		if (empty( $_POST['Informante'])) {
+		if (empty( $_POST['Informa'])) {
 	
 			$alert = '<p class = "msg_error">Debe llenar Todos los Campos</p>';
 	
@@ -55,42 +55,7 @@ if (empty($_SESSION['active'])) {
 		}
 	}
 
-//Recuperacion de datos para mostrar al seleccionar Actualizar
 
-if (empty($_REQUEST['id'])) {
-    echo "No se sabe  viene vacio el id :(";
-    exit();
-	header('location: ../Plantillas/dashboard.php');
-
-	//mysqli_close($conection);//con esto cerramos la conexion a la base de datos una vez conectado arriba con el conexion.php
-
-}
-
-$id = $_REQUEST['id'];
-
-$sql = mysqli_query($conection,"SELECT * FROM historial  WHERE id = $id ");   
-
-//mysqli_close($conection);//con esto cerramos la conexion a la base de datos una vez conectado arriba con el conexion.php
-
-
-$resultado = mysqli_num_rows($sql);
-
-if ($resultado == 0) {
-    echo "No se sabe el id :(";
-    exit();
-    
-	header("location: ../Plantillas/dashboard.php");
-}else{
-	$option = '';
-	while ($data = mysqli_fetch_array($sql)) {
-		
-		$id       = $data['id'];
-		$Informa  = $data['Informa'];
-		$Placas   = $data['Placas'];
-		
-
-	}
-}
 
 require_once("../body/header_admin.php");
 ?>
@@ -103,8 +68,8 @@ require_once("../body/header_admin.php");
             <div class="tile-body">
               <form action="" method="POST">
               <div class="form-group">
-                  <input class="form-control" type="hidden" name="id" id="id" 
-                   value="<?php echo $id; ?>">
+                  <input class="form-control" type="text" name="id" id="id" 
+                   value="<?php echo $_REQUEST['id']; ?>">
                 </div>
                 <div class="form-group">
                   <input class="form-control" type="hidden" name="Informa" id="Informa" placeholder="Ingrese el Informa" 
