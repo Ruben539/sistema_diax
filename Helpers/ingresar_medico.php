@@ -116,8 +116,8 @@ require_once("../body/header_admin.php");
     
                 <div class="form-group">
                   <label class="control-label">Rol del Usuario</label>
-                  <select name="rol" id="rol" class="form-control">
-                    <option value="4">Medico</option>
+                  <select name="rol" id="rol" type = "number" class="form-control">
+                    <option value="<?php echo $rol; ?>">Medico</option>
                   </select>
                 </div>
                                   
