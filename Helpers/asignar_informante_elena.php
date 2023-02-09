@@ -112,7 +112,7 @@ require_once("../body/header_admin.php");
                 <h3 class="tile-title">Asignar Informante</h3>
                 <div class="tile-body">
                     <form action="" method="POST">
-                        <input type="hidden" name="id" id="id" value="<?php echo $id; ?>">
+                        <input type="text" name="id" id="id" value="<?php echo $id; ?>">
                         <div class="form-group">
                             <input class="form-control" type="hidden" name="Informa" id="Informa" placeholder="Ingrese el Informa" value="<?php echo $Informa; ?>">
                         </div>
@@ -128,12 +128,13 @@ require_once("../body/header_admin.php");
 
                             ?>
                             <select name="Informa" id="Informa" class="chosen form-control">
+                            <option value="<?php echo $Informa; ?>"><?php echo $Informa; ?></option>
                                 <?php
 
                                 if ($resultado > 0) {
                                     while ($medico = mysqli_fetch_array($query_medicos)) {
 
-                                ?>
+                                ?>      
                                         <option value="<?php echo $medico["Nombre"]; ?>"><?php echo
                                             $medico["Nombre"] ?></option>
 
