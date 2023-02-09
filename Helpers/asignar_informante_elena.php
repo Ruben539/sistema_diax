@@ -64,11 +64,11 @@ require_once("../body/header_admin.php");
       <div class="row" style="justify-content: center;">
         <div class="col-md-5">
           <div class="tile">
-            <h3 class="tile-title">Asignar Informante <i class="fa fa-user-md"></i></h3>
+            <h3 class="tile-title text-center">Asignar Informante <i class="fa fa-user-md"></i></h3>
             <div class="tile-body">
               <form action="" method="POST">
               <div class="form-group">
-                  <input class="form-control" type="text" name="id" id="id" 
+                  <input class="form-control" type="hidden" name="id" id="id" 
                    value="<?php echo $_REQUEST['id']; ?>">
                 </div>
                 <div class="form-group">
@@ -86,7 +86,7 @@ require_once("../body/header_admin.php");
                 $resultado = mysqli_num_rows($query_medicos);
 
                 ?>
-                <select name="medico" id="medico" class="chosen form-control">
+                <select name="Informa" id="Informa" class="chosen form-control">
                     <?php
 
                     if ($resultado > 0) {
@@ -94,7 +94,7 @@ require_once("../body/header_admin.php");
 
                     ?>
                             <option value="<?php echo $medico["Nombre"]; ?>"><?php echo
-                                                                                $medico["Nombre"] ?></option>
+                                    $medico["Nombre"] ?></option>
 
                     <?php
 
