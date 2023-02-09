@@ -50,7 +50,7 @@ if(!empty($_POST))
   
       $aKeyword = explode(" ", $_POST['buscar']);
       $filtro = "WHERE Cedula LIKE LOWER('%".$aKeyword[0]."%') OR Nombre LIKE LOWER('%".$aKeyword[0]."%' OR Apellido LIKE LOWER('%".$aKeyword[0]."%')";
-      $query ="SELECT * FROM clientes WHERE Cedula LIKE LOWER('%".$aKeyword[0]."%') OR Nombre LIKE LOWER('%".$aKeyword[0]."%') OR Apellido LIKE LOWER('%".$aKeyword[0]."%')";
+      $query ="SELECT c.id,c.Cedula,c.Nombre,c.Apellido,c.Celular,c.Sexo,c.Nacimiento FROM clientes c WHERE Cedula LIKE LOWER('%".$aKeyword[0]."%') OR Nombre LIKE LOWER('%".$aKeyword[0]."%') OR Apellido LIKE LOWER('%".$aKeyword[0]."%')";
   
 
      for($i = 1; $i < count($aKeyword); $i++) {
