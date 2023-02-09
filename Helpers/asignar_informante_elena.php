@@ -44,7 +44,7 @@ if (empty($_SESSION['active'])) {
 	
 		}else{
 	
-			$sql_update = mysqli_query($conection,"UPDATE historial SET Informa = '$Informa',usuario = '$usuario', pass = '$pass',correo = '$correo',rol = '$rol', estatus = 1
+			$sql_update = mysqli_query($conection,"UPDATE historial SET Informa = '$Informa',Placas = '$Placas'
 				WHERE id = $id");
 	
 			if ($sql_update) {
@@ -60,6 +60,8 @@ if (empty($_SESSION['active'])) {
 //Recuperacion de datos para mostrar al seleccionar Actualizar
 
 if (empty($_REQUEST['id'])) {
+    echo "No se sabe  viene vacio el id :(";
+    exit();
 	header('location: ../Plantillas/dashboard.php');
 
 	//mysqli_close($conection);//con esto cerramos la conexion a la base de datos una vez conectado arriba con el conexion.php
