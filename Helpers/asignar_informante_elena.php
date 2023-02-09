@@ -20,9 +20,7 @@ if (empty($_SESSION['active'])) {
 			$id           = $_POST['id'];
 			$Informa      = $_POST['Informa'];
 			$Placas       = $_POST['Placas'];
-			$pass                = md5($_POST['pass']);
-			$correo              = $_POST['correo'];
-			$rol                 = $_POST['rol'];
+		
 			
 	
 	
