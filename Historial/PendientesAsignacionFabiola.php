@@ -77,7 +77,7 @@ require_once("../body/header_admin.php");
                             
 	<?php if($_SESSION['rol'] == 1  || $_SESSION['rol'] == 5){ ?>
     <td>
-		<a href="../Helpers/asignar_informante.php?id=<?php echo $data['id']; ?>"class="btn btn-outline-primary" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px  rgba(0, 0, 0, 0.25);"><i class="fas fa-edit"></i></a>
+		<a href="../Helpers/asignar_informante_fabiola.php?id=<?php echo $data['id']; ?>"class="btn btn-outline-primary" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px  rgba(0, 0, 0, 0.25);"><i class="fas fa-edit"></i></a>
     </td>
 	<?php } ?>
 
