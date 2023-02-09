@@ -37,8 +37,8 @@ session_start();
 
         $_SESSION['active'] = true;
         $_SESSION['idUser'] = $data['id'];
-        $_SESSION['nombre'] = $data['nombre'];
-        $_SESSION['especialidad'] = $data['especialidad'];
+        $_SESSION['Nombre'] = $data['Nombre'];
+        $_SESSION['Especialidad'] = $data['Especialidad'];
         $_SESSION['user'] = $data['usuario'];
         $_SESSION['rol'] = $data['rol'];
        
@@ -46,7 +46,7 @@ session_start();
 
 
         if ($_SESSION['rol'] == 4 ) {
-         header('Location: ../Plantillas/dashboardDoctores.php');
+         header('Location: ../doctores/dashboardDoctores.php');
 
        }
       
@@ -86,7 +86,7 @@ session_start();
   <section class="login-content">
     <div class="login-box">
       <form class="login-form" method="POST">
-        <h3 class="login-head">Doctores</h3>
+        <h3 class="login-head ">Doctores <i class="fa fa-user-md"></i></h3>
         <div class="form-group">
         <label for="usuario">Usuario</label>
 			<div class="input-group">

@@ -1,4 +1,4 @@
-function agregarDatoUsu(nombre,correo,usuario,password,rol,puesto,foto){
+function agregarDatoUsu(nombre,correo,usuario,password,rol,puesto){
 
 	cadena = "nombre=" + nombre +
 	"&correo=" + correo +
@@ -36,22 +36,22 @@ function agregarDatoUsu(nombre,correo,usuario,password,rol,puesto,foto){
 
 
 
-function editarDatosPass(datos){
+function editarEstado(datos){
 	d = datos.split('||');
 
-	$('#id_usuario').val(d[0]);
-	$('#pass').val(d[1]);
+	$('#id').val(d[0]);
+	$('#estado').val(d[10]);
 	
 
 }
 
-function actualizarDatoPass(){
+function actualizarEstado(){
 
-	id_usuario=$('#id_usuario').val();
-	pass=$('#pass').val();
+	id=$('#id').val();
+	estado=$('#estado').val();
 
-	cadena = "id_usuario=" + id_usuario +
-	"&pass=" + pass;
+	cadena = "id=" + id +
+	"&estado=" + estado;
 
 ;
 
@@ -144,28 +144,30 @@ function actualizarDatoUsu(){
 }
 
 
-function liberarUsuario(id_usuario){
-	cadena = "id_usuario=" + id_usuario;
+function liberarPaciente(id){
+	//return confirm("��Esta seguro de liberar el paciente?");
+	
+	cadena = "id=" + id;
 
 	$.ajax({
 		type:"POST",
-		url:"Helpers/liberarDatos_Usu.php",
+		url:"../Helpers/liberar_paciente.php",
 		data:cadena,
 		success: function(r){
 			if(r == 1){
 				Swal.fire({
 					type: 'success',                          
-					title: 'Eliminado con Exito!'
+					title: 'Atendido con Exito!'
 				}).then((result) => {
 					if (result.value) {
-						window.location.href = "usuario_Inactivo";                          
+						window.location.href = "../doctores/dashboardDoctores.php";                          
 					}
 				})
 				
 			}else{
 				Swal.fire({
 					type: 'error',
-					title: 'Error al Eliminar',                          
+					title: 'Error al Liberar',                          
 				});
 			}
 		}
@@ -173,18 +175,18 @@ function liberarUsuario(id_usuario){
 }
 
 
-function liberarDatos(id_usuario){
+function liberarDatos(id){
 	Swal.fire({
-		title: 'Desea Eliminar el Usuario ?',
-		text: "Eliminar Usuario "+id_usuario+" del Sistema!",
+		title: 'El Paciente ha sido Atendido ?',
+		text: "El Paciente Nro "+id+" a sido Atendido!",
 		type: 'warning',
 		showCancelButton: true,
 		confirmButtonColor: '#3085d6',
 		cancelButtonColor: '#d33',
-		confirmButtonText: 'Si, Eliminar!'
+		confirmButtonText: 'Si, Confirmar!'
 	}).then((result) => {
 		if (result.value) {
-			liberarUsuario(id_usuario);
+			liberarPaciente(id);
 		}
 	})
 }

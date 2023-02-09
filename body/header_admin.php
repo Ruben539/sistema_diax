@@ -36,6 +36,11 @@ $sesion = $_SESSION['rol'];
         <a class="app-header__logo" href="../Plantillas/dashboard.php">Sistema Diax</a>
       <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a> 
       <?php } ?>
+
+      <?php if ($sesion == 4) {?>
+        <a class="app-header__logo" href="../doctores/dashboardDoctores.php">Sistema Diax</a>
+      <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a> 
+      <?php } ?>
       
       <!-- Navbar Right Menu-->
       <ul class="app-nav">
@@ -81,10 +86,17 @@ $sesion = $_SESSION['rol'];
           <ul class="dropdown-menu settings-menu dropdown-menu-right">
             <?php if ($sesion == 1 || $sesion == 2) {?>
             <li><a class="dropdown-item" href="../Plantillas/configuracion.php"><i class="fa fa-cog fa-lg"></i> Configuración</a></li>
-            <?php } ?>
+            
             <li><a class="dropdown-item" href="../Plantillas/perfil.php"><i class="fa fa-user fa-lg"></i> Perfil</a></li>
               
             <li><a class="dropdown-item" href="../Plantillas/salir.php"><i class="fa fa-sign-out-alt"></i> Cerrar Sesión</a></li>
+            <?php } ?>
+
+            <?php if ( $sesion == 4) {?>
+            <li><a class="dropdown-item" href="../doctores/salir.php"><i class="fa fa-sign-out-alt"></i> Cerrar Sesión</a></li>
+          
+            <?php } ?>
+            
           </ul>
         </li>
       </ul>
