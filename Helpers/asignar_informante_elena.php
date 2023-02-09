@@ -112,7 +112,7 @@ require_once("../body/header_admin.php");
                 <h3 class="tile-title">Asignar Informante</h3>
                 <div class="tile-body">
                     <form action="" method="POST">
-                        <input type="text" name="id" id="id" value="<?php echo $Informa; ?>">
+                        <input type="text" name="id" id="id" value="<?php echo $id; ?>">
                         <div class="form-group">
                             <input class="form-control" type="hidden" name="Informa" id="Informa" placeholder="Ingrese el Informa" value="<?php echo $Informa; ?>">
                         </div>
