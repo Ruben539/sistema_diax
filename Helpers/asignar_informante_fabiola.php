@@ -112,7 +112,7 @@ require_once("../body/header_admin.php");
             
                                   
                  <div class="tile-footer">
-              <button class="btn btn-primary" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i>Asignar</button>&nbsp;&nbsp;&nbsp;<a class="btn btn-secondary" href="../Buscadores/BuscarPaciente_elena.php"><i class="fa fa-fw fa-lg fa-times-circle"></i>Cancelar</a>
+              <button class="btn btn-primary" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i>Asignar</button>&nbsp;&nbsp;&nbsp;<a class="btn btn-secondary" href="../Buscadores/BuscarPaciente_fabiola.php"><i class="fa fa-fw fa-lg fa-times-circle"></i>Cancelar</a>
               
             </div>
               </form>
