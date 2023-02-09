@@ -41,6 +41,18 @@ if ($resultado > 0) {
         </li>
         
         <?php  } ?>  
+        <?php if ($_SESSION['rol'] == 1) {?>
+        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-users"></i><span class="app-menu__label">Clientes</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+          <ul class="treeview-menu">
+            <!--Menu Principal del Usuario-->
+            <li><a class="treeview-item" href="../Plantillas/Clientes.php"><i class="icon fa fa-users"></i> Buscar Cliente</a></li>
+            <!--Menu Principal del Usuario-->
+            
+          </ul>
+        </li>
+        
+        <?php  } ?> 
+
         <?php if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 2) {?>
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-user-plus"></i><span class="app-menu__label">Pacientes</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
