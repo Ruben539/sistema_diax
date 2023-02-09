@@ -119,7 +119,7 @@ if ($resultado > 0) {
         <?php  } ?>
 
         <?php if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 5 ) {?>
-        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-user-plus"></i><span class="app-menu__label">Informantes</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-user-plus"></i><span class="app-menu__label">Informantes Fabiola</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
             <!--Menu Principal del Informantes-->
             <li><a class="treeview-item" href="../Historial/AsignarInformante_fabiola.php"><i class="icon fa fa-user-plus"></i> Buscar Paciente</a></li>
@@ -134,7 +134,7 @@ if ($resultado > 0) {
         
         <?php  } ?>
         <?php if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 6) {?>
-        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-user-plus"></i><span class="app-menu__label">Informantes</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-user-plus"></i><span class="app-menu__label">Informantes Elena</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
             <!--Menu Principal del Informantes-->
             <li><a class="treeview-item" href="../Historial/AsignarInformante_elena.php"><i class="icon fa fa-user-plus"></i> Buscar Paciente</a></li>
