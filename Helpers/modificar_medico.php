@@ -102,7 +102,7 @@ require_once("../body/header_admin.php");
             <h3 class="tile-title">Actualizar Medico</h3>
             <div class="tile-body">
               <form action="" method="POST">
-                  <input type="hidden" name="id" id="id" value="<?php echo $id; ?>">
+                  <input type="hidden" name="id" id="id" value="<?php echo $_REQUEST['id']; ?>">
         
                 <div class="form-group">
                   <label class="control-label">Nombre</label>
