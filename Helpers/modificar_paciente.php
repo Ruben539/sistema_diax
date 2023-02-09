@@ -81,7 +81,7 @@ if ($resultado == 0) {
 
 	while ($data = mysqli_fetch_array($sql)) {
 
-		$id            = $data['id'];
+		$id            =$_REQUEST['id'];
 		$Cedula        = $data['Cedula'];
 		$Nombre        = $data['Nombre'];
 		$Apellido      = $data['Apellido'];
