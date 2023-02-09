@@ -16,7 +16,7 @@ if (!empty($_POST)) {
 	}else{
 
 		$id        = $_POST['id'];
-		$usuario   = $_POST['usuario'];
+		$usuario   = md5($_POST['usuario']);
 		$pass      = $_POST['pass'];
 		
 		
