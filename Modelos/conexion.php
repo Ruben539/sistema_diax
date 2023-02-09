@@ -4,6 +4,7 @@
 	$user = 'root';
 	$password = '';
 	$db = 'laspalmas';
+	
 
 	$conection = @mysqli_connect($host,$user,$password,$db);
 
