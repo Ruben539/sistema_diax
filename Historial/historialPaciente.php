@@ -86,7 +86,7 @@ if(!empty($_POST))
         <tr>
 
            <th>Estudio</th>
-           <th>Doctor</th>
+           <th>Doctor /a</th>
            <th>Monto</th>
            <th>Fecha</th>
         </tr>
