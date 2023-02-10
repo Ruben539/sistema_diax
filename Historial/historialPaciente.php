@@ -122,20 +122,7 @@ if(!empty($_POST))
         
 	
     }
-    else {
-      //mostramos todos los resultados
-      if( $_REQUEST["mostrar_todo"] == 'ok') {
-        $row_count=0;
-        echo "<br>Resultados encontrados:<b> ".$numero."</b>";
-        echo "<br><br><table class='table table-striped'>";
-        While($row = $result->fetch_assoc()) {   
-            $row_count++;   
-            echo "<tr><td>".$row_count." </td><td>". resaltar_frase($row['Nombre'] ,$_POST['buscar']) . "</td><td>". resaltar_frase($row['Apellido'] ,$_POST['buscar']) . "</td></tr>";
-        }
-        echo "</table>";
-	
-    }
-    }
+    
 }
 ?>
 
