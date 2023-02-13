@@ -37,6 +37,7 @@ require_once("../body/header_admin.php");
                     <tr class="text-center">
                             <th>ID</th>
                             <th>Nombre</th>
+                            <th>Usuario</th>
                             <th>Especialidad</th>
                             <th>Dia</th>
                             <th>Hora</th>                                
@@ -50,7 +51,7 @@ require_once("../body/header_admin.php");
 
                   <tbody>
                       <?php 
-                        $sql = mysqli_query($conection,"SELECT m.id,m.Nombre,m.Especialidad,m.Dia,m.Hora,m.Tcobro FROM medicos m 
+                        $sql = mysqli_query($conection,"SELECT m.id,m.Nombre,m.usuario,m.Especialidad,m.Dia,m.Hora,m.Tcobro FROM medicos m 
                         ORDER BY  m.id DESC");
 
                          $resultado = mysqli_num_rows($sql);
@@ -61,6 +62,7 @@ require_once("../body/header_admin.php");
                         <tr class="text-center">
                              <td><?php echo $data['id'];?></td>
                              <td><?php echo $data['Nombre'];?></td>
+                             <td><?php echo $data['usuario'];?></td>
  						     <td><?php echo $data['Especialidad'];?></td>
  						     <td><?php echo $data['Dia']; ?></td>
                              <td><?php echo $data['Hora']?></td>
