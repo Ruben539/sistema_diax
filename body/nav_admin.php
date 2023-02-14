@@ -18,7 +18,7 @@ if($_SESSION['rol'] == 4){
       <a href="../Plantillas/perfil.php">
         <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" src="../images/user.png">
           <div>
-            <p class="app-sidebar__user-name"><?php echo $nombre; ?></p>
+            <p class="app-sidebar__user-name" style="font-size: 14px;"><?php echo $nombre; ?></p>
             <p class="app-sidebar__user-designation"><?php echo $especialidad; ?></p>
           </div>
         </div>
