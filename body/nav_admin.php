@@ -1,8 +1,14 @@
 <?php 
 session_start();
 require_once("../Modelos/conexion.php");
-$nombre = $_SESSION['nombre'];
-$apellido = $_SESSION['apellido'];
+if($_SESSION['rol'] == 4){
+  $nombre = $_SESSION['Nombre'];
+  $especialidad = $_SESSION['Especialidad'];
+}else{
+  $nombre = $_SESSION['nombre'];
+}
+
+
 ?>
 
 
@@ -13,7 +19,7 @@ $apellido = $_SESSION['apellido'];
         <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" src="../images/user.png">
           <div>
             <p class="app-sidebar__user-name"><?php echo $nombre; ?></p>
-            <p class="app-sidebar__user-designation"><?php echo $apellido; ?></p>
+            <p class="app-sidebar__user-designation"><?php echo $especialidad; ?></p>
           </div>
         </div>
         </a>
