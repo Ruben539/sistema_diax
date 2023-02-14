@@ -15,11 +15,13 @@ if($_SESSION['rol'] == 4){
    <!-- Sidebar menu-->
       <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
       <aside class="app-sidebar">
-      <a href="../Plantillas/perfil.php">
+      <a href="#" onclick="alerta();">
         <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" src="../images/user.png">
           <div>
-            <p class="app-sidebar__user-name" style="font-size: 14px;"><?php echo $nombre; ?></p>
-            <p class="app-sidebar__user-designation"><?php echo $especialidad; ?></p>
+              <p class="app-sidebar__user-name" style="font-size: 14px;"><?php echo $nombre; ?></p>
+            <?php if($_SESSION['rol'] == 4){ ?>
+              <p class="app-sidebar__user-designation"><?php echo $especialidad; ?></p>
+            <?php }?>
           </div>
         </div>
         </a>

@@ -37,7 +37,7 @@ if (!empty($_POST)) {
 
 			if ($query_insert ) {
         
-				header("Location: ../Plantillas/registro_pacientes.php");
+				$alert = '<p class = "msg_success">Grabado con Exito</p>';
 
 
 			}else{
@@ -93,7 +93,7 @@ if (!empty($_POST)) {
                  
                  <div class="tile-footer">
               <button class="btn btn-primary" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i>Registrar
-            </button>&nbsp;&nbsp;&nbsp;<a class="btn btn-secondary" href="../Plantillas/pacientes.php"><i class="fa fa-fw fa-lg fa-times-circle"></i>Cancelar</a>
+            </button>&nbsp;&nbsp;&nbsp;<a class="btn btn-secondary" href="../Plantillas/registro_pacientes.php"><i class="fa fa-fw fa-lg fa-times-circle"></i>Cancelar</a>
               
             </div>
               </form>

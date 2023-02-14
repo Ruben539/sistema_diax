@@ -11,7 +11,36 @@ if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 2){
 
 require_once("../Modelos/conexion.php");
 
+
+$sql = mysqli_query($conection,"SELECT * FROM clientes ORDER BY id DESC LIMIT 1");
+
+
+//mysqli_close($conection);//con esto cerramos la conexion a la base de datos una vez conectado arriba con el conexion.php
+
+
+$resultado = mysqli_num_rows($sql);
+
+if ($resultado == 0) {
+	header("location:../Plantillas/registro_pacientes.php");
+}else{
+
+	while ($data = mysqli_fetch_array($sql)) {
+
+
+		$Cedula        = $data['Cedula'];
+		$Nombre        = $data['Nombre'];
+		$Apellido      = $data['Apellido'];
+		$Celular       = $data['Celular'];
+		$Sexo          = $data['Sexo'];
+    $Nacimiento    = $data['Nacimiento'];
+		$FechaIngreso  = $data['FechaIngreso'];
+		
+
+	}
+}
+
 require_once("../body/header_admin.php");
+
 ?>
 
 <main class="app-content">
@@ -34,7 +63,8 @@ require_once("../body/header_admin.php");
             <form action="busqueda_pacientes.php" method="POST">
                 <div class="form-group">
                         <label class="control-label">Busqueda de Cliente</label>
-                        <input class="form-control" type="text" name="Cedula" id="Cedula"  placeholder="Ingrese la Cedula">
+                        <input class="form-control" type="text" name="Cedula" id="Cedula" 
+                         placeholder="Ingrese la Cedula"  value="<?php echo $Cedula; ?>">
                     </div>
                 </div>
                 <div class="tile-footer">

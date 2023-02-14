@@ -65,7 +65,7 @@ require_once("../body/header_admin.php");
                             echo "</div>";
                         }
                     } else { // if there is no matching rows do following
-                        echo "No results";
+                        echo "No se Encontro el Paciente";
                     }
                 } else { // if query length is less than minimum
                     echo "Minimum length is " . $min_length;
