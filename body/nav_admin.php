@@ -107,6 +107,7 @@ if($_SESSION['rol'] == 4){
             <!--Menu Principal del Doctores-->
             <li><a class="treeview-item" href="../doctores/lista_pacientes.php"><i class="icon fa fa-users"></i>Pacientes en  Atendidos</a></li>
             <li><a class="treeview-item" href="../doctores/historialPacientes.php"><i class="icon fa fa-users"></i> Historial de Pacientes</a></li>
+            <li><a class="treeview-item" href="../doctores/informesPacientes.php"><i class="icon fa fa-users"></i> Informe de Pacientes</a></li>
             <!--Menu Principal del Doctores-->
             
           </ul>
