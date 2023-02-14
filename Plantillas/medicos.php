@@ -63,8 +63,8 @@ require_once("../body/header_admin.php");
                              <td><?php echo $data['id'];?></td>
                              <td><?php echo $data['Nombre'];?></td>
                              <td><?php echo $data['usuario'];?></td>
- 						     <td><?php echo $data['Especialidad'];?></td>
- 						     <td><?php echo $data['Dia']; ?></td>
+                             <td><?php echo $data['Especialidad'];?></td>
+                             <td><?php echo $data['Dia']; ?></td>
                              <td><?php echo $data['Hora']?></td>
                              <td><?php echo $data['Tcobro']?></td>
  					        

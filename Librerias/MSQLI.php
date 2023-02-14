@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require_once("host.php");
 
 
@@ -70,28 +70,72 @@ class MYSQL {
 		}
 		return $idPacienteDiax;
 	}
-/*
-	//Codigo sirve para traer los parametros para las vistas
-	public function getHerreria(){
-		$herreria = 0;
-		 $mes =  date('m');
-		 $anio =  date('Y');
+
+	//Codigo sirve para traer los parametros para las de los Pacientes en espera
+	public function getPacientesEspera(){
+		$idPacienteEspera = 0;
+		$fecha  =  date('m-Y');
+		$medico = trim($_SESSION['Nombre']);
+
 		try{
-			$strQuery = "SELECT COUNT(*) from herreria WHERE year(fecha_add)= $anio AND month(fecha_add)= $mes AND estatus !=0 ";
+			$strQuery = "SELECT count(*) tpacientes  FROM historial  
+						where Fecha LIKE '%".$fecha."%' AND Atendedor LIKE '%".$medico."%' AND estado = 'En Espera'";
 			if($this->conexBDPDO()){
 				$pQuery =$this->oConBD->prepare($strQuery);
 				$pQuery->execute();
-				$herreria= $pQuery->fetchColumn();
+				$idPacienteEspera= $pQuery->fetchColumn();
 			}
 		}catch(PDOException $e){
-			echo "MYSQL.getHerreria: ". $e->getMessage(). "\n";
+			echo "MYSQL.getPacientesEspera: ". $e->getMessage(). "\n";
 			return -1;
 		}
-		return $herreria;
+		return $idPacienteEspera;
+	}
+
+	//Codigo sirve para traer los parametros para las de los Pacientes Atendidos
+	public function getPacientesAtendido(){
+		$idPacienteAtendido = 0;
+		$fecha  =  date('m-Y');
+		$medico = trim($_SESSION['Nombre']);
+
+		try{
+			$strQuery = "SELECT count(*) tpacientes  FROM historial  
+						where Fecha LIKE '%".$fecha."%' AND Atendedor LIKE '%".$medico."%' AND estado = 'Atendido'";
+			if($this->conexBDPDO()){
+				$pQuery =$this->oConBD->prepare($strQuery);
+				$pQuery->execute();
+				$idPacienteAtendido= $pQuery->fetchColumn();
+			}
+		}catch(PDOException $e){
+			echo "MYSQL.getPacientesAtendido: ". $e->getMessage(). "\n";
+			return -1;
+		}
+		return $idPacienteAtendido;
+	}
+
+	//Codigo sirve para traer los parametros para las de los Pacientes totales en el mes
+	public function getPacientesTotal(){
+		$idPacienteTotal = 0;
+		$fecha  =  date('m-Y');
+		$medico = trim($_SESSION['Nombre']);
+
+		try{
+			$strQuery = "SELECT count(*) tpacientes  FROM historial  
+						where Fecha LIKE '%".$fecha."%' AND Atendedor LIKE '%".$medico."%'";
+			if($this->conexBDPDO()){
+				$pQuery =$this->oConBD->prepare($strQuery);
+				$pQuery->execute();
+				$idPacienteTotal= $pQuery->fetchColumn();
+			}
+		}catch(PDOException $e){
+			echo "MYSQL.getPacientesTotal: ". $e->getMessage(). "\n";
+			return -1;
+		}
+		return $idPacienteTotal;
 	}
 
 
-
+/*
 	//Codigo sirve para traer los parametros para las vistas
 	public function getPintura(){
 		$pintura = 0;

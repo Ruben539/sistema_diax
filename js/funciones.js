@@ -8,7 +8,7 @@
 		}
 
 		this.getIndicadores = function(){
-	//Consulta de Vendidos al servisor de parte del Cliente Para ver el Total Vendido
+	//Consulta de Vendidos al servisor de parte del Cliente Para ver el Total Pacientes
 	$.ajax({
 		statusCode:{
 			404:function(){
@@ -25,7 +25,7 @@
 	$("#idPacientePaz").text(parseFloat(datos).toLocaleString());
 });
 
-	//Consulta de la Sentencia para recuperar los datos para Almacen
+	//Consulta de la Sentencia para recuperar los datos Obtenidos
 	$.ajax({
 		statusCode:{
 			404:function(){
@@ -42,7 +42,58 @@
 	$("#idPacienteDiax").text(parseFloat(datos).toLocaleString());
 });
 
-/* Consulta de la sentencia para recuperar los datos para las Notificaciones
+	//Consulta de la Sentencia para recuperar los datos de Pacientes por Doctor en Espera
+	$.ajax({
+		statusCode:{
+			404:function(){
+				console.log("Esta Pagina no Existe");
+			}
+		},
+		url:'../Librerias/servidor.php',
+		method:'POST',
+		data:{
+			rq:"3"
+		}
+	}).done(function(datos){
+	//Logica de respuesta  de los datos
+	$("#idPacienteEspera").text(parseFloat(datos).toLocaleString());
+});
+
+	//Consulta de la Sentencia para recuperar los datos de Pacientes por Doctor en Atendidos
+	$.ajax({
+		statusCode:{
+			404:function(){
+				console.log("Esta Pagina no Existe");
+			}
+		},
+		url:'../Librerias/servidor.php',
+		method:'POST',
+		data:{
+			rq:"4"
+		}
+	}).done(function(datos){
+	//Logica de respuesta  de los datos
+	$("#idPacienteAtendido").text(parseFloat(datos).toLocaleString());
+});
+
+	//Consulta de la Sentencia para recuperar los datos de Pacientes por Doctor en Atendidos
+	$.ajax({
+		statusCode:{
+			404:function(){
+				console.log("Esta Pagina no Existe");
+			}
+		},
+		url:'../Librerias/servidor.php',
+		method:'POST',
+		data:{
+			rq:"5"
+		}
+	}).done(function(datos){
+	//Logica de respuesta  de los datos
+	$("#idPacienteTotal").text(parseFloat(datos).toLocaleString());
+});
+
+/*// Consulta de la sentencia para recuperar los datos para las Notificaciones
 			$.ajax({
 				statusCode:{
 					404:function(){

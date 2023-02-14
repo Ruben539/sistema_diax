@@ -1,29 +1,19 @@
 <?php 
-
+session_start();
 require_once("../Modelos/conexion.php");
-//$id_usuario = $_SESSION['idUser'];
+$nombre = $_SESSION['nombre'];
+$apellido = $_SESSION['apellido'];
 ?>
 
-<!-- $query_foto = mysqli_query($conection,"SELECT nombre,usuario,foto FROM usuarios where id_usuario = '$id_usuario' AND estatus = 1");
-//mysqli_close($conection);//con esto cerramos la conexion a la base de datos una vez conectado arriba con el conexion.php
-$resultado = mysqli_num_rows($query_foto);
-if ($resultado > 0) {
-  while ($data = mysqli_fetch_array($query_foto)) {
-     if ($data['foto'] != 'user.png') {
-      $foto = '..//images/usuarios/'.$data['foto'];
-       }else{
-        $foto = '../images/'.$data['foto'];
-      } 
 
- ?> -->
    <!-- Sidebar menu-->
       <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
       <aside class="app-sidebar">
       <a href="../Plantillas/perfil.php">
         <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" src="../images/user.png">
           <div>
-            <p class="app-sidebar__user-name">Sistema Diax</p>
-            <p class="app-sidebar__user-designation">En desarrollo</p>
+            <p class="app-sidebar__user-name"><?php echo $nombre; ?></p>
+            <p class="app-sidebar__user-designation"><?php echo $apellido; ?></p>
           </div>
         </div>
         </a>
@@ -109,7 +99,7 @@ if ($resultado > 0) {
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-users"></i><span class="app-menu__label">Pacientes</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
             <!--Menu Principal del Doctores-->
-            <li><a class="treeview-item" href="../doctores/lista_pacientes.php"><i class="icon fa fa-users"></i>Pacientes en Espera</a></li>
+            <li><a class="treeview-item" href="../doctores/lista_pacientes.php"><i class="icon fa fa-users"></i>Pacientes en  Atendidos</a></li>
             <li><a class="treeview-item" href="../doctores/historialPacientes.php"><i class="icon fa fa-users"></i> Historial de Pacientes</a></li>
             <!--Menu Principal del Doctores-->
             

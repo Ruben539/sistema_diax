@@ -1,27 +1,58 @@
 <?php
 session_start();
-if (empty($_SESSION['active'])){
-
-header('location: salir.php');  
+if ($_SESSION['rol'] == 4) {
+  if (empty($_SESSION['active'])) {
+    header('location: salir.php');
+  }
+} else {
+  header('location: salir.php');
 }
-
- 
 
 
 require_once("../body/header_admin.php");
-
 ?>
 
 <main class="app-content">
   <div class="app-title">
     <div>
-      <h1><i class="fa fa-list-ol"></i> Listado de Pacientes del Dia
-      </h1>
-      <p>Registro Web en Desarrollo</p>
+      <h1>Sistema Diax</h1>
+      <p>Registro web de Pacientes en Desarrollo</p>
     </div>
+    <ul class="app-breadcrumb breadcrumb">
+      <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+      <li class="breadcrumb-item"><a href="#">Pagina de Inicio</a></li>
+    </ul>
+  </div>
+
+  <br>
+  <div class="tile">
+    <div class="tile-body"><B>CANTIDAD DE PACIENTES DEL MES</B></div>
+
   </div>
 
   <div class="row">
+    <!--widgets de Pacientes de Paz-->
+    <div class="col-md-6">
+      <div class="widget-small danger"><i class="icon fa fa-user-md fa-3x"></i>
+        <div class="info">
+          <h4 class="text-center"><a class="link" href="../doctores/lista_pacientes.php">En Espera</a></h4>
+
+          <p id="idPacienteEspera" class="text-center" style="font-size: 50px;"><b>0</b></p>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="widget-small primary"><i class="icon fa fa-user-md fa-3x"></i>
+        <div class="info">
+          <h4 class="text-center"><a class="link" href="../doctores/lista_pacientes.php">Atendidos</a></h4>
+          <p id="idPacienteAtendido" class="text-center" style="font-size: 50px;"><b>0</b></p>
+        </div>
+      </div>
+    </div>
+
+   
     <div class="col-md-12">
       <div class="tile">
         <div class="table-responsive">
@@ -86,7 +117,7 @@ require_once("../body/header_admin.php");
                   <td><?= $ver[7]; ?></td>
                   <td><?= $ver[8]; ?></td>
                   <td><?= $ver[9]; ?></td>
-                  <td><?= $ver[10]; ?></td>
+                  <td style="color: red;"><?= $ver[10]; ?></td>
 
                     <td>
                     <button class = "btn btn-outline-success" onclick="liberarDatos('<?php echo $ver[0] ?>')"><i class="fa fa-check" aria-hidden="true"></i></button>
@@ -104,50 +135,45 @@ require_once("../body/header_admin.php");
         </div>
       </div>
     </div>
+  
+
+
+
+
   </div>
 
+</main>
+
+<script src="../js/funciones.js"></script>
 <script type="text/javascript" src="../js/plugins/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="../js/plugins/dataTables.bootstrap.min.js"></script>
-<script src="../js/usuario.js"></script>
-
 <script type="text/javascript">
-    $(document).ready(function(){
-    tablaHerreria = $("#tabla_Usuario").DataTable({
-       "columnDefs":[{
+  $(document).ready(function() {
+    tablaHerreria = $("#tabla_Paz").DataTable({
+      "columnDefs": [{
         "target": 1,
-        "data":null
-       }],
-        
-        //Para cambiar el lenguaje a español
-    "language": {
-            "lengthMenu": "Mostrar _MENU_ registros",
-            "zeroRecords": "No se encontraron resultados",
-            "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-            "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
-            "infoFiltered": "(filtrado de un total de _MAX_ registros)",
-            "sSearch": "Buscar:",
-            "oPaginate": {
-                "sFirst": "Primero",
-                "sLast":"Último",
-                "sNext":"Siguiente",
-                "sPrevious": "Anterior"
-             },
-             "sProcessing":"Procesando...",
-        }
+        "data": null
+      }],
+
+      //Para cambiar el lenguaje a español
+      "language": {
+        "lengthMenu": "Mostrar _MENU_ registros",
+        "zeroRecords": "No se encontraron resultados",
+        "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+        "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+        "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+        "sSearch": "Buscar:",
+        "oPaginate": {
+          "sFirst": "Primero",
+          "sLast": "Último",
+          "sNext": "Siguiente",
+          "sPrevious": "Anterior"
+        },
+        "sProcessing": "Procesando...",
+      }
     });
 
-      
-    
-});
-</script>
 
-  <script src="../js/funciones.js"></script>
-  <script>
-    function permisoAuto() {
-      Swal.fire(
-        'Lo Siento',
-        'Pagina web no Disponible',
-        'error'
-      )
-    }
-  </script>
+
+  });
+</script>
