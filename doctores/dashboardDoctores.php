@@ -135,16 +135,67 @@ require_once("../body/header_admin.php");
         </div>
       </div>
     </div>
-  
 
-
-
-
+  <div id="idTabla">
+      <div id="idGrafica"></div>
   </div>
+
+  <div>
+  <canvas id="myChart"></canvas>
+  <button onclick="cargarDatosGrafica();"></button>
+</div>
+
+
+
 
 </main>
 
 <script src="../js/funciones.js"></script>
+<script src="../js/usuario.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+   
+        $('#btnEditarPass').click(function() {
+            /* Act on the event */
+            liberarDatos();
+        });
+    });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+  const ctx = document.getElementById('myChart');
+
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+      datasets: [{
+        label: '# of Votes',
+        data: [12, 19, 3, 5, 2, 3],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+
+  function cargarDatosGrafica(){
+    $.ajax({
+      url: 'grafica.php',
+      type: 'POST',
+
+    }).done(function(resp){
+      alert(JSON.stringify(resp));
+
+    })
+  }
+</script>
 <script type="text/javascript" src="../js/plugins/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="../js/plugins/dataTables.bootstrap.min.js"></script>
 <script type="text/javascript">
