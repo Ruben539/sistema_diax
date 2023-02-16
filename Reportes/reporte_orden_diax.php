@@ -24,6 +24,7 @@ ob_start();
 <body>
 
   <main class="app-content">
+    <div class="row">
       <div class="col-md-12">
         <div class="tile">
           <h5 class="text-center">Lista de Pacientes Diax</h5>
@@ -37,7 +38,6 @@ ob_start();
                 <th>Cedula</th>
                 <th>Estudio</th>
                 <th>Doctor/a</th>
-                <th>Seguro</th>
                 <th>Monto</th>
                 <th>Monto Seguro</th>
                 <th>Descuento</th>
@@ -70,7 +70,6 @@ ob_start();
                     <td><?php echo $data['Cedula']; ?></td>
                     <td><?php echo $data['Estudio']; ?></td>
                     <td><?php echo $data['Atendedor']; ?></td>
-                    <td><?php echo $data['Seguro']; ?></td>
                     <td><?php echo $data['Monto'] ?></td>
                     <td><?php echo $data['MontoS'] ?></td>
                     <td><?php echo $data['Descuento'] ?></td>
@@ -103,7 +102,7 @@ ob_start();
           </div>
         </div>
       </div>
-
+    </div>
     
   <div class="row">
       <div class="col-md-12">
