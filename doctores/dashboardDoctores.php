@@ -140,10 +140,10 @@ require_once("../body/header_admin.php");
       <div id="idGrafica"></div>
   </div>
 
-  <div>
-  <canvas id="myChart"></canvas>
-  <button onclick="cargarDatosGrafica();"></button>
-</div>
+  <!-- <div>
+      <canvas id="myChart"></canvas>
+      <button onclick="cargarDatosGrafica();"></button>
+  </div> -->
 
 
 
