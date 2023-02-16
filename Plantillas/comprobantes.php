@@ -48,10 +48,10 @@ require_once("../body/header_admin.php");
   <div class="row">
     <div class="col-md-12">
       <div class="tile">
-        <div class="table-responsive">
-          <table id="tablaResultado" class="table table-striped table-bordered table-condensed table-hover" style="width:100%">
+        <div class="table-responsive" id="tablaResultado">
+         
 
-          </table>
+          
         </div>
       </div>
     </div>

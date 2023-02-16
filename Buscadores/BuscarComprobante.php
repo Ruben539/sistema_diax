@@ -40,7 +40,7 @@ $resultado = mysqli_num_rows($sql);
 
 
 echo ' 
-
+<table id="tablaComprobante" class="table table-striped table-bordered table-condensed table-hover" style="width:100%">
 <thead>
       <tr class="text-center">      
         <th>Nombre</th>
@@ -96,3 +96,36 @@ echo '
   </tfoot>
    </table>';
 ?>
+
+<script type="text/javascript" src="../js/plugins/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="../js/plugins/dataTables.bootstrap.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    tablaHerreria = $("#tablaComprobante").DataTable({
+      "columnDefs": [{
+        "target": 1,
+        "data": null
+      }],
+
+      //Para cambiar el lenguaje a español
+      "language": {
+        "lengthMenu": "Mostrar _MENU_ registros",
+        "zeroRecords": "No se encontraron resultados",
+        "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+        "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+        "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+        "sSearch": "Buscar:",
+        "oPaginate": {
+          "sFirst": "Primero",
+          "sLast": "Último",
+          "sNext": "Siguiente",
+          "sPrevious": "Anterior"
+        },
+        "sProcessing": "Procesando...",
+      }
+    });
+
+
+
+  });
+</script>
