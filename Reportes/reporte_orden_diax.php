@@ -25,7 +25,7 @@ ob_start();
 
   <main class="app-content">
     <div class="row">
-      <div class="col-md-12">
+      <div class="col-md-11">
         <div class="tile">
           <h5 class="text-center">Lista de Pacientes Diax</h5>
           <div class="table-responsive">
