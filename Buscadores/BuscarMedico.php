@@ -60,7 +60,7 @@ $resultado = mysqli_num_rows($sql);
   
 if ($resultado > 0) {
   echo ' 
-
+  <table id="tablaMedico" class="table table-striped table-bordered table-condensed" style="width:100%">
   <thead>
         <tr class="text-center">      
           <th>Nombre</th>
@@ -75,20 +75,12 @@ if ($resultado > 0) {
         </tr>
       </thead>
       <tbody>';
-      $total = 0;
+     
       $monto = 0;
-      $montos = 0;
-      $descuentos = 0;
+
     while ($data = mysqli_fetch_array($sql)){
-      $monto += $data['Monto'];
-      $montos += $data['MontoS'];
-      $descuentos += $data['Descuento'];
-      if(-$data['MontoS']){
-          $total = $monto + $montos;
-     }
-      $total = $monto - $montos;
-   
-  
+      $monto += (int)$data['Monto'];
+
       echo '<tr>
   
       <td>'. $data['nombre'].' '. $data['apellido'].'</td>
@@ -126,5 +118,36 @@ if ($resultado > 0) {
   exit();
 }
 
-
 ?>
+<script type="text/javascript" src="../js/plugins/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="../js/plugins/dataTables.bootstrap.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    tablaHerreria = $("#tablaMedico").DataTable({
+      "columnDefs": [{
+        "target": 1,
+        "data": null
+      }],
+
+      //Para cambiar el lenguaje a español
+      "language": {
+        "lengthMenu": "Mostrar _MENU_ registros",
+        "zeroRecords": "No se encontraron resultados",
+        "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+        "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+        "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+        "sSearch": "Buscar:",
+        "oPaginate": {
+          "sFirst": "Primero",
+          "sLast": "Último",
+          "sNext": "Siguiente",
+          "sPrevious": "Anterior"
+        },
+        "sProcessing": "Procesando...",
+      }
+    });
+
+
+
+  });
+</script>
