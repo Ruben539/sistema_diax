@@ -21,13 +21,11 @@ $hoy = date('d-m-Y');
 //exit();
 
 if (empty($desde) && empty($hasta)) {
-  $sql = mysqli_query($conection, "SELECT h.id,c.nombre,c.apellido,h.Estudio,h.Cedula,h.Atendedor,h.Fecha,h.Seguro,h.Monto,h.Descuento,h.MontoS,h.Comentario, h.fecha_2 
-  FROM historial h inner join clientes c on c.cedula = h.cedula  where   Fecha LIKE '%".$hoy."%' ORDER BY  h.id ASC");
+  $sql = mysqli_query($conection, "SELECT * FROM historial h inner join clientes c on c.cedula = h.cedula  where   Fecha LIKE '%".$hoy."%'");
 
 }else{
 
-  $sql = mysqli_query($conection, "SELECT h.id,c.nombre,c.apellido,h.Estudio,h.Cedula,h.Atendedor,h.Fecha,h.Seguro,h.Monto,h.Descuento,h.MontoS,h.Comentario, h.fecha_2 
-  FROM historial h inner join clientes c on c.cedula = h.cedula  where Fecha BETWEEN '{$desde}' AND '{$hasta}'AND  Fecha LIKE '%".$fecha."%' ORDER BY  h.id ASC");
+  $sql = mysqli_query($conection, "SELECT * FROM historial h inner join clientes c on c.cedula = h.cedula  where Fecha BETWEEN '{$desde}' AND '{$hasta}'AND  Fecha LIKE '%".$fecha."%'");
 
 }
 
