@@ -106,7 +106,7 @@ require_once("../body/header_admin.php");
             <h3 class="tile-title">Modificar de Estudios</h3>
             <div class="tile-body">
               <form action="" method="POST">
-                  <input type="hidden" name="id" id="id" value="<?php echo $id; ?>">
+                  <input type="hidden" name="id" id="id" value="<?php echo $_REQUEST['id']; ?>">
                 <div class="form-group">
                   <input class="form-control" type="hidden" name="Estudio" id="Estudio" placeholder="Ingrese el Estudio" 
                    value="<?php echo $Estudio; ?>">
