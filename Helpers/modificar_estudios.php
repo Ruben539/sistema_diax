@@ -21,7 +21,7 @@ if (empty($_SESSION['active'])) {
 			$Estudio         = $_POST['Estudio'];
 			$SinSeguro       = $_POST['SinSeguro'];
 			$SEMEI           = $_POST['SEMEI'];
-			$SemeiPref       = $_POST['SemeiPref '];
+			$SemeiPref       = $_POST['SemeiPref'];
 			$Seguros         = $_POST['Seguros'];
 			$SegurosPref     = $_POST['SegurosPref'];
 			$Hospitalar      = $_POST['Hospitalar'];
