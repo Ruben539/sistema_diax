@@ -53,36 +53,43 @@ require_once("../body/header_admin.php");
                   <tbody>
                       <?php 
                         $sql = mysqli_query($conection,"SELECT t.id,t.Estudio,t.SinSeguro,t.SEMEI,t.SemeiPref,t.Seguros,t.SegurosPref,t.Hospitalar 
-                        FROM tarifas t ORDER BY  t.id DESC");
+                        FROM tarifas t where estatus = 1 ORDER BY  t.id DESC");
 
                          $resultado = mysqli_num_rows($sql);
 
-                         if($resultado > 0){ 
-                            while ($data = mysqli_fetch_array($sql)){ 
-                      ?>
-                        <tr class="text-center">
-                             <td><?php echo $data['id'];?></td>
-                             <td><?php echo $data['Estudio'];?></td>
- 						                 <td><?php echo $data['SinSeguro'];?></td>
- 						                 <td><?php echo $data['SEMEI'];?></td>
- 						                 <td><?php echo $data['SemeiPref']; ?></td>
-                             <td><?php echo $data['Seguros']?></td>
-                             <td><?php echo $data['SegurosPref']?></td>
-                             <td><?php echo $data['Hospitalar']?></td>
- 					        
-                           
-	<?php if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 2) {?>
-    <td>
-	  <a href="../Helpers/modificar_estudios.php?id=<?php echo $data['id']; ?>"class="btn btn-outline-info" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px  rgba(0, 0, 0, 0.25);"><i class="fas fa-edit"></i></a>
-    </td>
-    <?php } ?>
-                          
+                         if ($resultado > 0) {
+                          while ($ver= mysqli_fetch_array($sql)) {
+                            $datos = $ver[0];
+                             $ver[1];
+                             $ver[2];
+                             $ver[3];
+                             $ver[4];
+                             $ver[5];
+                             $ver[6];
+                             $ver[7];
+                        ?>
+                            <tr class="text-center">
+          
+                            <td><?= $ver[0]; ?></td>
+                            <td><?= $ver[1]; ?></td>
+                            <td><?= $ver[2]; ?></td>
+                            <td><?= $ver[3]; ?></td>
+                            <td><?= $ver[4]; ?></td>
+                            <td><?= $ver[5]; ?></td>
+                            <td><?= $ver[6]; ?></td>
+                            <td><?= $ver[7]; ?></td>
                             
-	<?php if($_SESSION['rol'] == 1 ){ ?>
-    <td>
-		<a href="../Helpers/eliminar_estudios.php?id=<?php echo $data['id']; ?>"class="btn btn-outline-danger" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px  rgba(0, 0, 0, 0.25);"><i class="fas fa-user-times"></i></a>
-    </td>
-	<?php } ?>
+                            <?php if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 2) {?>
+                            <td>
+                            <a href="../Helpers/modificar_estudios.php?id=<?php echo $ver[0]; ?>"class="btn btn-outline-info" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px  rgba(0, 0, 0, 0.25);"><i class="fas fa-edit"></i></a>
+                            </td>
+                            <?php } ?>
+                                  
+                              <td>
+                              <button class = "btn btn-outline-danger" onclick="liberarDatos('<?php echo $ver[0] ?>')"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                             
+                              </td>
+
 
   <?php if($_SESSION['rol'] == 2 ){ ?>
   <td>
@@ -101,9 +108,18 @@ require_once("../body/header_admin.php");
         </div>
       </div>
     </main>
-    
+  <script src="../js/estudios.js"></script>
 <script type="text/javascript" src="../js/plugins/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="../js/plugins/dataTables.bootstrap.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+   
+        $('#btnEditarPass').click(function() {
+            /* Act on the event */
+            liberarDatos();
+        });
+    });
+</script>
 <script type="text/javascript">
     $(document).ready(function(){
     tablaHerreria = $("#tabla_Usuario").DataTable({
