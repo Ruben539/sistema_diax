@@ -89,7 +89,7 @@ require_once("../body/header_admin.php");
                                     <select name="ecografias[]" class="chosen form-control" data-placeholder="Elige uno o varios estudios" multiple>
                                         <option value=""></option>
                                         <?php
-                                        $raw_results3 = mysqli_query($conection, "select * from tarifas where Estudio not like '%TAC%';") or die(mysqli_error($conection));
+                                        $raw_results3 = mysqli_query($conection, "select * from tarifas where Estudio not like '%TAC%' and estatus = 1;") or die(mysqli_error($conection));
                                         while ($results = mysqli_fetch_array($raw_results3)) {
                                         ?>
                                             <option value=" <?php echo $results['Estudio'] ?> ">
