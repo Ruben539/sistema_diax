@@ -38,16 +38,16 @@ require_once("../body/header_admin.php");
             <div class="tile">
                 <?php
                 $query = $_POST['cedula'];
-                
-                
+
+
                 $min_length = 1;
                 if (strlen($query) >= $min_length) { // if query length is more or equal minimum length then
                     $query = htmlspecialchars($query);
-                    $hoy = date("d-m-Y");
+                    $hoy = date("Y");
                     // $query = mysqli_real_escape_string($query);
                     $raw_results = mysqli_query($conection, "SELECT h.id,h.Cedula,c.Nombre,c.Apellido,c.Celular,c.Nacimiento,h.Fecha 
                     FROM historial h INNER JOIN clientes c on c.cedula = h.cedula
-                     WHERE h.cedula = $query AND Fecha like '%".$hoy."%' ") or die(mysqli_error($conection));
+                     WHERE h.cedula = $query AND Fecha like '%" . $hoy . "%' ") or die(mysqli_error($conection));
                     #WHERE (`Cedula` LIKE '%".$query."%')") or die(mysql_error());
                     echo "<div class='bs-component'>";
                     echo "<div class='card'>";
@@ -56,16 +56,16 @@ require_once("../body/header_admin.php");
                     if (mysqli_num_rows($raw_results) > 0) { // if one or more rows are returned do following
 
                         while ($results = mysqli_fetch_array($raw_results)) {
-                           
+
                             echo "<p><h4>CI: " . $results['Cedula'] . "</h4></p>";
                             echo "<p><h4>Nombre: " . $results['Nombre'] . " " . $results['Apellido'] . "</h4></p>";
                             echo "<p><h4>Celular: " . $results['Celular'] . "</h4></p>";
                             $nombre = $results['Nombre'] . " " . $results['Apellido'];
                             $nacimiento = $results['Nacimiento'];
                             echo "</div>";
-                            echo'<p>
+                            echo '<p>
                                 <td>
-                                     <a href="../Helpers/cancelar_orden.php?id='. $results['id'].' " class="btn btn-outline-danger" target="_blank"><i class="fa fa-user-times"></i> Cancelar Orden</a></td>
+                                     <a href="../Helpers/cancelar_orden.php?id=' . $results['id'] . ' " class="btn btn-outline-danger" target="_blank"><i class="fa fa-user-times"></i> Cancelar Orden</a></td>
                                 </td></p>';
                             echo "</div>";
                         }
@@ -77,41 +77,12 @@ require_once("../body/header_admin.php");
                 }
                 ?>
             </div>
-           
+        </div>
+    </div>
+
 </main>
 
-<script type="text/javascript" src="../js/plugins/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="../js/plugins/dataTables.bootstrap.min.js"></script>
-<script type="text/javascript">
-    $(document).ready(function() {
-        tablaHerreria = $("#tabla_Usuario").DataTable({
-            "columnDefs": [{
-                "target": 1,
-                "data": null
-            }],
 
-            //Para cambiar el lenguaje a español
-            "language": {
-                "lengthMenu": "Mostrar _MENU_ registros",
-                "zeroRecords": "No se encontraron resultados",
-                "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-                "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
-                "infoFiltered": "(filtrado de un total de _MAX_ registros)",
-                "sSearch": "Buscar:",
-                "oPaginate": {
-                    "sFirst": "Primero",
-                    "sLast": "Último",
-                    "sNext": "Siguiente",
-                    "sPrevious": "Anterior"
-                },
-                "sProcessing": "Procesando...",
-            }
-        });
-
-
-
-    });
-</script>
 
 <script>
     function permisoAuto() {
