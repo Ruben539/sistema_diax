@@ -74,7 +74,7 @@ if (!empty($_POST)) {
 
 
                 <div class="form-group">
-                  <label class="control-label">Semei Preferencial</label>
+                  <label class="control-label">Precio Preferencial</label>
                   <input class="form-control" type="text" name="SemeiPref" id="SemeiPref" placeholder="Ingrese el monto" required>
                 </div>
                
@@ -88,7 +88,7 @@ if (!empty($_POST)) {
                 </div>
 
                 <div class="form-group">
-                  <label class="control-label">Seguros Hospitalarios</label>
+                  <label class="control-label">Precio Hospitalarios</label>
                   <input class="form-control" type="text"  name=" Hospitalar" id=" Hospitalar"  placeholder="Ingrese el monto">
                 </div>
                  

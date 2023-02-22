@@ -17,13 +17,14 @@ $monto=$_POST['monto'];
 $comentario=$_POST['comentario'];
 $nacimiento=$_POST['nacimiento'];
 $estado='En Espera';
+$estatus = 1;
 
 
 if ( $seguro == "SEMEI" or $seguro == "Seguros")
 {
-$sql = "INSERT INTO historial (Cedula,Seguro,Atendedor,MontoS,Estudio,Descuento,Comentario,Fecha,estado) VALUES ('$ci','$segurot','$medico','$monto','$estudio','$descuento','$comentario','$Fecha','$estado');";}else
+$sql = "INSERT INTO historial (Cedula,Seguro,Atendedor,MontoS,Estudio,Descuento,Comentario,Fecha,estado,estatus) VALUES ('$ci','$segurot','$medico','$monto','$estudio','$descuento','$comentario','$Fecha','$estado','$estatus');";}else
     {
-$sql = "INSERT INTO historial (Cedula,Seguro,Atendedor,Monto,Estudio,Descuento,Comentario,Fecha,estado) VALUES ('$ci','$segurot','$medico','$monto','$estudio','$descuento','$comentario','$Fecha','$estado');";
+$sql = "INSERT INTO historial (Cedula,Seguro,Atendedor,Monto,Estudio,Descuento,Comentario,Fecha,estado,estatus) VALUES ('$ci','$segurot','$medico','$monto','$estudio','$descuento','$comentario','$Fecha','$estado','$estatus');";
 }
 $result = mysqli_query($conection,$sql);
 $sql2 = "select ID from historial where Fecha='$Fecha';";

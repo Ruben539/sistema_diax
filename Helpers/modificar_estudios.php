@@ -130,7 +130,7 @@ require_once("../body/header_admin.php");
                 </div>
 
                 <div class="form-group">
-                  <label class="control-label">Semei Preferencial</label>
+                  <label class="control-label">Precio Preferencial</label>
                   <input class="form-control" type="text" name="SemeiPref" id="SemeiPref" placeholder="Ingrese el monto" required
                   value="<?php echo $SemeiPref; ?>">
                 </div>
@@ -148,7 +148,7 @@ require_once("../body/header_admin.php");
                 </div>
 
                 <div class="form-group">
-                  <label class="control-label">Hospitalarios</label>
+                  <label class="control-label">Precio Hospitalarios</label>
                   <input class="form-control" type="text" name="Hospitalar" id="Hospitalar" placeholder="Ingrese el monto"
                   value="<?php echo $Hospitalar; ?>">
                 </div>
