@@ -131,7 +131,7 @@ ob_start();
                 //  echo $fecha1." ".$fecha2;
                 //  exit;
                 $sql = mysqli_query($conection, "SELECT g.id,g.descripcion,g.monto,g.created_at  FROM gastos g 
-                where  g.created_at like '%$fecha%'   ORDER BY  g.id ASC");
+                where  g.created_at like '%".$fecha."%'   ORDER BY  g.id ASC");
 
                 $resultado = mysqli_num_rows($sql);
                 $gasto = 0;
