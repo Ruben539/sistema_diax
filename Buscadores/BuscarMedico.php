@@ -71,6 +71,7 @@ if ($resultado > 0) {
           <th>Monto</th>                                
           <th>Descuento</th>                                
           <th>MontoS</th>                                
+          <th>Comentario</th>                                
           <th>Fecha</th>                              
         </tr>
       </thead>
@@ -91,6 +92,7 @@ if ($resultado > 0) {
       <td>'. $data['Monto']. '</td>
       <td>'. $data['Descuento']. '</td>
       <td>'. $data['MontoS']. '</td>
+      <td>'. $data['Comentario']. '</td>
       <td>'. $data['Fecha']. '</td>
   
           </tr>';
