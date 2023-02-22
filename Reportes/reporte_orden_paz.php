@@ -48,23 +48,23 @@ ob_start();
               </thead>
 
               <tbody>
-                <?php
-                // $fecha1 = "05-01-2023";
-                $fecha =  date('d-m-Y');
-                //  echo $fecha1." ".$fecha2;
-                //  exit;
-                $sql = mysqli_query($conection, "SELECT h.id,c.nombrec.apellido,h.Estudio,h.Cedula,h.Atendedor,h.Fecha,h.Seguro,h.Monto,h.Descuento,h.MontoS,h.Comentario, h.fecha_2 
-                FROM historial h inner join clientes c on c.cedula = h.cedula where  h.Fecha like '%".$fecha."% AND h.Atendedor like '% PAZ %' AND estatus = 1  ORDER BY  h.id ASC");
+              <?php
+              // $fecha1 = "05-01-2023";
+              $fecha =  date('d-m-Y');
+              //  echo $fecha1." ".$fecha2;
+              //  exit;
+              $sql = mysqli_query($conection, "SELECT h.id,c.nombre,c.apellido,h.Estudio,h.Cedula,h.Atendedor,h.Fecha,h.Seguro,h.Monto,h.Descuento,h.MontoS,h.Comentario, h.fecha_2 
+                       FROM historial h inner join clientes c on c.cedula = h.cedula where  h.Fecha like '%$fecha%' AND h.Atendedor like '%PAZ%'  ORDER BY  h.id ASC");
 
-                $resultado = mysqli_num_rows($sql);
-                $monto = 0;
+              $resultado = mysqli_num_rows($sql);
+              $monto = 0;
 
-                if ($resultado > 0) {
-                  while ($data = mysqli_fetch_array($sql)) {
-                    $monto += (int)$data['Monto'];
+              if ($resultado > 0) {
+                while ($data = mysqli_fetch_array($sql)) {
+                  $monto += (int)$data['Monto'];
 
-                ?>
-                    <tr class="text-center">
+              ?>
+                  <tr class="text-center">
 
                     <td><?php echo $data['Fecha'] ?></td>
                     <td><?php echo $data['nombre'].' '.$data['apellido'];  ?></td>
