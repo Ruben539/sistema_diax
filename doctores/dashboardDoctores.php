@@ -56,7 +56,7 @@ require_once("../body/header_admin.php");
     <div class="col-md-12">
       <div class="tile">
         <div class="table-responsive">
-          <table id="tabla_Usuario" class="table table-striped table-bordered table-condensed" style="width:100%">
+          <table id="tabla_Doctores" class="table table-striped table-bordered table-condensed" style="width:100%">
             <thead>
               <tr class="text-center">
                 <th>ID</th>
@@ -82,7 +82,7 @@ require_once("../body/header_admin.php");
               //print_r($iduser);
               //exit();
               
-              $fecha  =  date('m-Y');
+              $fecha  =  date('d-m-Y');
               $medico = trim($_SESSION['Nombre']);
              // print_r($medico.' '.$fecha);
 
@@ -200,7 +200,7 @@ require_once("../body/header_admin.php");
 <script type="text/javascript" src="../js/plugins/dataTables.bootstrap.min.js"></script>
 <script type="text/javascript">
   $(document).ready(function() {
-    tablaHerreria = $("#tabla_Paz").DataTable({
+    tablaHerreria = $("#tabla_Doctores").DataTable({
       "columnDefs": [{
         "target": 1,
         "data": null
