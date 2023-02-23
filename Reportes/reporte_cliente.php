@@ -72,6 +72,7 @@ ob_start();
 
              
                 <th>Cedula</th>
+                <th>Nombre</th>
                 <th>F. Nacimiento</th>
                 <th>Fecha Carga</th>
                 <th>Estudio /os</th>
@@ -88,6 +89,7 @@ ob_start();
                     <tr class="text-center">
 
                     <td><?php echo $Cedula; ?></td>
+                    <td><?php echo $Nombre/' '.$Apellido; ?></td>
                     <td><?php echo $Nacimiento; ?></td>
                     <td><?php echo $Fecha; ?></td>
                     <td><?php echo $Estudio; ?></td>
@@ -108,6 +110,7 @@ ob_start();
                 <tr class="text-center">
 
                 <th>Cedula</th>
+                <th>Nombre</th>
                 <th>F. Nacimiento</th>
                 <th>Fecha Carga</th>
                 <th>Estudio /os</th>
@@ -126,6 +129,7 @@ ob_start();
                     <tr class="text-center">
 
                     <td><?php echo $Cedula; ?></td>
+                    <td><?php echo $Nombre.' '.$Apellido; ?></td>
                     <td><?php echo $Atendedor; ?></td>
                     <td><?php echo $Fecha; ?></td>
                     <td><?php echo $Estudio; ?></td>
