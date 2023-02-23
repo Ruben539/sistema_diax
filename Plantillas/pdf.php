@@ -27,10 +27,15 @@ $sql = "INSERT INTO historial (Cedula,Seguro,Atendedor,MontoS,Estudio,Descuento,
 $sql = "INSERT INTO historial (Cedula,Seguro,Atendedor,Monto,Estudio,Descuento,Comentario,Fecha,estado,estatus) VALUES ('$ci','$segurot','$medico','$monto','$estudio','$descuento','$comentario','$Fecha','$estado','$estatus');";
 }
 $result = mysqli_query($conection,$sql);
-$sql2 = "select ID from historial where Fecha='$Fecha';";
-$result2= mysqli_query($conection,$sql2);
-$identificador= mysqli_fetch_array($result2);
-header('location: registro_pacientes.php');
+
+if($result){
+    header('location: ../Reportes/reporte_cliente.php');
+}else{
+    echo "<script>javascript:alert('Ha ocurrido un error');</script>";
+    exit();
+    
+}
+
 
 // if ($seguro == "SEMEI" or $seguro == "Seguros")
 // {

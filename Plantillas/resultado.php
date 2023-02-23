@@ -1,5 +1,7 @@
 <?php
-session_start();
+
+if (!session_start()){ 
+  session_start();
 if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 2){
     if (empty($_SESSION['active'])) {
     header('location: salir.php');
@@ -8,7 +10,7 @@ if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 2){
 }else{
   header('location: salir.php');  
 }
-
+}
 require_once("../Modelos/conexion.php");
 
 require_once("../body/header_admin.php");
