@@ -37,17 +37,18 @@ require_once("../body/header_admin.php");
         <div class="col-md-12">
             <div class="tile">
                 <?php
-                $query = $_POST['cedula'];
+                $query = trim($_POST['cedula']);
 
-
+                echo $query;
+                //exit();
                 $min_length = 1;
                 if (strlen($query) >= $min_length) { // if query length is more or equal minimum length then
-                    $query = htmlspecialchars($query);
-                    $hoy = date("Y");
-                    // $query = mysqli_real_escape_string($query);
+                    $hoy = date("d-m-Y");
+                    $datos = htmlspecialchars($query);
+                     //$query = mysqli_real_escape_string($LOAS);
                     $raw_results = mysqli_query($conection, "SELECT h.id,h.Cedula,c.Nombre,c.Apellido,c.Celular,c.Nacimiento,h.Fecha 
                     FROM historial h INNER JOIN clientes c on c.cedula = h.cedula
-                     WHERE h.cedula = $query AND Fecha like '%" . $hoy . "%' ") or die(mysqli_error($conection));
+                    WHERE h.Cedula = $datos AND Fecha like '%" . $hoy . "%' ");
                     #WHERE (`Cedula` LIKE '%".$query."%')") or die(mysql_error());
                     echo "<div class='bs-component'>";
                     echo "<div class='card'>";

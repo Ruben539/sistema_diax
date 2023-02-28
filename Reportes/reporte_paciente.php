@@ -24,7 +24,8 @@ if (empty($_REQUEST['id'])) {
 
 $id = $_REQUEST['id'];
 
-$sql = mysqli_query($conection,"SELECT * FROM historial  WHERE id = $id");   
+$sql = mysqli_query($conection,"SELECT h.id,c.Nombre,c.Apellido,c.Nacimiento,h.Estudio,h.Cedula,h.Atendedor,h.Fecha,h.Seguro,h.Monto,h.Descuento,h.MontoS,h.Comentario, h.fecha_2 
+FROM historial h inner join clientes c on c.cedula = h.cedula  WHERE h.id = $id");   
 
 //mysqli_close($conection);//con esto cerramos la conexion a la base de datos una vez conectado arriba con el conexion.php
 
@@ -50,6 +51,9 @@ if ($resultado == 0) {
 		$Descuento   = $data['Descuento'];
 		$Comentario  = $data['Comentario'];
 		$Fecha       = $data['Fecha'];
+		$Nombre      = $data['Nombre'];
+		$Apellido    = $data['Apellido'];
+		$Nacimiento    = $data['Nacimiento'];
 
 	}
 }
@@ -68,24 +72,25 @@ ob_start();
 
 <body>
 
-  <main class="app-content">
+<main class="app-content">
     <div class="row">
       <div class="col-md-12">
         <div class="tile">
           <h5 class="text-center">Datos Pacientes</h5>
-          <div class="table-responsive">
-            <table id="tabla_Usuario" class="table table-striped table-bordered table-condensed" style=" font-size: 10px;">
+          <div class="table-responsive" >
+            <table id="tabla_Usuario" class="table table-striped table-bordered table-condensed" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px  rgba(0, 0, 0, 0.25); font-size: 10px;">
               <thead>
                 <tr class="text-center">
 
-                <th>Fecha</th>
+             
                 <th>Cedula</th>
-                <th>Estudio</th>
-                <th>Doctor/a</th>
-                <th>Seguro</th>
+                <th>Nombre</th>
+                <th>F. Nacimiento</th>
+                <th>Fecha Carga</th>
+                <th>Estudio /os</th>
+                <th>Medico</th>
                 <th>Monto</th>
-                <th>Descuento</th>
-                <th>Comentario</th>
+                <th>ID</th>
                 
 
                 </tr>
@@ -95,14 +100,56 @@ ob_start();
                 
                     <tr class="text-center">
 
-                    <td><?php echo $Fecha; ?></td>
                     <td><?php echo $Cedula; ?></td>
+                    <td><?php echo $Nombre.' '.$Apellido; ?></td>
+                    <td><?php echo $Nacimiento; ?></td>
+                    <td><?php echo $Fecha; ?></td>
                     <td><?php echo $Estudio; ?></td>
                     <td><?php echo $Atendedor; ?></td>
-                    <td><?php echo $Seguro; ?></td>
+                    <td><?php echo $Monto; ?></td>
+                    <td><?php echo $id; ?></td>
+                
+                    </tr>
+
+              </tbody>  
+           </table>
+          </div>
+
+          <h5 class="text-center">Uso Interno</h5>
+          <div class="table-responsive" >
+            <table id="tabla_Usuario" class="table table-striped table-bordered table-condensed" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px  rgba(0, 0, 0, 0.25); font-size: 10px;">
+              <thead>
+                <tr class="text-center">
+
+                <th>Cedula</th>
+                <th>Nombre</th>
+                <th>F. Nacimiento</th>
+                <th>Fecha Carga</th>
+                <th>Estudio /os</th>
+                <th>Medico</th>
+                <th>Monto</th>
+                <th>Descuento</th>
+                <th>Seguro</th>
+                <th>ID</th>
+                
+
+                </tr>
+              </thead>
+
+              <tbody>
+                
+                    <tr class="text-center">
+
+                    <td><?php echo $Cedula; ?></td>
+                    <td><?php echo $Nombre.' '.$Apellido; ?></td>
+                    <td><?php echo $Atendedor; ?></td>
+                    <td><?php echo $Fecha; ?></td>
+                    <td><?php echo $Estudio; ?></td>
+                    <td><?php echo $Nacimiento; ?></td>
                     <td><?php echo $Monto; ?></td>
                     <td><?php echo $Descuento; ?></td>
-                    <td><?php echo $Comentario; ?></td>
+                    <td><?php echo $Seguro; ?></td>
+                    <td><?php echo $id; ?></td>
                 
                     </tr>
 

@@ -89,7 +89,7 @@ ob_start();
                     <tr class="text-center">
 
                     <td><?php echo $Cedula; ?></td>
-                    <td><?php echo $Nombre/' '.$Apellido; ?></td>
+                    <td><?php echo $Nombre.' '.$Apellido; ?></td>
                     <td><?php echo $Nacimiento; ?></td>
                     <td><?php echo $Fecha; ?></td>
                     <td><?php echo $Estudio; ?></td>
