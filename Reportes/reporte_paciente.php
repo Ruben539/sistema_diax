@@ -142,10 +142,10 @@ ob_start();
 
                     <td><?php echo $Cedula; ?></td>
                     <td><?php echo $Nombre.' '.$Apellido; ?></td>
-                    <td><?php echo $Atendedor; ?></td>
+                    <td><?php echo $Nacimiento; ?></td>
                     <td><?php echo $Fecha; ?></td>
                     <td><?php echo $Estudio; ?></td>
-                    <td><?php echo $Nacimiento; ?></td>
+                    <td><?php echo $Atendedor; ?></td>
                     <td><?php echo $Monto; ?></td>
                     <td><?php echo $Descuento; ?></td>
                     <td><?php echo $Seguro; ?></td>
