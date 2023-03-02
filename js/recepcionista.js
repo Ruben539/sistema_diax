@@ -83,6 +83,46 @@ timer: 5000,
 
 });
 
+// Consulta de la sentencia para recuperar los datos para las Notificaciones
+$.ajax({
+	statusCode:{
+		404:function(){
+			console.log("Esta Pagina no Existe");
+		}
+	},
+	url:'../Librerias/servidor.php',
+	method:'POST',
+	data:{
+		rq:"11"
+	}
+	}).done(function(datos){
+	//Logica de respuesta  de los datos
+	$("#idGastosPen").text(parseFloat(datos).toLocaleString()+" "+"Pedidos Pendientes");
+	
+	if (datos == 0) {
+	//alert("validacion nula");
+	
+	}else{
+	
+	Swal.fire({
+	/*toast: true,*/
+	position: 'bottom-end',
+	title: 'Mensaje del Sistema !',
+	text: 'Su pedido de cancelación de gastos aun no ha sido realizado',
+	footer:'Favor comunicarse con el administrador',
+	imageUrl: '../images/logo.png',
+	imageWidth: 160,
+	imageHeight: 80,
+	imageAlt: 'Custom image',
+	showConfirmButton: false,
+	timer: 5000, 
+	
+	});
+	
+	
+	}
+	
+	});
 
 
 

@@ -31,6 +31,10 @@ if($rq == 1){
 	$respuesta = $oMysql->getMedicos();
 }elseif($rq == 9) {
 	$respuesta = $oMysql->getMedicosPen();
+}elseif($rq == 10) {
+	$respuesta = $oMysql->getGastos();
+}elseif($rq == 11) {
+	$respuesta = $oMysql->getGastosPen();
 }
 echo $respuesta;
 

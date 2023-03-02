@@ -207,6 +207,42 @@ class MYSQL {
 		return $idMedicosPen;
 	}
 
+	public function getGastos(){
+		$idGastos = 0;
+		$mes = date('m');
+		$anio = date('Y');
+		try{
+			$strQuery = "SELECT COUNT(*) as tNotificacion FROM gastos WHERE estatus = 2";
+			if($this->conexBDPDO()){
+				$pQuery =$this->oConBD->prepare($strQuery);
+				$pQuery->execute();
+				$idGastos= $pQuery->fetchColumn();
+			}
+		}catch(PDOException $e){
+			echo "MYSQL.getGastos: ". $e->getMessage(). "\n";
+			return -1;
+		}
+		return $idGastos;
+	}
+
+	public function getGastosPen(){
+		$idGastosPen = 0;
+		$mes = date('m');
+		$anio = date('Y');
+		try{
+			$strQuery = "SELECT COUNT(*) as tNotificacion FROM gastos WHERE estatus = 2";
+			if($this->conexBDPDO()){
+				$pQuery =$this->oConBD->prepare($strQuery);
+				$pQuery->execute();
+				$idGastosPen= $pQuery->fetchColumn();
+			}
+		}catch(PDOException $e){
+			echo "MYSQL.getGastos: ". $e->getMessage(). "\n";
+			return -1;
+		}
+		return $idGastosPen;
+	}
+
 	/*//Codigo para recuperar los datos para la grafica
 	public function getDatosGrafica(){
 		$jDatos = '';
