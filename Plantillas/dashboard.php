@@ -346,7 +346,8 @@ require_once("../body/header_admin.php");
 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQjCrevR37GZ7P-dI_bCHzTMFtwsU_fNk&callback=initMap">
 </script>
 <script src="../js/index.js"></script>
-<script src="../js/funciones.js"></script>
+<script src="../bootstrap//dist/js/bootstrap.min.js"></script>
+
 <script type="text/javascript" src="../js/plugins/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="../js/plugins/dataTables.bootstrap.min.js"></script>
 <script type="text/javascript">

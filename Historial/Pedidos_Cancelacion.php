@@ -17,7 +17,7 @@ require_once("../body/header_admin.php");
 <main class="app-content">
       <div class="app-title">
         <div>
-          <h1><i class="fa fa-user-times"></i> Ordenes Canceladas del Mes  
+          <h1><i class="fa fa-user-times"></i> Ordenes para Cancelar  
         </h1>
           <p>Registro Web en Desarrollo</p>
         </div>
@@ -34,25 +34,25 @@ require_once("../body/header_admin.php");
                   <thead>
                     <tr class="text-center">
                             <th>ID</th>
-                            <th>Solicitante</th>
-                            <th>F. de Solic.</th>
                             <th>Nombre</th>
                             <th>Estudio</th>
                             <th>Doctor</th>                              
                             <th>Cancelado</th>                                
-                            <th>Aprobado por</th>                                
-                            <th>F. de Aprob.</th>                                
+                            <th>Fecha</th>                                
+                            <th>Aprobar</th>                                
                               
                         </tr>
                   </thead>
 
                   <tbody>
                       <?php 
-                        $hoy = date('m-Y');
+                      //$usuario = $_SESSION['nombre'];
+                     // echo $usuario;
+                        $hoy = date('d-m-Y');
                         
-                         $sql = mysqli_query($conection, "SELECT h.id,h.Cedula,c.nombre,c.apellido,h.estudio,h.atendedor,h.cancelado,h.fecha,h.usuario_1,usuario_2,fecha_1
+                         $sql = mysqli_query($conection, "SELECT h.id,h.Cedula,c.nombre,c.apellido,h.estudio,h.atendedor,h.cancelado,h.fecha 
                          FROM historial h INNER JOIN clientes c on c.cedula = h.cedula
-                         WHERE h.cancelado != ' ' AND fecha like '%".$hoy."%' AND h.estatus = 0 ORDER BY ID ASC ");
+                         WHERE Fecha like '%".$hoy."%' AND h.estatus = 2 ");
                        
 
                          $resultado = mysqli_num_rows($sql);
@@ -62,16 +62,16 @@ require_once("../body/header_admin.php");
                       ?>
                         <tr class="text-center">
                              <td><?php echo $data['id'];?></td>
-                             <td><?php echo $data['usuario_1'];?></td>
-                             <td><?php echo $data['fecha']?></td>
                              <td><?php echo $data['nombre'].' '.$data['apellido'];?></td>
                              <td><?php echo $data['estudio']; ?></td>
                              <td><?php echo $data['atendedor']?></td>
                              <td><?php echo $data['cancelado'];?></td>
-                             <td><?php echo $data['usuario_2']?></td>
-                             <td><?php echo $data['fecha_1']?></td>
+                             <td><?php echo $data['fecha']?></td>
  					        
-                           
+                             <td>
+                                <button class = "btn btn-outline-success" onclick="aprobarCancelacion('<?php echo $data['id']; ?>')"><i class="fa fa-check" aria-hidden="true"></i></button>
+                   
+                             </td>
 
                 </tr>
                      
@@ -88,7 +88,18 @@ require_once("../body/header_admin.php");
     
 <script type="text/javascript" src="../js/plugins/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="../js/plugins/dataTables.bootstrap.min.js"></script>
+<script src="../js/cancelacion.js"></script>
 <script type="text/javascript">
+    $(document).ready(function() {
+   
+        $('#btnEditarPass').click(function() {
+            /* Act on the event */
+            aprobarCancelacion();
+        });
+    });
+</script>
+<script type="text/javascript">
+
     $(document).ready(function(){
     tablaHerreria = $("#tabla_Usuario").DataTable({
        "columnDefs":[{

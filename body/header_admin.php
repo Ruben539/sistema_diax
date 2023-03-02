@@ -44,16 +44,17 @@ $sesion = $_SESSION['rol'];
       
       <!-- Navbar Right Menu-->
       <ul class="app-nav">
-        <li class="dropdown"><a id="noti" class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Show notifications"><i id="icono" class="fas fa-book fa-lg"></i></a>
+      <?php if ($sesion == 1 ) {?>
+        <li class="dropdown"><a id="noti" class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Show notifications"><i id="icono" class="fas fa-user-md fa-lg"></i></a>
        
           <ul class="app-notification dropdown-menu dropdown-menu-right">
             <div class="app-notification__content">
 
-              <li><a class="app-notification__item"  href="../Plantillas/nota_pro.php"><span class="app-notification__icon"><span class="fa-stack fa-lg"><i  class="fa fa-circle fa-stack-2x text-primary"></i>
-              <i class="fa fa-book fa-stack-1x fa-inverse"></i></span></span>
+              <li><a class="app-notification__item"  href="../Plantillas/eliminacion_medicos.php"><span class="app-notification__icon"><span class="fa-stack fa-lg"><i  class="fa fa-circle fa-stack-2x text-primary"></i>
+              <i class="fa fa-user-md fa-stack-1x fa-inverse"></i></span></span>
                   <div>
                     
-                    <p class="app-notification__message" id=""></p>
+                  <p class="app-notification__message" id="idMedicos"></p>
                    
                     <p class="app-notification__meta"><?php echo date('d-m-Y'); ?></p>
                   </div></a></li>
@@ -62,17 +63,17 @@ $sesion = $_SESSION['rol'];
           </ul>
         </li>
         <!--Notification Menu-->
-        <?php if ($sesion == 1 || $sesion == 2) {?>
+       
          
         <li class="dropdown"><a id="noti" class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Show notifications"><i id="icono" class="fas fa-bell fa-lg"></i></a>
        
           <ul class="app-notification dropdown-menu dropdown-menu-right">
             <div class="app-notification__content">
 
-              <li><a class="app-notification__item"  href="../Plantillas/garantia.php"><span class="app-notification__icon"><span class="fa-stack fa-lg"><i  class="fa fa-circle fa-stack-2x text-primary"></i><i class="fa fa-envelope fa-stack-1x fa-inverse"></i></span></span>
+              <li><a class="app-notification__item"  href="../Historial/Pedidos_Cancelacion.php"><span class="app-notification__icon"><span class="fa-stack fa-lg"><i  class="fa fa-circle fa-stack-2x text-primary"></i><i class="fa fa-envelope fa-stack-1x fa-inverse"></i></span></span>
                   <div>
                     
-                    <p class="app-notification__message" id="idNotificacion"></p>
+                  <p class="app-notification__message" id="idNotificacion"></p>
                    
                     <p class="app-notification__meta"><?php echo date('d-m-Y'); ?></p>
                   </div></a></li>
@@ -104,6 +105,6 @@ $sesion = $_SESSION['rol'];
 
   <?php require_once("nav_admin.php");  ?>
   <script src="../bootstrap//dist/js/bootstrap.min.js"></script>
-
+scr
   
     

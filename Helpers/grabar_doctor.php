@@ -21,6 +21,7 @@ if (!empty($_POST)) {
 		$Dia           = $_POST['Dia'];
 		$Hora          = $_POST['Hora'];
 		$Tcobro        = $_POST['Tcobro'];
+		$estatus       = 1;
 		
 
 		$resultado = 0;
@@ -31,8 +32,8 @@ if (!empty($_POST)) {
 
 
 
-			$query_insert = mysqli_query($conection,"INSERT INTO medicos(Especialidad,Nombre,Tcobro,Dia,Hora)
-				VALUES('$Especialidad','$Nombre','$Tcobro','$Dia','$Hora')");
+			$query_insert = mysqli_query($conection,"INSERT INTO medicos(Especialidad,Nombre,Tcobro,Dia,Hora,estatus)
+				VALUES('$Especialidad','$Nombre','$Tcobro','$Dia','$Hora','$estatus')");
 
 			if ($query_insert ) {
 				$alert = '<p class = "msg_save">Registro Guardado Correctamente</p>';

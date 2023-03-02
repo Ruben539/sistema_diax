@@ -23,6 +23,14 @@ if($rq == 1){
 }elseif ($rq == 5) {
 	$respuesta = $oMysql->getPacientesTotal();
 
+}elseif($rq == 6) {
+	$respuesta = $oMysql->getNofificaciones();
+}elseif($rq == 7) {
+	$respuesta = $oMysql->getNofificacionesPendientes();
+}elseif($rq == 8) {
+	$respuesta = $oMysql->getMedicos();
+}elseif($rq == 9) {
+	$respuesta = $oMysql->getMedicosPen();
 }
 echo $respuesta;
 

@@ -1,5 +1,16 @@
 <?php
+session_start();
 require_once("../Modelos/conexion.php");
+$iduser = $_SESSION['user'];
+
+$query_usuario = mysqli_query($conection,"SELECT id_usuario,nombre,pass,usuario,foto FROM usuario where usuario = '$iduser' AND estatus = 1");
+$resultado = mysqli_num_rows($query_usuario);
+if ($resultado > 0) {
+  while ($data = mysqli_fetch_array($query_usuario)) {
+    $idusuario = $data['id_usuario'];
+
+  }
+}
 date_default_timezone_set('America/Asuncion');
 // include autoloader
 require_once "../Library/dompdf/autoload.inc.php";
@@ -18,13 +29,17 @@ $comentario=$_POST['comentario'];
 $nacimiento=$_POST['nacimiento'];
 $estado='En Espera';
 $estatus = 1;
+$usuario_1 = $idusuario;
+
+
+
 
 
 if ( $seguro == "SEMEI" or $seguro == "Seguros")
 {
-$sql = "INSERT INTO historial (Cedula,Seguro,Atendedor,MontoS,Estudio,Descuento,Comentario,Fecha,estado,estatus) VALUES ('$ci','$segurot','$medico','$monto','$estudio','$descuento','$comentario','$Fecha','$estado','$estatus');";}else
+$sql = "INSERT INTO historial (Cedula,Seguro,Atendedor,MontoS,Estudio,Descuento,Comentario,Fecha,estado,estatus,usuario_1) VALUES ('$ci','$segurot','$medico','$monto','$estudio','$descuento','$comentario','$Fecha','$estado','$estatus','$usuario_1');";}else
     {
-$sql = "INSERT INTO historial (Cedula,Seguro,Atendedor,Monto,Estudio,Descuento,Comentario,Fecha,estado,estatus) VALUES ('$ci','$segurot','$medico','$monto','$estudio','$descuento','$comentario','$Fecha','$estado','$estatus');";
+$sql = "INSERT INTO historial (Cedula,Seguro,Atendedor,Monto,Estudio,Descuento,Comentario,Fecha,estado,estatus,usuario_1) VALUES ('$ci','$segurot','$medico','$monto','$estudio','$descuento','$comentario','$Fecha','$estado','$estatus','$usuario_1');";
 }
 $result = mysqli_query($conection,$sql);
 

@@ -16,9 +16,7 @@ require_once("../body/header_admin.php");
 <main class="app-content">
   <div class="app-title">
     <div>
-      <h1><i class="fa fa-user-md"></i> Listado de Medicos <a href="../Helpers/grabar_doctor.php">
-          <button id="btnNew" class="btn btn-primary" type="button"><i class="fa fa-user-plus" aria-hidden="true"></i>
-            Nuevo</button></a>
+      <h1><i class="fa fa-user-md"></i> Listado de Medicos a Eliminar
       </h1>
       <p>Registro Web en Desarrollo</p>
     </div>
@@ -41,24 +39,17 @@ require_once("../body/header_admin.php");
                 <th>Dia</th>
                 <th>Hora</th>
                 <th>Tcobro</th>
-                <?php if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 2  || $_SESSION['rol'] == 5 || $_SESSION['rol'] == 6) { ?>
-                  <th>Editar</th>
-                  <th>Agregar</th>
-                <?php } ?>
+
                 <th>Eliminar</th>
               </tr>
             </thead>
 
             <tbody>
               <?php
-              if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 2) {
+              
                 $sql = mysqli_query($conection, "SELECT m.id,m.Nombre,m.usuario,m.Especialidad,m.Dia,m.Hora,m.Tcobro FROM medicos m 
-                        WHERE m.estatus = 1 ORDER BY  m.id DESC");
-              } else if ($_SESSION['rol'] == 5 || $_SESSION['rol'] == 6) {
-
-                $sql = mysqli_query($conection, "SELECT m.id,m.Nombre,m.usuario,m.Especialidad,m.Dia,m.Hora,m.Tcobro 
-                        FROM medicos m WHERE m.Especialidad LIKE '%Informante%' AND m.estatus = 1 ORDER BY   m.id DESC");
-              }
+                        WHERE m.estatus = 2 ORDER BY  m.id DESC");
+             
               $resultado = mysqli_num_rows($sql);
 
               if ($resultado > 0) {
@@ -75,28 +66,9 @@ require_once("../body/header_admin.php");
                     <td><?php echo $data['Tcobro'] ?></td>
 
 
-                    <?php if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 2  || $_SESSION['rol'] == 5 || $_SESSION['rol'] == 6) { ?>
-                      <td>
-                        <a href="../Helpers/modificar_medico.php?id=<?php echo $data['id']; ?>" class="btn btn-outline-info" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px  rgba(0, 0, 0, 0.25);"><i class="fas fa-edit"></i></a>
-                      </td>
-                    <?php } ?>
-
-
-                    <?php if ($_SESSION['rol'] == 1) { ?>
-                      <td>
-                        <a href="../Helpers/ingresar_medico.php?id=<?php echo $data['id']; ?>" class="btn btn-outline-warning" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px  rgba(0, 0, 0, 0.25);"><i class="fa fa-address-card-o" aria-hidden="true"></i>
-                        </a>
-                      </td>
-                    <?php } ?>
-
-                    <?php if ($_SESSION['rol'] == 2 || $_SESSION['rol'] == 5 || $_SESSION['rol'] == 6) { ?>
-                      <td>
-                        <a href="#" onclick="permisoAuto()" class="btn btn-outline-warning" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px  rgba(0, 0, 0, 0.25);"><i class="fas fa-address-card-o"></i></a>
-                      </td>
-                    <?php } ?>
                     
                     <td>
-                      <button class="btn btn-outline-danger" onclick="EliminarDoctor('<?php echo $data['id'] ?>')"><i class="fa fa-user-md" aria-hidden="true"></i></button>
+                      <button class="btn btn-outline-danger" onclick="quitarMedico('<?php echo $data['id'] ?>')"><i class="fa fa-user-md" aria-hidden="true"></i></button>
 
                     </td>
                   </tr>
@@ -119,7 +91,7 @@ require_once("../body/header_admin.php");
 
     $('#btnEditarPass').click(function() {
       /* Act on the event */
-      EliminarDoctor();
+      quitarMedico();
     });
   });
 </script>

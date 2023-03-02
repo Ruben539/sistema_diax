@@ -83,6 +83,7 @@ if($_SESSION['rol'] == 4){
             <!--Menu Principal de la lista de Comprobantes-->
             <li><a class="treeview-item" href="../Historial/CancelarOrden.php"><i class="icon fa fa-user-times"></i>Buscar Orden</a></li>
             <li><a class="treeview-item" href="../Historial/Ordenes_canceladas.php"><i class="icon fa fa-user-times"></i>Ordenes Canceladas</a></li>
+            <li><a class="treeview-item" href="../Historial/Pedidos_Cancelacion.php"><i class="icon fa fa-user-times"></i>Pedidos de Cancelación</a></li>
             <!--Menu Principal de la lista de Comprobantes-->
             
           </ul>
@@ -90,19 +91,42 @@ if($_SESSION['rol'] == 4){
         
         <?php  } ?>
 
-        <?php if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 2) {?>
+        <?php if ($_SESSION['rol'] == 1 ) {?>
+        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-user-md"></i><span class="app-menu__label">Medicos</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+          <ul class="treeview-menu">
+            <!--Menu Principal de los Medicos-->
+            
+            <li><a class="treeview-item" href="../Plantillas/medicos.php"><i class="icon fa fa-user-md"></i> Lista de Medicos</a></li>
+            <li><a class="treeview-item" href="../Historial/historialMedico.php"><i class="icon fa fa-user-md"></i> Historial de Medicos</a></li>
+            <li><a class="treeview-item" href="../Plantillas/reporte_medicos.php"><i class="icon fa fa-user-md"></i> Ingresos de Medicos</a></li>
+            <li><a class="treeview-item" href="../Plantillas/eliminacion_medicos.php"><i class="icon fa fa-user-md"></i> Pedidos de Eliminación</a></li>
+            <!--Menu Principal de los Medicos-->
+          </ul>
+        </li>
+        <?php  } ?> 
+
+        <?php if ($_SESSION['rol'] == 2) {?>
+        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-user-md"></i><span class="app-menu__label">Medicos</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+          <ul class="treeview-menu">
+            <!--Menu Principal de los Medicos-->
+            
+             <li><a class="treeview-item" href="../Plantillas/medicos.php"><i class="icon fa fa-user-md"></i> Lista de Medicos</a></li>
+            <li><a class="treeview-item" href="../Historial/historialMedico.php"><i class="icon fa fa-user-md"></i> Historial de Medicos</a></li>
+            <!--Menu Principal de los Medicos-->
+          </ul>
+        </li>
+        <?php  } ?>
+
+        <?php if ($_SESSION['rol'] == 5 || $_SESSION['rol'] == 6) {?>
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-user-md"></i><span class="app-menu__label">Medicos</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
             <!--Menu Principal de los Medicos-->
             <li><a class="treeview-item" href="../Plantillas/medicos.php"><i class="icon fa fa-user-md"></i> Lista de Medicos</a></li>
-            <li><a class="treeview-item" href="../Historial/historialMedico.php"><i class="icon fa fa-user-md"></i> Historial de Medicos</a></li>
-            <li><a class="treeview-item" href="../Plantillas/reporte_medicos.php"><i class="icon fa fa-user-md"></i> Reportes de Medicos</a></li>
             <!--Menu Principal de los Medicos-->
-            
           </ul>
         </li>
-        
         <?php  } ?> 
+
         <?php if ( $_SESSION['rol'] == 4) {?>
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-users"></i><span class="app-menu__label">Pacientes</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
@@ -125,7 +149,7 @@ if($_SESSION['rol'] == 4){
             <li><a class="treeview-item" href="../Historial/PendientesAsignacionFabiola.php"><i class="icon fa fa-user-plus"></i> Pendientes</a></li>
             <!--Menu Principal del Informantes-->
             <?php if ($_SESSION['rol'] == 1) {?>
-              <li><a class="treeview-item" href="../Historial/HistorialInformante.php"><i class="icon fa fa-money"></i> Rendicion Informante</a></li>
+              <li><a class="treeview-item" href="../Historial/HistorialInformante.php"><i class="icon fa fa-money"></i> Rendicion Informante Fabiola</a></li>
               <?php  } ?>
             
           </ul>
@@ -169,6 +193,7 @@ if($_SESSION['rol'] == 4){
           <ul class="treeview-menu">
             <!--Menu Principal de la lista de Estudios-->
             <li><a class="treeview-item" href="../Plantillas/estudios.php"><i class="icon fa fa-user-md"></i> Lista de Estudios</a></li>
+            <li><a class="treeview-item" href="../Plantillas/estudio_inactivos.php"><i class="icon fa fa-user-md"></i> Estudios Inactivos</a></li>
             <li><a class="treeview-item" href="../Informes/cantidad_estudios.php"><i class="icon fa fa-user-md"></i> Cantidad de Estudios</a></li>
             <!--Menu Principal de la lista de Estudios-->
             

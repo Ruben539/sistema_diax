@@ -11,13 +11,15 @@ if (empty($_SESSION['active'])) {
 if (!empty($_POST)) {
     $alert = '';
 
-    if (empty($_POST['Cancelado'])) {
+    if (empty($_POST['id']) || empty($_POST['Cancelado']) || empty($_POST['estatus'])) {
 
         $alert = '<p class = "msg_error">Debe llenar Todos los Campos</p>';
+        
     } else {
 
         $id           = $_POST['id'];
         $Cancelado    = $_POST['Cancelado'];
+        $estatus      = $_POST['estatus'];
        
 
 
@@ -32,15 +34,18 @@ if (!empty($_POST)) {
     if ($resultado > 0) {
         $alert = '<p class = "msg_error">El Registro ya existe,ingrese otro</p>';
     } else {
-
-        $sql_update = mysqli_query($conection, "UPDATE historial SET Cancelado = '$Cancelado'
+      
+        
+        $sql_update = mysqli_query($conection, "UPDATE historial SET Cancelado = '$Cancelado', estatus = '$estatus'
 			WHERE id = $id");
 
         if ($sql_update) {
 
-            $alert = '<p class = "msg_success">Cancelado Correctamente</p>';
+            $alert = '<p class = "msg_success">Solicitado Correctamente</p>';
+
         } else {
-            $alert = '<p class = "msg_error">Error al Asignar el Informante</p>';
+            $alert = '<p class = "msg_error">Error al Solicitar la Cancelación</p>';
+
         }
     }
 }
@@ -81,15 +86,17 @@ require_once("../body/header_admin.php");
     <div class="row" style="justify-content: center;">
         <div class="col-md-5">
             <div class="tile">
-                <h3 class="tile-title">Cancelar la  Orden</h3>
+                <h3 class="tile-title text-center alert alert-danger">Solicitar Cancelación <i class="fa  fa-window-close"></i></h3>
                 <div class="tile-body">
                     <form action="" method="POST">
                         <input type="hidden" name="id" id="id" value="<?php echo $id; ?>">
 
                         <div class="form-group">
-                            <label class="control-label">Comentario sobre la Cancelación</label>
-                            <textarea class="form-control" type="text" name="Cancelado" id="Cancelado" placeholder="Ingrese su comentario"  value="<?php echo $Cancelado; ?>"></textarea>
+                            <label class="control-label"><span>Ingrese un sobre el pedido de la Cancelación</span></label>
+                            <textarea class="form-control" type="text" name="Cancelado" id="Cancelado"
+                             placeholder="Ingrese su comentario" style="max-height: 170px;" required ></textarea>
                         </div>
+                        <input type="hidden" class="form-control" name="estatus" id="estatus" value="2">
 
 
 

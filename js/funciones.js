@@ -93,50 +93,91 @@
 	$("#idPacienteTotal").text(parseFloat(datos).toLocaleString());
 });
 
-/*// Consulta de la sentencia para recuperar los datos para las Notificaciones
-			$.ajax({
-				statusCode:{
-					404:function(){
-						console.log("Esta Pagina no Existe");
-					}
-				},
-				url:'../Librerias/servidor.php',
-				method:'POST',
-				data:{
-					rq:"26"
-				}
-			}).done(function(datos){
-	//Logica de respuesta  de los datos
-  $("#idNotificacion").text(parseFloat(datos).toLocaleString()+" "+"Pedidos Pendientes");
- 
-	if (datos == 0) {
-		//alert("validacion nula");
 
-	}else{
-
-	Swal.fire({
-  toast: true,
-  position: 'bottom-end',
-  title: 'Mensaje del Sistema !',
-  text: 'Tiene un nuevo Pedido para Aprobar',
-  imageUrl: '../images/recurso.png',
-  imageWidth: 150,
-  imageHeight: 70,
-  imageAlt: 'Custom image',
-  showConfirmButton: false,
-  timer: 5000, 
-
-});
-
-	
+// Consulta de la sentencia para recuperar los datos para las Notificaciones
+$.ajax({
+	statusCode:{
+		404:function(){
+			console.log("Esta Pagina no Existe");
+		}
+	},
+	url:'../Librerias/servidor.php',
+	method:'POST',
+	data:{
+		rq:"6"
 	}
-	
+}).done(function(datos){
+//Logica de respuesta  de los datos
+$("#idNotificacion").text(parseFloat(datos).toLocaleString()+" "+"Pedidos Pendientes");
+
+if (datos == 0) {
+//alert("validacion nula");
+
+}else{
+
+Swal.fire({
+/*toast: true,*/
+position: 'bottom-end',
+title: 'Solicitud Nueva!',
+text: 'Tiene un nuevo Pedido de cancelación de gastos',
+imageUrl: '../images/logo.png',
+imageWidth: 150,
+imageHeight: 70,
+imageAlt: 'Custom image',
+showConfirmButton: false,
+timer: 5000, 
+
 });
 
-}*/
+
+}
+
+});
+
+
+// Consulta de la sentencia para recuperar los datos para las Notificaciones
+$.ajax({
+	statusCode:{
+		404:function(){
+			console.log("Esta Pagina no Existe");
+		}
+	},
+	url:'../Librerias/servidor.php',
+	method:'POST',
+	data:{
+		rq:"8"
+	}
+}).done(function(datos){
+//Logica de respuesta  de los datos
+$("#idMedicos").text(parseFloat(datos).toLocaleString()+" "+"Pedidos Pendientes");
+
+if (datos == 0) {
+//alert("validacion nula");
+
+}else{
+
+Swal.fire({
+/*toast: true,*/
+position: 'bottom-end',
+title: 'Solicitud Nueva!',
+text: 'Tiene un pedido nuevo de Eliminación de medico',
+imageUrl: '../images/logo.png',
+imageWidth: 150,
+imageHeight: 70,
+imageAlt: 'Custom image',
+showConfirmButton: false,
+timer: 5000, 
+
+});
+
+
+}
+
+});
+
 }
 /*
-this.getDataGrafica = function(){
+this.getDatosGrafica = function(){
 		// Consulta de la sentencia para recuperar los datos del Grafico
 		$.ajax({
 			statusCode:{
@@ -227,7 +268,7 @@ this.getDataGrafica = function(){
 		var idCont = document.getElementById("idTabla");
 		idCont.appendChild(tablaDatos);
 
-		var ctx = document.getElementById('idgrafica').getContext('2d');
+		var ctx = document.getElementById('idGrafica').getContext('2d');
 		var myChart = new Chart(ctx, {
 			type: 'bar',
 			data: {
