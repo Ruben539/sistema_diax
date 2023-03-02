@@ -1,5 +1,5 @@
 <?php 
-session_start();
+
 require_once("../Modelos/conexion.php");
 if($_SESSION['rol'] == 4){
   $nombre = $_SESSION['Nombre'];
@@ -178,6 +178,8 @@ if($_SESSION['rol'] == 4){
             <!--Menu Principal de los Gastos-->
             <li><a class="treeview-item" href="../Plantillas/gastos.php"><i class="icon fa fa-money"></i> Lista de Gastos</a></li>
             <?php if ($_SESSION['rol'] == 1 ) {?>
+            <li><a class="treeview-item" href="../Historial/Pedidos_Gastos.php"><i class="icon fa fa-money"></i>Pedidos de Cancelación</a></li>
+            <li><a class="treeview-item" href="../Plantillas/gastos_cancelados.php"><i class="icon fa fa-money"></i>Gastos Cancelados</a></li>
             <li><a class="treeview-item" href="../Plantillas/ingreso.php"><i class="icon fa fa-money"></i> Movimientos de Ingreso</a></li>
             <li><a class="treeview-item" href="../Plantillas/egresos.php"><i class="icon fa fa-money"></i> Movimientos de Egreso</a></li>
             <li><a class="treeview-item" href="../Plantillas/deposito.php"><i class="icon fa fa-money"></i> Movimientos de Depositos</a></li>

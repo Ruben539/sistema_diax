@@ -15,7 +15,7 @@ if (empty($_POST['fecha_desde']) && empty($_POST['fecha_hasta']) ) {
 
  
     $sql = mysqli_query($conection, "SELECT g.id,g.descripcion,g.monto,g.created_at
-    FROM gastos g  where created_at like '%".$hoy."%' ");
+    FROM gastos g  where created_at like '%".$hoy."%'  AND g.estatus = 1 ");
 
 }else{ 
 
@@ -24,7 +24,7 @@ if (empty($_POST['fecha_desde']) && empty($_POST['fecha_hasta']) ) {
    // exit();
 
     $sql = mysqli_query($conection, "SELECT g.id,g.descripcion,g.monto,g.created_at
-  FROM gastos g  where created_at BETWEEN '$fecha_desde' AND '$fecha_hasta'");
+  FROM gastos g  where created_at BETWEEN '$fecha_desde' AND '$fecha_hasta' AND g.estatus = 1");
 }
 
 
@@ -40,6 +40,7 @@ echo '
         <th>Monto</th>                               
         <th>Fecha</th>                                
         <th>Editar</th>                                
+        <th>Eliminar</th>                                
       </tr>
     </thead>
     <tbody class="text-center">';
@@ -52,7 +53,11 @@ echo '
              <td>'. $data['monto']. '</td>
              <td>'. $data['created_at']. '</td>
              <td>
-             <a href="../Helpers/modificar_gasto.php?id='. $data['id'].' " class="btn btn-outline-info"><i class="fas fa-edit"></i></a></td>
+             <a href="../Helpers/modificar_gasto.php?id='. $data['id'].' " class="btn btn-outline-info"><i class="fas fa-edit"></i></a>
+             </td>
+             <td>
+             <a href="../Historial/Gastos_cancelacion.php?id='. $data['id'].' " class="btn btn-outline-danger"><i class="fas fa-trash"></i></a>
+             </td>
         </tr>';
   }
   echo
@@ -60,6 +65,7 @@ echo '
   <tfoot>
     <tr>
       <td><b>Total A Rendir : </b></td>
+      <td></td>
       <td></td>
       <td></td>
       <td class="text-center alert alert-success">'.number_format($monto, 3, '.', '.').'.<b>GS</b></td>

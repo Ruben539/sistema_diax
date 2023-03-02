@@ -140,7 +140,7 @@ ob_start();
 
               if ($resultado > 0) {
                 while ($data = mysqli_fetch_array($sql)) {
-                  $gasto += (int)$data['monto'];
+                  $gasto += number_format($data['monto'], 3,'.', '.');
 
               ?>
                   <tr class="text-center">

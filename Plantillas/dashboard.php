@@ -209,7 +209,7 @@ require_once("../body/header_admin.php");
 
               if ($resultado > 0) {
                 while ($data = mysqli_fetch_array($sql)) {
-                  $diax += (int)$data['Monto'];
+                  $diax += $data['Monto'];
 
               ?>
                   <tr class="text-center">
@@ -277,7 +277,7 @@ require_once("../body/header_admin.php");
             <tbody>
               <?php
               // $fecha1 = "05-01-2023";
-              $fecha =  date('Y-m-d');
+              $fecha =  date('d-m-Y');
               //  echo $fecha1." ".$fecha2;
               //  exit;
               $sql = mysqli_query($conection, "SELECT g.id,g.descripcion,g.monto,g.created_at  FROM gastos g 
@@ -288,7 +288,7 @@ require_once("../body/header_admin.php");
 
               if ($resultado > 0) {
                 while ($data = mysqli_fetch_array($sql)) {
-                  $gasto += (int)$data['monto'];
+                  $gasto += number_format($data['monto'], 3,'.', '.');
 
               ?>
                   <tr class="text-center">
@@ -328,7 +328,8 @@ require_once("../body/header_admin.php");
           </table>
         <section>
           <?php
-            $rendicion = $diax - $gasto;
+            $rendicion = number_format($diax - $gasto,0,'','.');
+
           ?>
           <p>Rencion Final</p>
           <p style="text-align: right;" class="alert alert-danger"> <?php echo number_format($rendicion, 3, '.', '.'); ?>.<b>GS</b></p>
