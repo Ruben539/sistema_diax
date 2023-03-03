@@ -38,6 +38,7 @@ ob_start();
                 <th>Cedula</th>
                 <th>Estudio</th>
                 <th>Doctor/a</th>
+                <th>Seguro</th>
                 <th>Monto</th>
                 <th>Monto Seguro</th>
                 <th>Descuento</th>
