@@ -53,7 +53,7 @@ if (!empty($_POST)) {
 //Recuperacion de datos para mostrar al seleccionar Actualizar
 
 if (empty($_REQUEST['id'])) {
-    header('location: ../Historial/BuscarOrden.php');
+    header('location: ../Buscadores/BuscarOrden.php');
 
     //mysqli_close($conection);//con esto cerramos la conexion a la base de datos una vez conectado arriba con el conexion.php
 
@@ -69,7 +69,7 @@ $sql = mysqli_query($conection, "SELECT * FROM historial  WHERE id = $id");
 $resultado = mysqli_num_rows($sql);
 
 if ($resultado == 0) {
-    header("location: ../Historial/BuscarOrden.php");
+    header("location: ../Buscadores/BuscarOrden.php");
 } else {
     $option = '';
     while ($data = mysqli_fetch_array($sql)) {
@@ -89,7 +89,7 @@ require_once("../body/header_admin.php");
                 <h3 class="tile-title text-center alert alert-danger">Solicitar Cancelación <i class="fa  fa-window-close"></i></h3>
                 <div class="tile-body">
                     <form action="" method="POST">
-                        <input type="hidden" name="id" id="id" value="<?php echo $id; ?>">
+                        <input type="hidden" name="id" id="id" value="<?php echo $_REQUEST['id']; ?>">
 
                         <div class="form-group">
                             <label class="control-label"><span>Ingrese un sobre el pedido de la Cancelación</span></label>
