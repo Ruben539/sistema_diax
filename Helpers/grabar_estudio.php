@@ -23,6 +23,7 @@ if (!empty($_POST)) {
 		$Seguros       = $_POST['Seguros'];
 		$SegurosPref   = $_POST['SegurosPref'];
 		$Hospitalar    = $_POST['Hospitalar'];
+		$estatus       = $_POST['estatus'];
 		
 
 		$resultado = 0;
@@ -33,8 +34,8 @@ if (!empty($_POST)) {
 
 
 
-			$query_insert = mysqli_query($conection,"INSERT INTO tarifas(Estudio,SEMEI,SinSeguro,SegurosPref,SemeiPref,Seguros,Hospitalar)
-				VALUES('$Estudio','$SEMEI','$SinSeguro','$SegurosPref','$SemeiPref','$Seguros','$Hospitalar')");
+			$query_insert = mysqli_query($conection,"INSERT INTO tarifas(Estudio,SEMEI,SinSeguro,SegurosPref,SemeiPref,Seguros,Hospitalar,estatus)
+				VALUES('$Estudio','$SEMEI','$SinSeguro','$SegurosPref','$SemeiPref','$Seguros','$Hospitalar','$estatus')");
 
 			if ($query_insert ) {
 				$alert = '<p class = "msg_save">Registro Guardado Correctamente</p>';
@@ -91,7 +92,7 @@ if (!empty($_POST)) {
                   <label class="control-label">Precio Hospitalarios</label>
                   <input class="form-control" type="text"  name=" Hospitalar" id=" Hospitalar"  placeholder="Ingrese el monto">
                 </div>
-                 
+                  <input type="hidden" name="estatus" id="estatus" value="1">
                  <div class="tile-footer">
               <button class="btn btn-primary" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i>Registrar
             </button>&nbsp;&nbsp;&nbsp;<a class="btn btn-secondary" href="../Plantillas/estudios.php"><i class="fa fa-fw fa-lg fa-times-circle"></i>Cancelar</a>
