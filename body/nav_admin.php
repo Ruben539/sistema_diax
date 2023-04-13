@@ -70,6 +70,7 @@ if($_SESSION['rol'] == 4){
             <!--Menu Principal de la lista de Comprobantes-->
             <li><a class="treeview-item" href="../Plantillas/comprobantes.php"><i class="icon fa fa-list"></i>Comprobantes</a></li>
             <li><a class="treeview-item" href="../Plantillas/reporte_comprobante.php"><i class="icon fa fa-file-pdf-o"></i>Reporte de Comprobantes</a></li>
+            <li><a class="treeview-item" href="../Plantillas/reporte_diarios.php"><i class="icon fa fa-file-pdf-o"></i>Reporte de Diarios</a></li>
             <!--Menu Principal de la lista de Comprobantes-->
             
           </ul>
