@@ -176,13 +176,24 @@ if($_SESSION['rol'] == 4){
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-money"></i><span class="app-menu__label">Administración </span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
             <!--Menu Principal de los Gastos-->
+           
+            <li><a class="treeview-item" href="../Plantillas/ingreso.php"><i class="icon fa fa-money"></i> Movimientos de Ingreso</a></li>
+            <li><a class="treeview-item" href="../Plantillas/egresos.php"><i class="icon fa fa-money"></i> Movimientos de Egreso</a></li>
+            <li><a class="treeview-item" href="../Plantillas/deposito.php"><i class="icon fa fa-money"></i> Movimientos de Depositos</a></li>
+            <!--Menu Principal de los Gastos-->
+          </ul>
+        </li>
+        
+        <?php  } ?>
+
+        <?php if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 2) {?>
+        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-money"></i><span class="app-menu__label">Gastos Recepción </span><i class="treeview-indicator fa fa-angle-right"></i></a>
+          <ul class="treeview-menu">
+            <!--Menu Principal de los Gastos-->
             <li><a class="treeview-item" href="../Plantillas/gastos.php"><i class="icon fa fa-money"></i> Lista de Gastos</a></li>
             <?php if ($_SESSION['rol'] == 1 ) {?>
             <li><a class="treeview-item" href="../Historial/Pedidos_Gastos.php"><i class="icon fa fa-money"></i>Pedidos de Cancelación</a></li>
             <li><a class="treeview-item" href="../Plantillas/gastos_cancelados.php"><i class="icon fa fa-money"></i>Gastos Cancelados</a></li>
-            <li><a class="treeview-item" href="../Plantillas/ingreso.php"><i class="icon fa fa-money"></i> Movimientos de Ingreso</a></li>
-            <li><a class="treeview-item" href="../Plantillas/egresos.php"><i class="icon fa fa-money"></i> Movimientos de Egreso</a></li>
-            <li><a class="treeview-item" href="../Plantillas/deposito.php"><i class="icon fa fa-money"></i> Movimientos de Depositos</a></li>
             <!--Menu Principal de los Gastos-->
             <?php }?>
           </ul>
