@@ -167,28 +167,22 @@ ob_start();
             <tbody>
               <?php
               
-              $fecha_desde =  date_create($_REQUEST['fecha_desde']);;
-              $desde = date_format($anio, 'm-Y');
-              $hoy = date("Y-m-d");
+              if (!empty($_REQUEST['fecha_desde']) && !empty($_REQUEST['fecha_hasta']) ) {
+                $fecha_desde = date_create($_REQUEST['fecha_desde']);
+                $desde = date_format($fecha_desde, 'Y-m-d');
               
-              $anio = date_create($_REQUEST['fecha_desde']);
-              $hoy = date_format($anio, 'm-Y');
               
-              if (empty($_POST['fecha_desde']) && empty($_POST['fecha_hasta']) ) {
+                $fecha_hasta = date_create($_REQUEST['fecha_hasta']);
+                $hasta = date_format($fecha_hasta, 'Y-m-d');
               
-               
-                  $sql = mysqli_query($conection, "SELECT g.id,g.descripcion,g.monto,g.created_at
-                  FROM gastos g  where created_at like '%".$hoy."%'  AND g.estatus = 1 ");
+            
               
-              }else{ 
-              
-                  $fecha_desde = $_POST['fecha_desde'];
-                  $fecha_hasta  = $_POST['fecha_hasta'];
+              }
                  // exit();
               
                   $sql = mysqli_query($conection, "SELECT g.id,g.descripcion,g.monto,g.created_at
-                FROM gastos g  where created_at BETWEEN '$fecha_desde' AND '$fecha_hasta' AND g.estatus = 1");
-              }
+                FROM gastos g  where created_at BETWEEN '$desde' AND '$hasta' AND g.estatus = 1");
+              
 
               $resultado = mysqli_num_rows($sql);
               $gasto = 0;
