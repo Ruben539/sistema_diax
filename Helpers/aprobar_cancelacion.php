@@ -14,7 +14,7 @@ require_once "../Modelos/conexion.php";
                 estatus = '$estatus',
                 usuario_2 = '$usuario',
                 fecha_1 = '$fecha'
-                    WHERE id = '$id'";
+                    WHERE estatus = 2";
     echo $resultado = mysqli_query($conection,$sql);
 
  ?>

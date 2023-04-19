@@ -33,8 +33,8 @@ function BajaGasto(id){
 
 function EliminarGasto(id){
 	Swal.fire({
-		title: 'Desea eliminar el gasto ?',
-		text: "Con  Nro "+id+" de registro!",
+		title: 'Desea anular todos los Gastos ?',
+		text: "Se eliminaran todos los pedidos de Gastos!",
 		type: 'warning',
 		showCancelButton: true,
 		confirmButtonColor: '#3085d6',

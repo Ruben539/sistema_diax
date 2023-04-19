@@ -48,7 +48,7 @@ require_once("../body/header_admin.php");
                       <?php 
                       //$usuario = $_SESSION['nombre'];
                      // echo $usuario;
-                        $hoy = date('d-m-Y');
+                        $hoy = date('m-Y');
                         
                          $sql = mysqli_query($conection, "SELECT h.id,h.Cedula,c.nombre,c.apellido,h.estudio,h.atendedor,h.cancelado,h.fecha 
                          FROM historial h INNER JOIN clientes c on c.cedula = h.cedula
