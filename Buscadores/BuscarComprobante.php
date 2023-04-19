@@ -43,6 +43,7 @@ echo '
 <table id="tablaComprobante" class="table table-striped table-bordered table-condensed table-hover" style="width:100%">
 <thead>
       <tr class="text-center">      
+        <th>Nro.</th>
         <th>Nombre</th>
         <th>Cedula</th>
         <th>Estudio</th>
@@ -57,10 +58,12 @@ echo '
     </thead>
     <tbody class="text-center">';
     $monto = 0;
-
+    $row = 0;
   while ($data = mysqli_fetch_array($sql)){
     $monto += $data['Monto'];
+    $row++;
     echo '<tr>
+             <td>'. $row.'</td>
              <td>'. $data['nombre'].' '. $data['apellido'].'</td>
              <td>'. $data['Cedula']. '</td>
              <td>'. $data['Estudio']. '</td>
