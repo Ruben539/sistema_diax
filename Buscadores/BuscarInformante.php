@@ -62,6 +62,7 @@ if ($resultado > 0) {
 
   <thead>
         <tr class="text-center">      
+          <th>Nro</th>
           <th>Nombre</th>
           <th>Cedula</th>
           <th>Estudio</th>
@@ -78,10 +79,12 @@ if ($resultado > 0) {
       $monto = 0;
       $montos = 0;
       $descuentos = 0;
+      $row_count= 0;
     while ($data = mysqli_fetch_array($sql)){
       $monto += $data['Monto'];
       $montos += $data['MontoS'];
       $descuentos += $data['Descuento'];
+      $row_count++;
       if(-$data['MontoS']){
           $total = $monto + $montos;
      }
@@ -90,6 +93,7 @@ if ($resultado > 0) {
   
       echo '<tr>
   
+      <td>'.$row_count.'</td>
       <td>'. $data['nombre'].' '. $data['apellido'].'</td>
       <td>'. $data['Cedula']. '</td>
       <td>'. $data['Estudio']. '</td>
