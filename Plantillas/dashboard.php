@@ -82,6 +82,7 @@ require_once("../body/header_admin.php");
               <tr class="text-center">
 
 
+                <th>Nro.</th>
                 <th>Fecha</th>
                 <th>Nombre</th>
                 <th>Cedula</th>
@@ -107,15 +108,16 @@ require_once("../body/header_admin.php");
 
               $resultado = mysqli_num_rows($sql);
               $monto = 0;
-
+              $nro = 0;
               if ($resultado > 0) {
                 while ($data = mysqli_fetch_array($sql)) {
                   $monto += (int)$data['Monto'];
-
+                  $nro++;
               ?>
                   <tr class="text-center">
 
-                    <td><?php echo $data['Fecha'] ?></td>
+                    <td><?php echo $nro ?></td>
+                    <td><?php echo $data['Fecha']; ?></td>
                     <td><?php echo $data['nombre'].' '.$data['apellido'];  ?></td>
                     <td><?php echo $data['Cedula']; ?></td>
                     <td><?php echo $data['Estudio']; ?></td>
@@ -180,6 +182,7 @@ require_once("../body/header_admin.php");
               <tr class="text-center">
 
 
+                <th>Nro.</th>
                 <th>Fecha</th>
                 <th>Nombre</th>
                 <th>Cedula</th>
@@ -206,6 +209,7 @@ require_once("../body/header_admin.php");
 
               $resultado = mysqli_num_rows($sql);
               $diax = 0;
+              $nro = 0;
 
               if ($resultado > 0) {
                 while ($data = mysqli_fetch_array($sql)) {
@@ -214,7 +218,8 @@ require_once("../body/header_admin.php");
               ?>
                   <tr class="text-center">
 
-                    <td><?php echo $data['Fecha'] ?></td>
+                    <td><?php echo $nro; ?></td>
+                    <td><?php echo $data['Fecha']; ?></td>
                     <td><?php echo $data['nombre'].' '.$data['apellido'];  ?></td>
                     <td><?php echo $data['Cedula']; ?></td>
                     <td><?php echo $data['Estudio']; ?></td>
