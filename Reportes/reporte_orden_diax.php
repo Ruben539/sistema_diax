@@ -33,6 +33,7 @@ ob_start();
               <thead>
                 <tr class="text-center">
 
+                <th>Nro.</th>
                 <th>Fecha</th>
                 <th>Nombre</th>
                 <th>Cedula</th>
@@ -59,15 +60,18 @@ ob_start();
 
               $resultado = mysqli_num_rows($sql);
               $diax = 0;
+              $row = 0;
 
               if ($resultado > 0) {
                 while ($data = mysqli_fetch_array($sql)) {
                   $diax += (int)$data['Monto'];
+                  $row++;
 
               ?>
                   <tr class="text-center">
 
-                    <td><?php echo $data['Fecha'] ?></td>
+                    <td><?php echo $row; ?></td>
+                    <td><?php echo $data['Fecha']; ?></td>
                     <td><?php echo $data['nombre'].' '.$data['apellido'];  ?></td>
                     <td><?php echo $data['Cedula']; ?></td>
                     <td><?php echo $data['Estudio']; ?></td>
