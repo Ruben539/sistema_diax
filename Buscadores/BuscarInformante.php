@@ -63,6 +63,7 @@ if ($resultado > 0) {
   <thead>
         <tr class="text-center">      
           <th>Nro</th>
+          <th>Fecha</th>                              
           <th>Nombre</th>
           <th>Cedula</th>
           <th>Estudio</th>
@@ -71,7 +72,6 @@ if ($resultado > 0) {
           <th>Monto</th>                                
           <th>Descuento</th>                                
           <th>Informante</th>                                
-          <th>Fecha</th>                              
         </tr>
       </thead>
       <tbody>';
@@ -94,6 +94,7 @@ if ($resultado > 0) {
       echo '<tr>
   
       <td>'.$row_count.'</td>
+      <td>'. $data['Fecha']. '</td>
       <td>'. $data['nombre'].' '. $data['apellido'].'</td>
       <td>'. $data['Cedula']. '</td>
       <td>'. $data['Estudio']. '</td>
@@ -102,7 +103,6 @@ if ($resultado > 0) {
       <td>'. $data['Monto']. '</td>
       <td>'. $data['Descuento']. '</td>
       <td>'. $data['Informa']. '</td>
-      <td>'. $data['Fecha']. '</td>
   
           </tr>';
     }
