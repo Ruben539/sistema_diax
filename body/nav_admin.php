@@ -202,6 +202,17 @@ if($_SESSION['rol'] == 4){
         
         <?php  } ?>
 
+        <?php if ($_SESSION['rol'] == 1 ) {?>
+        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-calculator"></i><span class="app-menu__label">Cierre de Caja </span><i class="treeview-indicator fa fa-angle-right"></i></a>
+          <ul class="treeview-menu">
+            <!--Menu Principal de los Gastos-->
+            <li><a class="treeview-item" href="../Plantillas/caja_chica.php"><i class="icon fa fa-calculator"></i> Caja Chica</a></li>
+            <li><a class="treeview-item" href="../Historial/Pedidos_Gastos.php"><i class="icon fa fa-calculator"></i> Informe de Cierre</a></li>          
+          </ul>
+        </li>
+        
+        <?php  } ?>
+
         <?php if ($_SESSION['rol'] == 1) {?>
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-user-md"></i><span class="app-menu__label">Estudios</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
