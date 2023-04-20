@@ -214,6 +214,7 @@ require_once("../body/header_admin.php");
               if ($resultado > 0) {
                 while ($data = mysqli_fetch_array($sql)) {
                   $diax += $data['Monto'];
+                  $nro++;
 
               ?>
                   <tr class="text-center">
@@ -333,7 +334,7 @@ require_once("../body/header_admin.php");
           </table>
         <section>
           <?php
-            $rendicion = number_format($diax - $gasto,0,'','.');
+            $rendicion = $diax - $gasto;
 
           ?>
           <p>Rencion Final</p>
