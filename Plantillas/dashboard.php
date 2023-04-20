@@ -287,7 +287,7 @@ require_once("../body/header_admin.php");
               //  echo $fecha1." ".$fecha2;
               //  exit;
               $sql = mysqli_query($conection, "SELECT g.id,g.descripcion,g.monto,g.created_at  FROM gastos g 
-               where  g.created_at like '%".$fecha."%'");
+               where  g.created_at like '%".$fecha."%' and g.estatus = 1");
 
               $resultado = mysqli_num_rows($sql);
               $gasto = 0;
