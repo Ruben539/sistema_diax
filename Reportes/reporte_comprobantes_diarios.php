@@ -169,11 +169,11 @@ ob_start();
               
               if (!empty($_REQUEST['fecha_desde']) && !empty($_REQUEST['fecha_hasta']) ) {
                 $fecha_desde = date_create($_REQUEST['fecha_desde']);
-                $desde = date_format($fecha_desde, 'Y-m-d');
+                $desde = date_format($fecha_desde, 'Y-m-d 00:00:00');
               
               
                 $fecha_hasta = date_create($_REQUEST['fecha_hasta']);
-                $hasta = date_format($fecha_hasta, 'Y-m-d');
+                $hasta = date_format($fecha_hasta, 'Y-m-d 23:00:00');
               
             
               
