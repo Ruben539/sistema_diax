@@ -14,7 +14,7 @@ $hoy = date("Y-m-d");
 if (empty($_POST['fecha_desde']) && empty($_POST['fecha_hasta']) ) {
 
  
-    $sql = mysqli_query($conection, "SELECT c.id,c.forma_pago,c.nro_cheque,c.tipo_salida,c.monto,c.concepto,c.usuario,c.created_at
+    $sql = mysqli_query($conection, "SELECT c.id,c.forma_pago,c.nro_cheque,c.tipo_salida,c.monto,c.concepto,c.usuario,c.created_at,fecha
     FROM caja_chica c where created_at like '%".$hoy."%'  AND c.estatus = 1 ");
 
 }else{ 
@@ -23,7 +23,7 @@ if (empty($_POST['fecha_desde']) && empty($_POST['fecha_hasta']) ) {
     $fecha_hasta  = $_POST['fecha_hasta'];
    // exit();
 
-    $sql = mysqli_query($conection, "SELECT c.id,c.forma_pago,c.nro_cheque,c.tipo_salida,c.monto,c.concepto,c.usuario,c.created_at
+    $sql = mysqli_query($conection, "SELECT c.id,c.forma_pago,c.nro_cheque,c.tipo_salida,c.monto,c.concepto,c.usuario,c.created_at,fecha
     FROM caja_chica c where created_at BETWEEN '$fecha_desde' AND '$fecha_hasta' AND c.estatus = 1");
 }
 
@@ -37,7 +37,7 @@ echo '
 <thead>
       <tr class="text-center">      
         <th>Nro.</th>
-        <th>Fecha</th>                               
+        <th>Fecha de Movimiento</th>                               
         <th>Forma de Pago</th>                                
         <th>Nro Cheque/ Transferencia</th>                                
         <th>Tipo de Movimiento</th>                                
@@ -56,7 +56,7 @@ echo '
     $num++;
     echo '<tr>
              <td>'. $num.'</td>
-             <td>'. $data['created_at']. '</td>
+             <td>'. $data['fecha']. '</td>
              <td>'. $data['forma_pago']. '</td>
              <td>'. $data['nro_cheque']. '</td>
              <td>'. $data['tipo_salida']. '</td>
