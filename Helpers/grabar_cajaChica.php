@@ -22,6 +22,8 @@ if (!empty($_POST)) {
         $concepto      = trim($_POST['concepto']);
         $usuario       = $_POST['usuario'];
         $fecha         = $_POST['fecha'];
+        $created_at    =  date('Y-m-d H:i:s');
+        $estatus       = 1;
         
 
 
@@ -33,8 +35,8 @@ if (!empty($_POST)) {
 
 
 
-        $query_insert = mysqli_query($conection, "INSERT INTO caja_chica(forma_pago,nro_cheque,tipo_salida,monto,concepto,usuario,fecha)
-				VALUES('$forma_pago','$nro_cheque','$tipo_salida','$monto','$concepto','$usuario','$fecha')");
+        $query_insert = mysqli_query($conection, "INSERT INTO caja_chica(forma_pago,nro_cheque,tipo_salida,monto,concepto,usuario,fecha,created_at,estatus)
+				VALUES('$forma_pago','$nro_cheque','$tipo_salida','$monto','$concepto','$usuario','$fecha','$created_at','$estatus');");
 
         if ($query_insert) {
 
@@ -101,6 +103,7 @@ if (!empty($_POST)) {
 
                                                
                         <input class="form-control" type="hidden" name="usuario" id="usuario" value="<?php echo $_SESSION['nombre']; ?>">
+                        <input class="form-control" type="hidden" name="estatus" id="estatus" value="1">
 
                         <div class="tile-footer">
                             <button class="btn btn-primary" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i>Registrar
