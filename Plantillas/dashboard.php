@@ -205,7 +205,7 @@ require_once("../body/header_admin.php");
               //  echo $fecha1." ".$fecha2;
               //  exit;
               $sql = mysqli_query($conection, "SELECT h.id,c.nombre,c.apellido,h.Estudio,h.Cedula,h.Atendedor,h.Fecha,h.Seguro,h.Monto,h.Descuento,h.MontoS,h.Comentario, h.fecha_2 
-                       FROM historial h inner join clientes c on c.cedula = h.cedula where  h.Fecha like '%$fecha%' AND h.Atendedor like '% DIAX %'  ORDER BY  h.id ASC");
+                       FROM historial h inner join clientes c on c.cedula = h.cedula where  h.Fecha like '%$fecha%' AND h.Atendedor like '% DIAX %' AND h.estatus = 1  ORDER BY  h.id ASC");
 
               $resultado = mysqli_num_rows($sql);
               $diax = 0;
