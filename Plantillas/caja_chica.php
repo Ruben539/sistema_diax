@@ -15,7 +15,7 @@ require_once("../body/header_admin.php");
 <main class="app-content">
   <div class="app-title">
     <div>
-      <h1><i class="fa fa-calculator"></i> Caja Chica <a href="../Helpers/grabar_cajaChica.php"> 
+      <h1><i class="fa fa-calculator"></i> Movimientos Financieros <a href="../Helpers/grabar_cajaChica.php"> 
         <button id="btnNew"  class="btn btn-primary" type="button"><i class="fa fa-plus" aria-hidden="true"></i>
          Nuevo</button></a>
       </h1>

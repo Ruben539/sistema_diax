@@ -21,6 +21,7 @@ if (!empty($_POST)) {
         $monto         = number_format($_POST['monto'], 3,'.','.');
         $concepto      = trim($_POST['concepto']);
         $usuario       = $_POST['usuario'];
+        $fecha         = $_POST['fecha'];
         
 
 
@@ -32,8 +33,8 @@ if (!empty($_POST)) {
 
 
 
-        $query_insert = mysqli_query($conection, "INSERT INTO caja_chica(forma_pago,nro_cheque,tipo_salida,monto,concepto,usuario)
-				VALUES('$forma_pago','$nro_cheque','$tipo_salida','$monto','$concepto','$usuario')");
+        $query_insert = mysqli_query($conection, "INSERT INTO caja_chica(forma_pago,nro_cheque,tipo_salida,monto,concepto,usuario,fecha)
+				VALUES('$forma_pago','$nro_cheque','$tipo_salida','$monto','$concepto','$usuario','$fecha')");
 
         if ($query_insert) {
 
@@ -52,7 +53,7 @@ if (!empty($_POST)) {
     <div class="row" style="justify-content: center;">
         <div class="col-md-5">
             <div class="tile">
-                <h3 class="tile-title text-center">Registro de Caja</h3>
+                <h3 class="tile-title text-center">Registro de Movimiento</h3>
                 <div class="tile-body">
                     <form action="" method="POST">
                         <div class="form-group">
@@ -85,13 +86,20 @@ if (!empty($_POST)) {
                         </div>
 
                         <div class="form-group">
+                        <label class="control-label" for="fecha">Fecha de Movimiento</label>
+                            <input type="date" name="fecha" id="fecha" class="form-control" 
+                            >
+                            
+                        </div>
+
+                        <div class="form-group">
                         <label class="control-label" for="concepto">Concepto de Pago</label>
                             <textarea type="text" name="concepto" id="concepto" class="form-control" placeholder="Ingrese el concepto del Gasto" 
                             style="max-height: 145px;">
                             </textarea>
                         </div>
 
-                       
+                                               
                         <input class="form-control" type="hidden" name="usuario" id="usuario" value="<?php echo $_SESSION['nombre']; ?>">
 
                         <div class="tile-footer">
