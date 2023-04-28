@@ -110,7 +110,7 @@ if($_SESSION['rol'] == 4){
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-user-md"></i><span class="app-menu__label">Medicos</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
             <!--Menu Principal de los Medicos-->
-            
+            <li><a class="treeview-item" href="../Plantillas/reporte_medicos.php"><i class="icon fa fa-user-md"></i> Ingresos de Medicos</a></li>
              <li><a class="treeview-item" href="../Plantillas/medicos.php"><i class="icon fa fa-user-md"></i> Lista de Medicos</a></li>
             <li><a class="treeview-item" href="../Historial/historialMedico.php"><i class="icon fa fa-user-md"></i> Historial de Medicos</a></li>
             <!--Menu Principal de los Medicos-->
