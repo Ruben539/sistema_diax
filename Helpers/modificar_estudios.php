@@ -11,7 +11,7 @@ if (empty($_SESSION['active'])) {
 	if (!empty($_POST)) {
 		$alert = '';
 	
-		if (empty( $_POST['Estudio']) || empty($_POST['SinSeguro']) || empty($_POST['SemeiPref']) ||empty($_POST['Hospitalar'])) {
+		if (empty( $_POST['Estudio']) || empty($_POST['SinSeguro']) || empty($_POST['SemeiPref']) || empty($_POST['Hospitalar'])) {
 	
 			$alert = '<p class = "msg_error">Debe llenar Todos los Campos</p>';
 	
@@ -43,9 +43,7 @@ if (empty($_SESSION['active'])) {
 	
 		}else{
 	
-			$sql_update = mysqli_query($conection,"UPDATE tarifas SET Estudio = '$Estudio',SinSeguro = '$SinSeguro',
-            SemeiPref = '$SemeiPref', Hospitalar = '$Hospitalar'
-				WHERE id = $id");
+			$sql_update = mysqli_query($conection,"UPDATE tarifas SET Estudio = '$Estudio', SinSeguro = '$SinSeguro', SemeiPref = '$SemeiPref', Hospitalar = '$Hospitalar' WHERE id = $id");
 	
 			if ($sql_update) {
 	

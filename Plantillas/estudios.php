@@ -38,10 +38,7 @@ require_once("../body/header_admin.php");
                             <th>ID</th>
                             <th>Estudio</th>
                             <th>Sin Seguro</th>
-                            <th>Semei</th>
-                            <th>Semei Preferencial</th>                                
-                            <th>Seguros</th>                                
-                            <th>Seguros Preferencial</th>                                
+                            <th>Semei Preferencial</th>                                                             
                             <th>Hospitalario</th>                                
                             <?php if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 2) {?>
                             <th>Editar</th>
@@ -52,8 +49,8 @@ require_once("../body/header_admin.php");
 
                   <tbody>
                       <?php 
-                        $sql = mysqli_query($conection,"SELECT t.id,t.Estudio,t.SinSeguro,t.SemeiPref,t.Hospitalar 
-                        FROM tarifas t where estatus = 1 ORDER BY  t.id DESC");
+                        $sql = mysqli_query($conection,"SELECT t.id,t.Estudio,t.SinSeguro,t.SemeiPref,t.Hospitalar
+                        FROM tarifas t where t.estatus = 1 ORDER BY  t.id DESC");
 
                          $resultado = mysqli_num_rows($sql);
 
