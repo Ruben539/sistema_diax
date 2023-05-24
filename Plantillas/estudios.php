@@ -52,7 +52,7 @@ require_once("../body/header_admin.php");
 
                   <tbody>
                       <?php 
-                        $sql = mysqli_query($conection,"SELECT t.id,t.Estudio,t.SinSeguro,t.SEMEI,t.SemeiPref,t.Seguros,t.SegurosPref,t.Hospitalar 
+                        $sql = mysqli_query($conection,"SELECT t.id,t.Estudio,t.SinSeguro,t.SemeiPref,t.Hospitalar 
                         FROM tarifas t where estatus = 1 ORDER BY  t.id DESC");
 
                          $resultado = mysqli_num_rows($sql);
@@ -64,9 +64,7 @@ require_once("../body/header_admin.php");
                              $ver[2];
                              $ver[3];
                              $ver[4];
-                             $ver[5];
-                             $ver[6];
-                             $ver[7];
+                            
                         ?>
                             <tr class="text-center">
           
@@ -75,9 +73,6 @@ require_once("../body/header_admin.php");
                             <td><?= $ver[2]; ?></td>
                             <td><?= $ver[3]; ?></td>
                             <td><?= $ver[4]; ?></td>
-                            <td><?= $ver[5]; ?></td>
-                            <td><?= $ver[6]; ?></td>
-                            <td><?= $ver[7]; ?></td>
                             
                             <?php if ($_SESSION['rol'] == 1 || $_SESSION['rol'] == 2) {?>
                             <td>

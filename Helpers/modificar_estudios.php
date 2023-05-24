@@ -11,7 +11,7 @@ if (empty($_SESSION['active'])) {
 	if (!empty($_POST)) {
 		$alert = '';
 	
-		if (empty( $_POST['Estudio']) || empty($_POST['SinSeguro']) || empty($_POST['SEMEI']) || empty($_POST['SemeiPref']) ||empty($_POST['Seguros'])) {
+		if (empty( $_POST['Estudio']) || empty($_POST['SinSeguro']) || empty($_POST['SemeiPref']) ||empty($_POST['Hospitalar'])) {
 	
 			$alert = '<p class = "msg_error">Debe llenar Todos los Campos</p>';
 	
@@ -20,10 +20,7 @@ if (empty($_SESSION['active'])) {
 			$id              = $_POST['id'];
 			$Estudio         = $_POST['Estudio'];
 			$SinSeguro       = $_POST['SinSeguro'];
-			$SEMEI           = $_POST['SEMEI'];
 			$SemeiPref       = $_POST['SemeiPref'];
-			$Seguros         = $_POST['Seguros'];
-			$SegurosPref     = $_POST['SegurosPref'];
 			$Hospitalar      = $_POST['Hospitalar'];
 			
 	
@@ -46,8 +43,8 @@ if (empty($_SESSION['active'])) {
 	
 		}else{
 	
-			$sql_update = mysqli_query($conection,"UPDATE tarifas SET Estudio = '$Estudio',SinSeguro = '$SinSeguro', SEMEI = '$SEMEI',
-            SemeiPref = '$SemeiPref',Seguros = '$Seguros', SegurosPref = '$SegurosPref', Hospitalar = '$Hospitalar'
+			$sql_update = mysqli_query($conection,"UPDATE tarifas SET Estudio = '$Estudio',SinSeguro = '$SinSeguro',
+            SemeiPref = '$SemeiPref', Hospitalar = '$Hospitalar'
 				WHERE id = $id");
 	
 			if ($sql_update) {
@@ -87,10 +84,7 @@ if ($resultado == 0) {
 		$id           = $data['id'];
 		$Estudio      = $data['Estudio'];
 		$SinSeguro    = $data['SinSeguro'];
-		$SEMEI        = $data['SEMEI'];
 		$SemeiPref    = $data['SemeiPref'];
-		$Seguros      = $data['Seguros'];
-		$SegurosPref  = $data['SegurosPref'];
 		$Hospitalar   = $data['Hospitalar'];
 
 	}
@@ -123,11 +117,7 @@ require_once("../body/header_admin.php");
                   value="<?php echo $SinSeguro; ?>">
                 </div>
 
-                <div class="form-group">
-                  <label class="control-label">Semei</label>
-                  <input class="form-control" type="text" name="SEMEI" id="SEMEI" placeholder="Ingrese el monto" required
-                  value="<?php echo $SEMEI; ?>">
-                </div>
+              
 
                 <div class="form-group">
                   <label class="control-label">Precio Preferencial</label>
@@ -135,17 +125,6 @@ require_once("../body/header_admin.php");
                   value="<?php echo $SemeiPref; ?>">
                 </div>
 
-                <div class="form-group">
-                  <label class="control-label">Seguros</label>
-                  <input class="form-control" type="text" name="Seguros" id="Seguros" placeholder="Ingrese el monto" required 
-                  value="<?php echo $Seguros; ?>">
-                </div>
-
-                <div class="form-group">
-                  <label class="control-label">Seguros Preferencial</label>
-                  <input class="form-control" type="text" name="SegurosPref" id="SegurosPref" placeholder="Ingrese el monto" required 
-                  value="<?php echo $SegurosPref; ?>">
-                </div>
 
                 <div class="form-group">
                   <label class="control-label">Precio Hospitalarios</label>
