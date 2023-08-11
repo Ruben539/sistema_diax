@@ -55,13 +55,16 @@ require_once("../body/header_admin.php");
               $medico = trim($_SESSION['Nombre']);
              // print_r($medico.' '.$fecha);
 
-              $sql = mysqli_query($conection, "SELECT h.id,c.nombre,c.apellido,h.Estudio,h.Cedula,h.Atendedor,h.Fecha,h.Seguro,h.Monto,h.Comentario,h.estado
-              FROM historial h inner join clientes c on c.cedula = h.cedula  WHERE  Atendedor LIKE '%".$medico."%' AND Fecha LIKE '%".$fecha."%' AND estado LIKE '%Atendido%'");
+              $sql = mysqli_query($conection, "SELECT h.id,c.nombre,c.apellido,h.Estudio,h.Cedula,h.Atendedor,h.Fecha,h.Seguro,
+              h.Monto,h.Comentario,h.estado FROM historial h inner join clientes c on c.cedula = h.cedula  WHERE  Atendedor
+              LIKE '%".$medico."%' AND Fecha LIKE '%".$fecha."%' AND estado LIKE '%Atendido%' ");
 
               $resultado = mysqli_num_rows($sql);
 
+              $monto = 0;
               if ($resultado > 0) {
                 while ($ver= mysqli_fetch_array($sql)) {
+                  $monto = $ver[8];
                   $datos = $ver[0]."||".
                    $ver[1]."||".
                    $ver[2]."||".
@@ -90,28 +93,29 @@ require_once("../body/header_admin.php");
 
 
               
-            </tbody>
-            <tfoot>
-              <tr>
-                <td><b>Total A Rendir : </b></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <?php if($ver[8] == ''){ ?>
-                  <td class="text-center" style="color: #00000;"><b><?= number_format(0, 3, '.', '.');?></b></td>
-                  <?php }else{?>
-                  <td class="text-center"  style="color: #00000;"><b><?= number_format($ver[8], 3, '.', '.');?></b></td>
-                  <?php }?>
-              </tr>
-            </tfoot>
-          </table>
-          <?php }
+           
+            <?php }
               } ?>
+             </tbody>
+             <tr>
+              <td><b>Total A Rendir : </b></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td class="alert alert-success text-center">
+                <?php echo number_format($monto, 3, '.', '.'); ?>.<b>GS</b>
+              </td>
+
+
+            </tr>
+          
+          </table>
+          
         </div>
       </div>
     </div>
