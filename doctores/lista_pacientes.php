@@ -102,10 +102,10 @@ require_once("../body/header_admin.php");
                 <td></td>
                 <td></td>
                 <td></td>
-                <?php if($ver[7] == ''){ ?>
+                <?php if($ver[8] == ''){ ?>
                   <td class="text-center" style="color: #00000;"><b><?= number_format(0, 3, '.', '.');?></b></td>
                   <?php }else{?>
-                  <td class="text-center"  style="color: #00000;"><b><?= number_format(+$ver[7], 3, '.', '.');?></b></td>
+                  <td class="text-center"  style="color: #00000;"><b><?= number_format($ver[8], 3, '.', '.');?></b></td>
                   <?php }?>
               </tr>
             </tfoot>
